@@ -1,0 +1,81 @@
+.header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem;
+  border-bottom: 1px #ebdede solid;
+}
+
+.logo_section, 
+.main_nav {
+    margin: 0;
+    align-self: center;
+}
+
+.noDecor {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #000000;
+}
+
+.CTA_button {
+    background: #ff4081;
+    border: none;
+    padding: 0.2rem;
+    color: #fff;
+}
+
+.CTA_button:hover {
+    background: #c41b53;
+}
+
+.hamburger_menu {
+    width: 0.6rem;
+    margin: 0;
+    padding: 1rem;
+    border: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger_menu:hover {
+    border-color: none;
+    background-color: #dfd7d7;
+    border-radius: 50%;
+}
+
+.hamburger_line {
+    height: 0.125rem;
+    width: 60%;
+    position: absolute;
+    background-color: #000000;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+}
+
+.hamburger_line::after,
+.hamburger_line::before {
+    content: '';
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: #000000;
+}
+
+.hamburger_line::after {
+    top: 0.4rem;
+}
+
+.hamburger_line::before {
+    top: -0.4rem;
+}

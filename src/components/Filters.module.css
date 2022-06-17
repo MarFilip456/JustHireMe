@@ -1,0 +1,5 @@
+.filter_list {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0.5rem;
+}
