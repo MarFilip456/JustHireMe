@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Fragment } from "react/cjs/react.production.min";
-import JobCard from "./JobCard";
+import { Link } from "react-router-dom";
 import JobShort from "./JobShort";
 
 import classes from "./JobsList.module.css";
@@ -72,33 +71,24 @@ const DUMMY_JOB_LIST = [
   },
 ];
 const JobsList = () => {
-  const [showJobDescription, setShowJobDescription] = useState(false);
-
-  const showJobDescriptionHandler = (object) => {
-    setShowJobDescription(true);
-  };
-
-  const hideJobDescriptionHandler = () => {
-    setShowJobDescription(false);
-  };
 
   return (
     <Fragment>
       <ul className={classes.job_list}>
         {DUMMY_JOB_LIST.map((job) => (
-          <JobShort
-            onClick={showJobDescriptionHandler}
-            key={job.id}
-            id={job.id}
-            logo={job.logo}
-            jobPosition={job.jobPosition}
-            minSalary={job.minSalary}
-            maxSalary={job.maxSalary}
-            location={job.location}
-          />
+          <Link to={"jobdescr/" + job.id} key={job.id}>
+            <JobShort
+              key={job.id}
+              id={job.id}
+              logo={job.logo}
+              jobPosition={job.jobPosition}
+              minSalary={job.minSalary}
+              maxSalary={job.maxSalary}
+              location={job.location}
+            />
+          </Link>
         ))}
       </ul>
-      {showJobDescription && <JobCard onClick={hideJobDescriptionHandler} />}
     </Fragment>
   );
 };

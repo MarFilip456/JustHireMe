@@ -1,17 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-import hamburgerToggleReducer from "./hamburgerToggleSlice";
-
-/* const hamburgerToggleReducer = (state = { visible: false }, action) => {
-  if (action.type === "toggle") {
-    return {
-      visible: true,
-    };
-  }
-}; */
+import toggleVisReducer from "./toggleVisibilitySlice";
 
 const store = configureStore({
-  reducer: hamburgerToggleReducer,
+  reducer: {
+    toggle: toggleVisReducer,
+  },
 });
 
 export default store;
