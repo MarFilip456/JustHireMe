@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import toggleVisReducer from "./toggleVisibilitySlice";
+import uiReducer from "./ui-slice";
 
 const store = configureStore({
   reducer: {
-    toggle: toggleVisReducer,
+    ui: uiReducer,
   },
 });
 
