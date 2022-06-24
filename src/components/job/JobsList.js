@@ -1,15 +1,29 @@
 import { Fragment, useEffect, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { FetchOffers } from "../../store/request-actions";
+import { useSelector, useDispatch } from "react-redux";
 
 import JobShort from "./JobShort";
 import classes from "./JobsList.module.css";
 
 const JobsList = () => {
-  const [offers, setOffers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
+  const dispatch = useDispatch();
   const fetchOffersHandler = useCallback(async () => {
+    dispatch(FetchOffers);
+  }, [dispatch]);
+  useEffect(() => {
+    fetchOffersHandler();
+  }, [fetchOffersHandler]);
+
+  const offers = useSelector((state) => state.offers.offers);
+  const isLoading = useSelector((state) => state.ui.isLoading);
+  const error = useSelector((state) => state.ui.error);
+
+  /* const [offers, setOffers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null); */
+
+  /* const fetchOffersHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -40,17 +54,12 @@ const JobsList = () => {
       setError(error.message);
     }
     setIsLoading(false);
-  }, []);
-
-  useEffect(() => {
-    fetchOffersHandler();
-  }, [fetchOffersHandler]);
-
+  }, []); */
   return (
     <Fragment>
       <ul className={classes.job_list}>
         {isLoading && <p>Loading...</p>}
-        {offers.length > 1 &&
+        {offers &&
           offers.map((job) => (
             <Link to={"jobdescr/" + job.id} key={job.id}>
               <JobShort
@@ -64,12 +73,12 @@ const JobsList = () => {
               />
             </Link>
           ))}
-        {error && (
-          <p>
-            An unexpected error occured: <span>{error}</span>
-          </p>
-        )}
       </ul>
+      {error && (
+        <p>
+          An unexpected error occured: <span>{error}</span>
+        </p>
+      )}
     </Fragment>
   );
 };
