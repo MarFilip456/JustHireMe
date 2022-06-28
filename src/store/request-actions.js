@@ -11,7 +11,7 @@ export async function FetchOffers() {
   const errMess = null;
   try {
     const response = await fetch(
-      "https://justhireme-de5cc-default-rtdb.europe-west1.firebasedatabase.app/.json"
+      process.env.REACT_APP_API_DATABASE_URL
     );
 
     if (!response.ok) {
