@@ -7,6 +7,8 @@ const initialState = {
     title: "",
     message: "",
   },
+  isLoading: false,
+  isError: false,
   isLoggedIn: false,
 };
 
@@ -23,6 +25,12 @@ const uiSlice = createSlice({
         title: action.payload.title,
         message: action.payload.message,
       }
+    },
+    setLoading: (state) => {
+      state.isLoading = !state.isLoading;
+    },
+    setError: (state) => {
+      state.isError = !state.isError;
     },
     loggingInOut: (state) => {
       state.isLoggedIn = !state.isLoggedIn;
