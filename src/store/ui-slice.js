@@ -2,8 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   visibleSide: false,
-  error: null,
-  isLoading: false,
+  notification: {
+    status: "",
+    title: "",
+    message: "",
+  },
   isLoggedIn: false,
 };
 
@@ -11,14 +14,15 @@ const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    changeVisSide: (state, action) => {
+    changeVisSide: (state) => {
       state.visibleSide = !state.visibleSide;
     },
-    showError: (state, action) => {
-      state.error = action.payload;
-    },
-    loading: (state) => {
-      state.isLoading = !state.isLoading;
+    showNotification: (state, action) => {
+      state.notification = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      }
     },
     loggingInOut: (state) => {
       state.isLoggedIn = !state.isLoggedIn;
@@ -26,5 +30,5 @@ const uiSlice = createSlice({
   },
 });
 
-export const { changeVisSide, showError, loading } = uiSlice.actions;
+export const uiActions = uiSlice.actions;
 export default uiSlice.reducer;

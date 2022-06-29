@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { changeVisSide } from "./store/ui-slice";
+import { uiActions } from "./store/ui-slice";
 
 import MainPage from "./pages/MainPage";
 import JobPage from "./pages/JobPage";
@@ -14,8 +14,8 @@ function App() {
 
   return (
     <Fragment>
-      {isVisible && <Modal onClick={() => dispatch(changeVisSide())} />}
-      <Header onClick={() => dispatch(changeVisSide())} />
+      {isVisible && <Modal onClick={() => dispatch(uiActions.changeVisSide())} />}
+      <Header onClick={() => dispatch(uiActions.changeVisSide())} />
       <main>
         <Routes>
           <Route path="/" element={<MainPage />} />
