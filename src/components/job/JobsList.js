@@ -1,10 +1,10 @@
 import { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchOffersData } from "../../store/request-actions";
 
 import JobShort from "./JobShort";
 import classes from "./JobsList.module.css";
+import { fetchOffersData } from "../../store/request-actions";
 
 const JobsList = () => {
   const dispatch = useDispatch();
@@ -14,10 +14,9 @@ const JobsList = () => {
   const notificationMessage = useSelector(
     (state) => state.ui.notification.message
   );
-
-  useEffect(() => {
-    dispatch(fetchOffersData());
-  }, [dispatch]);
+    useEffect(() => {
+      dispatch(fetchOffersData());
+    }, [dispatch]);
 
   return (
     <Fragment>

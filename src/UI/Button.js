@@ -1,6 +1,6 @@
-import classes from "./ReusableButton.module.css";
+import classes from "./Button.module.css";
 
-const ReusableButton = (props) => {
+const Button = (props) => {
   return (
     <button className={`${classes.button} && ${props.styles}`} onClick={props.onClick} >
       {props.children}
@@ -8,4 +8,4 @@ const ReusableButton = (props) => {
   );
 };
 
-export default ReusableButton;
+export default Button;

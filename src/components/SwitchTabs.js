@@ -1,10 +1,10 @@
-import ReusableButton from "../UI/ReusableButton";
+import Button from "../UI/Button";
 
 const SwitchTabs = () => {
   return (
     <div>
-      <ReusableButton>With salary</ReusableButton>
-      <ReusableButton>All offers</ReusableButton>
+      <Button>With salary</Button>
+      <Button>All offers</Button>
     </div>
   );
 };

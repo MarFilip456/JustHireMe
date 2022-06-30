@@ -2,7 +2,7 @@
   background: white;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem;
+  padding: 0;
   border-bottom: 1px #ebdede solid;
 }
 
@@ -10,6 +10,7 @@
 .main_nav {
     margin: 0;
     align-self: center;
+    display: flex;
 }
 
 .noDecor {
@@ -21,14 +22,12 @@
     font-weight: bold;
     margin: 0;
     padding: 0.5rem;
-    text-decoration: none;
     color: #000000;
 }
 
 .CTA_button {
     background: #ff4081;
     border: none;
-    padding: 0.2rem;
     color: #fff;
 }
 

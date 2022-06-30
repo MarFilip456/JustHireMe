@@ -14,5 +14,5 @@ const offersSlice = createSlice({
   },
 });
 
-export const { setOffers } = offersSlice.actions;
+export const offersActions = offersSlice.actions;
 export default offersSlice.reducer;

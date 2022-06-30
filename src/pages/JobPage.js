@@ -7,8 +7,7 @@ const JobPage = () => {
 
   return (
     <div>
-      <JobCard />
-      <p>{params.jobId}</p>
+      <JobCard id={params.jobId}/>
     </div>
   );
 };
