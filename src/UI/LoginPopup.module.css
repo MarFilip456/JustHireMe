@@ -1,0 +1,11 @@
+.loginPopup {
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 15rem;;
+    top: 80px;
+    left: 60%;
+    z-index: 1;
+}

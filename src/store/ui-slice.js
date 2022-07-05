@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   visibleSide: false,
+  visiblePopup: false,
   notification: {
     status: "",
     title: "",
@@ -18,6 +19,9 @@ const uiSlice = createSlice({
   reducers: {
     changeVisSide: (state) => {
       state.visibleSide = !state.visibleSide;
+    },
+    changeVisPopup: (state) => {
+      state.visiblePopup = !state.visiblePopup;
     },
     showNotification: (state, action) => {
       state.notification = {
