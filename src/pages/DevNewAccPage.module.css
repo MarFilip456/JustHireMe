@@ -1,0 +1,94 @@
+.devLogin_main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .devLogin_main_split {
+    box-sizing: border-box;
+    width: 50vw;
+    height: 100%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px #ebdede solid;
+    border-top: none;
+  }
+  
+  .devLogin_form {
+      text-decoration: none;
+  }
+  
+  h1.devLogin_form {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: rgb(78, 78, 78);
+  }
+  
+  .devLogin_form_login {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 5px 0;
+      border-radius: 20px;
+      width: 100%;
+      justify-content: center;
+  }
+  
+  img.devLogin_form {
+    width: 1.8rem;
+    margin: 0 10px;
+  }
+  
+  p.devLogin_form {
+    color: rgb(78, 78, 78);
+  }
+  
+  .devLogin_form_line {
+      width: 100%;
+      text-align: center;
+      margin: 12px 0px 5px 0;
+      border-bottom: 1px #ebdede solid;
+      border-top: 1px #ebdede solid;
+  }
+  
+  .devLogin_form_line h3 {
+      margin: 5px;
+      color: rgb(78, 78, 78);
+  }
+  
+  form.devLogin_form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+  
+  form.devLogin_form label {
+      margin: 1rem 0;
+  }
+  
+  form.devLogin_form Button {
+      padding: 10px 55px;
+      margin: 5px auto;
+      background: #ff4081;
+      border-radius: 20px;
+      border: none;
+      color: #fff;
+  }
+  
+  form.devLogin_form Button:hover {
+      background: #c41b53;
+  }
+  
+  span.devLogin_form {
+      color: #ff4081;
+      margin: 0 3px;
+  }
+  
+  span.devLogin_form:hover {
+      text-decoration: underline;
+  }

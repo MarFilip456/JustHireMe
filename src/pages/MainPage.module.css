@@ -22,6 +22,12 @@
   margin: auto;
 }
 
+.bottomMap__button:hover,
+.bottomMap__button:active {
+  background-color: black;
+  border: 2px solid transparent;
+}
+
 .bottomMap__button_img {
   height: 1rem;
   margin: auto;
