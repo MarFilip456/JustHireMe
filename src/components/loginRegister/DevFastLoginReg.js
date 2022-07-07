@@ -29,7 +29,7 @@ const DevFastLoginReg = (props) => {
   return (
     <Fragment>
       {fastLogin.map((opt) => (
-        <Button styles={classes.devLogin_form_login} act={props.act}>
+        <Button key={opt.id} styles={classes.devLogin_form_login} act={props.act}>
           <img
             className={classes.devLogin_form}
             alt={`${opt.id} logo`}
