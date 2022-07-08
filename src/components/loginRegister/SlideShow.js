@@ -1,5 +1,5 @@
 import { Fragment } from "react/cjs/react.production.min";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classes from "./SlideShow.module.css";
 
 const slideImages = [
@@ -22,6 +22,11 @@ const slideImages = [
 ];
 
 const SlideShow = () => {
+  const image0Ref = useRef();
+  const image1Ref = useRef();
+  const image2Ref = useRef();
+  const image3Ref = useRef();
+
   const [slideIndex, setSlideIndex] = useState(0);
 
   const incrementHandler = () => {
@@ -41,6 +46,18 @@ const SlideShow = () => {
   const pointClickhandler = (event) => {
     setSlideIndex(Number(event.target.id));
   };
+
+  useEffect(() => {
+    if (slideIndex === 0) {
+      image0Ref.current.checked = true;
+    } else if (slideIndex === 1) {
+      image1Ref.current.checked = true;
+    } else if (slideIndex === 2) {
+      image2Ref.current.checked = true;
+    } else if (slideIndex === 3) {
+      image3Ref.current.checked = true;
+    }
+  }, [slideIndex]);
 
   return (
     <Fragment>
@@ -72,10 +89,35 @@ const SlideShow = () => {
           </button>
         </div>
         <div className={classes.slideShow_pointContainer}>
-          <input type="radio" name="image" id="0" onClick={pointClickhandler} defaultChecked />
-          <input type="radio" name="image" id="1" onClick={pointClickhandler} />
-          <input type="radio" name="image" id="2" onClick={pointClickhandler} />
-          <input type="radio" name="image" id="3" onClick={pointClickhandler} />
+          <input
+            ref={image0Ref}
+            type="radio"
+            name="image"
+            id="0"
+            onClick={pointClickhandler}
+            defaultChecked
+          />
+          <input
+            ref={image1Ref}
+            type="radio"
+            name="image"
+            id="1"
+            onClick={pointClickhandler}
+          />
+          <input
+            ref={image2Ref}
+            type="radio"
+            name="image"
+            id="2"
+            onClick={pointClickhandler}
+          />
+          <input
+            ref={image3Ref}
+            type="radio"
+            name="image"
+            id="3"
+            onClick={pointClickhandler}
+          />
         </div>
       </div>
     </Fragment>

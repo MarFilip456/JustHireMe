@@ -1,22 +1,86 @@
 form.devLogin_form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-form.devLogin_form label {
-    margin: 1rem 0;
+.devLogin_form_labelContainer {
+  margin: 16px 0;
+  color: #4e4e4e;
+}
+
+.devLogin_form_inputContainer {
+  height: min-content;
+  border: 1.5px #4e4e4e solid;
+  border-radius: 0.5rem;
+  transition: 0.3s all;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.devLogin_form_inputContainer:hover {
+  background-color: rgb(201, 201, 201, 0.2);
+}
+
+.devLogin_form_inputContainer_imgContainer {
+  box-sizing: border-box;
+  width: 30px;
+  height: 100%;
+  margin: 0 8px;
+  padding: 2px;
+  border: none;
+}
+
+.devLogin_form_inputContainer img {
+  width: 100%;
+  height: 100%;
+}
+
+.devLogin_form_input {
+  height: 30px;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+}
+
+.devLogin_form_input:focus-visible {
+  outline: none;
+}
+
+#devLoginFormLabel {
+  margin: 1rem 0;
+  color: #4e4e4e;
+}
+
+#devLoginFormLabel:hover {
+  background-color: none;
 }
 
 form.devLogin_form Button {
-    padding: 10px 55px;
-    margin: 5px auto;
-    background: #ff4081;
-    border-radius: 20px;
-    border: none;
-    color: #fff;
+  padding: 10px 55px;
+  margin: 5px auto;
+  background: #ff4081;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  transition: 0.3s;
 }
 
 form.devLogin_form Button:hover {
-    background: #c41b53;
+  background: #c41b53;
 }
+
+div.devLogin_form_inputContainer button {
+    padding: 0;
+    margin: 0 4px;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    color: #ccc;
+  }
+
+  div.devLogin_form_inputContainer button:hover {
+      background: none;
+    }
+  
