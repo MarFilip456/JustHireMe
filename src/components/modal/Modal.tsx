@@ -1,7 +1,11 @@
-import { Fragment } from "react/cjs/react.production.min";
+import React, { Fragment } from "react";
 import Backdrop from "./Backdrop";
 
-const Modal = (props) => {
+const Modal: React.FC<{
+  styles: React.CSSProperties;
+  onClick: (event: React.MouseEvent) => void;
+  children: React.ReactNode
+}> = (props) => {
   return (
     <Fragment>
       <Backdrop onClick={props.onClick} styles={props.styles} />

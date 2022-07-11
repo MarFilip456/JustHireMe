@@ -1,9 +1,11 @@
 import Button from "./Button";
 import classes from "./SideMenu.module.css";
-import { useSelector } from "react-redux";
+import { useAppSelector } from '../store/redux-hooks';
 
 const SideMenu = () => {
-  const isLogged = useSelector((state) => state.ui.isLoggedIn);
+  const isLogged = useAppSelector(
+    (state) => state.ui.isLoggedIn
+  );
   return (
     <div className={classes.sideMenu}>
       <h1>MENU</h1>

@@ -1,5 +1,6 @@
 import { uiActions } from "./ui-slice";
 import { offersActions } from "./offers-slice";
+import { useAppDispatch } from "./redux-hooks";
 
 export const fetchOffersData = () => {
   return async (dispatch) => {

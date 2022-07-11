@@ -1,6 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "./index";
 
-const initialState = {
+interface initialStateType {
+  visibleSide: boolean;
+  visiblePopup: boolean;
+  notification: {
+    status: string;
+    title: string;
+    message: string;
+  };
+  isLoading: boolean;
+  isError: boolean;
+  isLoggedIn: boolean;
+};
+
+const initialState: initialStateType = {
   visibleSide: false,
   visiblePopup: false,
   notification: {
@@ -23,7 +37,7 @@ const uiSlice = createSlice({
     changeVisPopup: (state) => {
       state.visiblePopup = !state.visiblePopup;
     },
-    showNotification: (state, action) => {
+    showNotification: (state, action: PayloadAction<string> ) => {
       state.notification = {
         status: action.payload.status,
         title: action.payload.title,
@@ -43,4 +57,5 @@ const uiSlice = createSlice({
 });
 
 export const uiActions = uiSlice.actions;
+export const uiState = (state: RootState) => state.ui;
 export default uiSlice.reducer;
