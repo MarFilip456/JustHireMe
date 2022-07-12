@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Fragment } from "react";
-import { useSelector, useDispatch } from "react-redux/es/exports";
 import { uiActions } from "./store/ui-slice";
+import { useAppDispatch, useAppSelector } from "./store/redux-hooks";
 
 import MainPage from "./pages/MainPage";
 import JobPage from "./pages/JobPage";
@@ -16,9 +16,9 @@ import SideMenu from "./UI/SideMenu";
 import classes from "./App.module.css";
 
 function App() {
-  const sideVisible = useSelector((state) => state.ui.visibleSide);
-  const popupVisible = useSelector((state) => state.ui.visiblePopup);
-  const dispatch = useDispatch();
+  const sideVisible = useAppSelector((state) => state.ui.visibleSide);
+  const popupVisible = useAppSelector((state) => state.ui.visiblePopup);
+  const dispatch = useAppDispatch();
   return (
     <Fragment>
       <div className={classes.overallDisp}>
@@ -42,7 +42,7 @@ function App() {
           <Route path="/map" element={<MapPage />} />
           <Route path="/devlogin" element={<DevLoginPage />} />
           <Route path="/devregister" element={<DevNewAccPage />} />
-          <Route path="*" exact element={<MainPage />} />
+          <Route path="*" element={<MainPage />} />
         </Routes>
       </div>
     </Fragment>

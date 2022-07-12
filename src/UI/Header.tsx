@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../store/redux-hooks";
 import { uiActions } from "../store/ui-slice";
 import Button from "./Button";
 
 import classes from "./Header.module.css";
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const isLogged = useSelector((state) => state.ui.isLoggedIn);
+  const dispatch = useAppDispatch();
+  const isLogged = useAppSelector((state) => state.ui.isLoggedIn);
 
   return (
     <Fragment>

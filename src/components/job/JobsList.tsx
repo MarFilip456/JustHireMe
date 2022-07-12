@@ -1,17 +1,17 @@
 import { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../../store/redux-hooks";
 
 import JobShort from "./JobShort";
 import classes from "./JobsList.module.css";
 import { fetchOffersData } from "../../store/request-actions";
 
 const JobsList = () => {
-  const dispatch = useDispatch();
-  const offers = useSelector((state) => state.offers.offers);
-  const isLoading = useSelector((state) => state.ui.isLoading);
-  const isError = useSelector((state) => state.ui.isError);
-  const notificationMessage = useSelector(
+  const dispatch = useAppDispatch();
+  const offers = useAppSelector((state) => state.offers.offers);
+  const isLoading = useAppSelector((state) => state.ui.isLoading);
+  const isError = useAppSelector((state) => state.ui.isError);
+  const notificationMessage = useAppSelector(
     (state) => state.ui.notification.message
   );
     useEffect(() => {

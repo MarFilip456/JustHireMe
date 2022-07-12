@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
 import { uiActions } from "../store/ui-slice";
 import Button from "./Button";
 import Card from "./Card";

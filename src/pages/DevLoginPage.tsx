@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
 import DevLoginForm from "../components/loginRegister/DevLoginForm";
 import DevFastLoginReg from "../components/loginRegister/DevFastLoginReg";
 import SlideShow from "../components/loginRegister/SlideShow";

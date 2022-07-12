@@ -1,13 +1,15 @@
 import { uiActions } from "./ui-slice";
 import { offersActions } from "./offers-slice";
-import { useAppDispatch } from "./redux-hooks";
+import { AppThunk } from "./index";
 
-export const fetchOffersData = () => {
-  return async (dispatch) => {
+const databaseUrl: string = process.env.REACT_APP_API_DATABASE_URL;
+
+export const fetchOffersData: AppThunk = () => {
+  return async (dispatch: any) => {
     dispatch(uiActions.setLoading());
     const fetchData = async () => {
       const response = await fetch(
-        process.env.REACT_APP_API_DATABASE_URL
+        databaseUrl
       );
       if (!response.ok) {
         throw new Error("Could not fetch offers!");

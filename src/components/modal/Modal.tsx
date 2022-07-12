@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Backdrop from "./Backdrop";
 
 const Modal: React.FC<{
-  styles: React.CSSProperties;
+  styles?: React.CSSProperties;
   onClick: (event: React.MouseEvent) => void;
   children: React.ReactNode
 }> = (props) => {

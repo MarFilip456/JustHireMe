@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Backdrop.module.css";
 
 const Backdrop: React.FC<{
-  styles: React.CSSProperties;
+  styles?: React.CSSProperties;
   onClick: (event: React.MouseEvent ) => void;
 }> = (props) => {
   return (

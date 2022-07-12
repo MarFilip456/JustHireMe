@@ -1,4 +1,4 @@
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
 import Map from "../components/map/Map";
 import Filters from "../components/Filters";
 
