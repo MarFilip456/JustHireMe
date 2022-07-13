@@ -1,28 +1,22 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "../../store/redux-hooks";
+import { useAppSelector } from "../../store/redux-hooks";
 
 import JobShort from "./JobShort";
 import classes from "./JobsList.module.css";
-import { fetchOffersData } from "../../store/request-actions";
+import useFetch from "./use-request";
 
 const JobsList = () => {
-  const dispatch = useAppDispatch();
-  const offers = useAppSelector((state) => state.offers.offers);
-  const isLoading = useAppSelector((state) => state.ui.isLoading);
-  const isError = useAppSelector((state) => state.ui.isError);
-  const notificationMessage = useAppSelector(
-    (state) => state.ui.notification.message
+  const { error, loading } = useFetch(
+    process.env.REACT_APP_API_DATABASE_URL
   );
-    useEffect(() => {
-      dispatch(fetchOffersData());
-    }, [dispatch]);
+  const offers = useAppSelector((state) => state.offers.offers);
 
   return (
     <Fragment>
       <ul className={classes.job_list}>
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>{notificationMessage}</p>}
+        {loading && <p>Loading...</p>}
+        {error && <p>!Error message!</p>}
         {offers &&
           offers.map((job) => (
             <Link to={"jobdescr/" + job.id} key={job.id}>

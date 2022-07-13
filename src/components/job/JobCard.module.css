@@ -1,5 +1,7 @@
 .test {
-    background: #d3afaf;
-    color: yellow;
-    padding: 20%;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
 }

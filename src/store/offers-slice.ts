@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface offerObject {
+export type offerObject = {
   companyName: string;
   description: {
     aboutUs: string;

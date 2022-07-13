@@ -1,16 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "./index";
-
-interface notificationStateType {
-  status: string;
-  title: string;
-  message: string;
-}
 
 interface initialUiStateType {
   visibleSide: boolean;
   visiblePopup: boolean;
-  notification: notificationStateType;
   isLoading: boolean;
   isError: boolean;
   isLoggedIn: boolean;
@@ -19,11 +12,6 @@ interface initialUiStateType {
 const initialState: initialUiStateType = {
   visibleSide: false,
   visiblePopup: false,
-  notification: {
-    status: "",
-    title: "",
-    message: "",
-  },
   isLoading: false,
   isError: false,
   isLoggedIn: false,
@@ -38,13 +26,6 @@ const uiSlice = createSlice({
     },
     changeVisPopup: (state) => {
       state.visiblePopup = !state.visiblePopup;
-    },
-    showNotification: (state, action: PayloadAction<notificationStateType> ) => {
-      state.notification = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
-      }
     },
     setLoading: (state) => {
       state.isLoading = !state.isLoading;

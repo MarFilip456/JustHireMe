@@ -4,6 +4,8 @@ import Button from "../../UI/Button";
 import classes from "./DevLoginForm.module.css";
 
 const DevLoginForm = (props) => {
+  //create a custom hook to make it one function
+  //execute with useEffect with setTimeout and cleanup
   const [passHidden, setPassHidden] = useState(true);
 
   const [emailInput, setEmailInput] = useState("");
