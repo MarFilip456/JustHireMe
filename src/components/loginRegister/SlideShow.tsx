@@ -1,4 +1,4 @@
-import { Fragment } from "react/cjs/react.production.min";
+import React, { Fragment } from "react";
 import { useEffect, useRef, useState } from "react";
 import classes from "./SlideShow.module.css";
 
@@ -21,11 +21,12 @@ const slideImages = [
   },
 ];
 
-const SlideShow = () => {
-  const image0Ref = useRef();
-  const image1Ref = useRef();
-  const image2Ref = useRef();
-  const image3Ref = useRef();
+const SlideShow = () => { 
+
+  const image0Ref = useRef<HTMLInputElement>(null);
+  const image1Ref = useRef<HTMLInputElement>(null);
+  const image2Ref = useRef<HTMLInputElement>(null);
+  const image3Ref = useRef<HTMLInputElement>(null);
 
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -43,19 +44,19 @@ const SlideShow = () => {
       setSlideIndex(slideIndex - 1);
     }
   };
-  const pointClickhandler = (event) => {
-    setSlideIndex(Number(event.target.id));
+  const pointClickhandler = (event: React.MouseEvent) => {
+    setSlideIndex(Number(event.currentTarget.id));
   };
 
   useEffect(() => {
     if (slideIndex === 0) {
-      image0Ref.current.checked = true;
+      image0Ref.current!.checked = true;
     } else if (slideIndex === 1) {
-      image1Ref.current.checked = true;
+      image1Ref.current!.checked = true;
     } else if (slideIndex === 2) {
-      image2Ref.current.checked = true;
+      image2Ref.current!.checked = true;
     } else if (slideIndex === 3) {
-      image3Ref.current.checked = true;
+      image3Ref.current!.checked = true;
     }
   }, [slideIndex]);
 

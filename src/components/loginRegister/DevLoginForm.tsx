@@ -1,9 +1,11 @@
-import { useState } from "react";
-import { Fragment } from "react/cjs/react.production.min";
+import React, { useState } from "react";
+import { Fragment } from "react";
 import Button from "../../UI/Button";
 import classes from "./DevLoginForm.module.css";
 
-const DevLoginForm = (props) => {
+const DevLoginForm: React.FC<{
+  act: string;
+}> = (props) => {
   //create a custom hook to make it one function
   //execute with useEffect with setTimeout and cleanup
   const [passHidden, setPassHidden] = useState(true);
@@ -27,11 +29,13 @@ const DevLoginForm = (props) => {
   const validateInputEmail = incorrectEmail && touchedEmail;
   const validateInputPassword = incorrectPassword && touchedPassword;
 
-  const correctEmailHandler = (event) => {
+  const correctEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmailInput(event.target.value);
   };
 
-  const correctPasswordhandler = (event) => {
+  const correctPasswordhandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setPasswordInput(event.target.value);
   };
 
@@ -45,12 +49,12 @@ const DevLoginForm = (props) => {
 
   let passwordType = passHidden ? "password" : "text";
 
-  const togglePasswordHandler = (event) => {
+  const togglePasswordHandler = (event: React.MouseEvent) => {
     event.preventDefault();
     setPassHidden(!passHidden);
   };
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (incorrectEmail || incorrectPassword) {
       console.log("dupa");

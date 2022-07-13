@@ -1,9 +1,9 @@
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
 import Button from "../../UI/Button";
 
 import classes from "./DevFastLoginReg.module.css";
 
-const DevFastLoginReg = (props) => {
+const DevFastLoginReg:React.FC<{act: string}> = (props) => {
   const fastLogin = [
     {
       id: "Google",
