@@ -1,4 +1,4 @@
-import { configureStore, MiddlewareArray, ThunkAction } from "@reduxjs/toolkit";
+import { configureStore, ThunkAction } from "@reduxjs/toolkit";
 import uiReducer from "./ui-slice";
 import offersReducer from "./offers-slice";
 import { AnyAction } from "redux";

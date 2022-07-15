@@ -19,7 +19,7 @@ export type offerObject = {
 }
 
 interface initialOffersStateType {
-  offers: offerObject[]
+  offers: offerObject[];
 }
 
 const initialState: initialOffersStateType = {

@@ -1,68 +1,49 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
 import Button from "../../UI/Button";
+import useInput from "../../hooks/use-input";
 import classes from "./DevLoginForm.module.css";
 
 const DevLoginForm: React.FC<{
   act: string;
 }> = (props) => {
-  //create a custom hook to make it one function
-  //execute with useEffect with setTimeout and cleanup
+  const {
+    value: emailInput,
+    isTouched: emailIsTouched,
+    isValid: emailIsValid,
+    valueChangeHandler: correctEmailHandler,
+    inputBlurHandler: blurEmailHandler,
+    reset: resetEmailInput,
+  } = useInput("email");
+
+  const {
+    value: passwordInput,
+    isTouched: passwordIsTouched,
+    isValid: passwordIsValid,
+    valueChangeHandler: correctPasswordHandler,
+    inputBlurHandler: blurPasswordHandler,
+    reset: resetPasswordInput,
+  } = useInput("password");
+
   const [passHidden, setPassHidden] = useState(true);
 
-  const [emailInput, setEmailInput] = useState("");
-  const [touchedEmail, setTouchedEmail] = useState(false);
-
-  const [passwordInput, setPasswordInput] = useState("");
-  const [touchedPassword, setTouchedPassword] = useState(false);
-
-  const incorrectEmail = !emailInput.includes("@");
-  const regex1 = new RegExp("[A-Z]");
-  const regex2 = new RegExp("[a-z]");
-  const regex3 = new RegExp("[0-9]");
-  const incorrectPassword =
-    !regex1.test(passwordInput) ||
-    !regex2.test(passwordInput) ||
-    !regex3.test(passwordInput) ||
-    passwordInput.length < 6;
-
-  const validateInputEmail = incorrectEmail && touchedEmail;
-  const validateInputPassword = incorrectPassword && touchedPassword;
-
-  const correctEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailInput(event.target.value);
-  };
-
-  const correctPasswordhandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setPasswordInput(event.target.value);
-  };
-
-  const blurEmailHandler = () => {
-    setTouchedEmail(true);
-  };
-
-  const blurPasswordHandler = () => {
-    setTouchedPassword(true);
-  };
+  const emailHasError = !emailIsValid && emailIsTouched;
+  const passwordHasError = !passwordIsValid && passwordIsTouched;
 
   let passwordType = passHidden ? "password" : "text";
 
   const togglePasswordHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    setPassHidden(!passHidden);
+    setPassHidden((prevState)=>!prevState);
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (incorrectEmail || incorrectPassword) {
+    if (!emailIsValid  || !passwordIsValid) {
       console.log("dupa");
     } else {
-      setEmailInput("");
-      setTouchedEmail(false);
-      setPasswordInput("");
-      setTouchedPassword(false);
+      resetEmailInput();
+      resetPasswordInput();
       setPassHidden(true);
     }
   };
@@ -91,7 +72,7 @@ const DevLoginForm: React.FC<{
             value={emailInput}
           />
         </div>
-        {validateInputEmail && <p>Not valid email!</p>}
+        {emailHasError && <p>Not valid email!</p>}
         <div className={classes.devLogin_form_labelContainer}>
           <label htmlFor="password">Password</label>
         </div>
@@ -104,7 +85,7 @@ const DevLoginForm: React.FC<{
           </div>
           <input
             onBlur={blurPasswordHandler}
-            onChange={correctPasswordhandler}
+            onChange={correctPasswordHandler}
             className={classes.devLogin_form_input}
             type={passwordType}
             id="password"
@@ -130,7 +111,7 @@ const DevLoginForm: React.FC<{
             )}
           </button>
         </div>
-        {validateInputPassword && <p>Not valid password!</p>}
+        {passwordHasError && <p>Not valid password!</p>}
         <Button act={props.act}>{props.act}</Button>
       </form>
     </Fragment>

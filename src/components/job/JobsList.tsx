@@ -4,11 +4,11 @@ import { useAppSelector } from "../../store/redux-hooks";
 
 import JobShort from "./JobShort";
 import classes from "./JobsList.module.css";
-import useFetch from "./use-request";
+import useFetch from "../../hooks/use-request";
 
 const JobsList = () => {
   const { error, loading } = useFetch(
-    process.env.REACT_APP_API_DATABASE_URL
+    process.env.REACT_APP_API_DATABASE_URL+".json", "all"
   );
   const offers = useAppSelector((state) => state.offers.offers);
 
