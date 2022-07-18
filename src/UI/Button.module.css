@@ -9,6 +9,6 @@
 
 .button:hover, 
 .button:active {
-    background: rgb(201, 201, 201, 0.2);
+    background: #c9c9c933;
     cursor: pointer;
 }

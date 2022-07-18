@@ -21,7 +21,6 @@ const useInput = (inputType: string) => {
 
   useEffect(() => {
     const validity = setTimeout(() => {
-        console.log("effect");
       if (inputType === "email") {
         setIsValid(inputValue.includes("@"));
       } else if (inputType === "password") {

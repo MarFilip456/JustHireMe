@@ -2,28 +2,26 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type offerObject = {
   companyName: string;
-  description: {
-    aboutUs: string;
-    companySize: string;
-    description: string;
-    expLevel: string;
-    requirements: string;
-  };
+  description: string;
+  aboutUs: string;
+  companySize: string;
+  expLevel: string;
+  requirements: string;
   id: string;
   jobPosition: string;
   key: string;
   location: string;
   logo: string;
   maxSalary: string;
-  minSalary: string
-}
+  minSalary: string;
+};
 
 interface initialOffersStateType {
   offers: offerObject[];
 }
 
 const initialState: initialOffersStateType = {
-  offers: []
+  offers: [],
 };
 
 const offersSlice = createSlice({

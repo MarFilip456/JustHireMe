@@ -1,7 +1,9 @@
 .test {
-    padding: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    padding-right: 2%;
+    background-color: #c9c9c933;
+    /* overflow-x: hidden; */
 }
