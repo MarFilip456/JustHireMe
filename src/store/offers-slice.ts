@@ -14,6 +14,7 @@ export type offerObject = {
   logo: string;
   maxSalary: string;
   minSalary: string;
+  techStack: { desc: string; lang: string; value: number }[];
 };
 
 interface initialOffersStateType {

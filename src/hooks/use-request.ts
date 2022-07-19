@@ -26,6 +26,13 @@ const useFetch = (url: string, type: string) => {
             minSalary: responseData[key].minSalary,
             maxSalary: responseData[key].maxSalary,
             location: responseData[key].location,
+            aboutUs: responseData[key].aboutUs,
+            companyName: responseData[key].companyName,
+            companySize: responseData[key].companySize,
+            description: responseData[key].description,
+            expLevel: responseData[key].expLevel,
+            requirements: responseData[key].requirements,
+            techStack: responseData[key].techStack
           });
         }
         dispatch(offersActions.setOffers(loadedOffers));

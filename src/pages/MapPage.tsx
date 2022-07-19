@@ -6,7 +6,7 @@ const MapPage = () => {
   return (
     <Fragment>
       <Filters />
-      <Map />
+      <Map width="100vw" height="600px" lat={53.9044739} lng={17.0664112} />
     </Fragment>
   );
 };

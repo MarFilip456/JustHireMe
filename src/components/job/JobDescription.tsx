@@ -1,9 +1,20 @@
 import { Fragment } from "react";
+import useLocation from "../../hooks/use-location";
 import { offerObject } from "../../store/offers-slice";
+import Map from "../map/Map";
+import JobStack from "./JobStack";
 
 import classes from "./JobDescription.module.css";
 
+
 const JobDescription: React.FC<{ job: offerObject }> = (props) => {
+  const {
+    error: mapError,
+    loading: mapLoading,
+    lat: mapLat,
+    lng: mapLng,
+  } = useLocation(props.job.location);
+
   return (
     <Fragment>
       <div className={classes.offer_header}>
@@ -30,10 +41,18 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
         <div className={classes.offer_boxes__exp}>
           <p>{props.job.expLevel}</p>
         </div>
-        <div className={classes.offer_boxes__remote}><p>RemoteOrNo</p></div>
+        <div className={classes.offer_boxes__remote}>
+          <p>RemoteOrNo</p>
+        </div>
       </div>
-      <div className={classes.offer_map}>Mapa</div>
-      <div className={classes.offer_stack}>TechStack</div>
+      <div className={classes.offer_map}>
+        {mapError && <p>Error occured!</p>}
+        {mapLoading && <p>Loading spinner</p>}
+        {/* {mapLat!==0 && <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />} */}
+      </div>
+      <div className={classes.offer_stack}>
+        <JobStack />
+      </div>
       <div className={classes.offer_description}>
         <div>{props.job.aboutUs}AboutUs</div>
         <div>
