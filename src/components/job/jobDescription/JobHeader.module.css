@@ -1,0 +1,35 @@
+.offer_header {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content min-content;
+    grid-template-areas:
+      "img position"
+      "salary salary";
+    width: 100%;
+    background-color: #63b9b9;
+    padding-top: 8%;
+    padding-left: 5%;
+    padding-bottom: 3%;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .offer_header button {
+      position: absolute;
+      top: 5%;
+      left: 4%;
+  }
+  
+  .offer_header__logo {
+    grid-area: img;
+  }
+  
+  .offer_header__position {
+    grid-area: position;
+    margin: 0 15px;
+  }
+  
+  .offer_header__salary {
+    grid-area: salary;
+  }

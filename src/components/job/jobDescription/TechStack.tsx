@@ -1,15 +1,16 @@
-import { Fragment } from "react";
-import { useAppSelector } from "../../store/redux-hooks";
+import { useAppSelector } from "../../../store/redux-hooks";
 
-import classes from "./JobStack.module.css";
+import classes from "./TechStack.module.css";
 
-const JobStack: React.FC = () => {
+const TechStack: React.FC = () => {
   const offer = useAppSelector((state) => state.offers.offers);
   const arrayTechStack = offer[0].techStack;
 
   return (
-    <Fragment>
-      <div className={classes.stack} ><h1>Tech Stack</h1></div>
+    <div className={classes.offer_stack} >
+      <div className={classes.stack}>
+        <h1>Tech Stack</h1>
+      </div>
       <div className={classes.stack_single}>
         {arrayTechStack.map((stack) => (
           <div key={Math.random()}>
@@ -19,8 +20,8 @@ const JobStack: React.FC = () => {
           </div>
         ))}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
-export default JobStack;
+export default TechStack;

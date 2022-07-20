@@ -1,14 +1,31 @@
 import { Fragment } from "react";
 import { useParams } from "react-router-dom";
+import useFetch from "../hooks/use-request";
+import { useAppSelector } from "../store/redux-hooks";
+import JobDescription from "../components/job/JobDescription";
+import Button from "../UI/Button";
 
-import JobCard from "../components/job/JobCard";
+import classes from "./JobPage.module.css";
 
 const JobPage = () => {
   const params = useParams<{ jobId: string }>();
+  const urlContinue = "/" + params.jobId + ".json";
+  const { error, loading } = useFetch(
+    process.env.REACT_APP_API_DATABASE_URL + urlContinue,
+    "one"
+  );
+  const offers = useAppSelector((state) => state.offers.offers);
+
+  const succesfulFetch = offers?.length !== 0;
 
   return (
     <Fragment>
-      <JobCard id={params.jobId!} />
+      <div className={classes.test}>
+        {loading && <p>Loading...</p>}
+        {error && <p>!Error message!</p>}
+        {succesfulFetch && <JobDescription job={offers[0]} />}
+        <Button>Apply</Button>
+      </div>
     </Fragment>
   );
 };
