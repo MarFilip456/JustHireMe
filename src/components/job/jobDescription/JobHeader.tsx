@@ -13,8 +13,7 @@ const JobHeader = () => {
     navigate("/");
   };
   const arrowUrl = "https://cdn-icons-png.flaticon.com/512/271/271218.png";
-  const markerIconUrl =
-    "../../../images/markerIcon.png";
+  const markerIconUrl = require("../../../images/markerIcon.png");
   const undisclosedSalary =
     offer.employment.b2b?.minSalary === undefined &&
     offer.employment.uop?.minSalary === undefined;

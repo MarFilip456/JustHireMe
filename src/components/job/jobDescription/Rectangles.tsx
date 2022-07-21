@@ -5,6 +5,8 @@ import classes from "./Rectangles.module.css";
 const Rectangles = () => {
   const offer = useAppSelector((state) => state.offers.offers[0]);
 
+  const officeIconUrl = require("../../../images/officeIcon.png");
+
   const countDays = () => {
     const currDate = new Date();
     const offerDate = new Date(
@@ -28,8 +30,13 @@ const Rectangles = () => {
   return (
     <div className={classes.offer_boxes}>
       <div className={classes.offer_boxes__sub}>
-        <p>{offer.companyName}</p>
-        <p>Company name</p>
+        <div>
+          <img alt="office_icon" src={officeIconUrl} />
+        </div>
+        <div>
+          <p>{offer.companyName}</p>
+          <p>Company name</p>
+        </div>
       </div>
       <div className={classes.offer_boxes__sub}>
         <p>{offer.companySize}</p>

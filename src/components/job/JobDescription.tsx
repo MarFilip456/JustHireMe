@@ -24,7 +24,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       <div className={classes.offer_map}>
         {mapError && <p>Error occured!</p>}
         {mapLoading && <p>Loading spinner</p>}
-        {mapLat!==0 && <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />}
+        {/* {mapLat!==0 && <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />} */}
       </div>
       <TechStack />
       <Description />
