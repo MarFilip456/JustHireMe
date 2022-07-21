@@ -8,7 +8,8 @@ import useFetch from "../../hooks/use-request";
 
 const JobsList = () => {
   const { error, loading } = useFetch(
-    process.env.REACT_APP_API_DATABASE_URL+".json", "all"
+    process.env.REACT_APP_API_DATABASE_URL + ".json",
+    "all"
   );
   const offers = useAppSelector((state) => state.offers.offers);
 
@@ -25,8 +26,16 @@ const JobsList = () => {
                 id={job.id}
                 logo={job.logo}
                 jobPosition={job.jobPosition}
-                minSalary={job.minSalary}
-                maxSalary={job.maxSalary}
+                minSalary={
+                  job.employment.b2b?.minSalary
+                    ? job.employment.b2b.minSalary
+                    : job.employment.uop!.minSalary
+                }
+                maxSalary={
+                  job.employment.b2b?.maxSalary
+                    ? job.employment.b2b.maxSalary
+                    : job.employment.uop!.maxSalary
+                }
                 location={job.location}
               />
             </Link>

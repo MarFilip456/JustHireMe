@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import useLocation from "../../hooks/use-location";
+import useGeolocation from "../../hooks/use-geolocation";
 import { offerObject } from "../../store/offers-slice";
 import JobHeader from "./jobDescription/JobHeader";
 import Rectangles from "./jobDescription/Rectangles";
@@ -15,7 +15,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
     loading: mapLoading,
     lat: mapLat,
     lng: mapLng,
-  } = useLocation(props.job.location);
+  } = useGeolocation(props.job.location);
 
   return (
     <Fragment>
@@ -24,7 +24,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       <div className={classes.offer_map}>
         {mapError && <p>Error occured!</p>}
         {mapLoading && <p>Loading spinner</p>}
-        {/* {mapLat!==0 && <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />} */}
+        {mapLat!==0 && <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />}
       </div>
       <TechStack />
       <Description />

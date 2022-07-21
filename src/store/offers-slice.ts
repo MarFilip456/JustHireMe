@@ -4,7 +4,7 @@ export type offerObject = {
   companyName: string;
   description: string;
   aboutUs: string;
-  companySize: string;
+  companySize: number;
   expLevel: string;
   requirements: string;
   id: string;
@@ -12,9 +12,19 @@ export type offerObject = {
   key: string;
   location: string;
   logo: string;
-  maxSalary: string;
-  minSalary: string;
   techStack: { desc: string; lang: string; value: number }[];
+  date: { day: number; month: number; year: number };
+  fullyRemote: boolean;
+  employment: {
+    b2b: {
+      minSalary: string;
+      maxSalary: string;
+    } | undefined;
+    uop: {
+      minSalary: string;
+      maxSalary: string;
+    } | undefined;
+  }
 };
 
 interface initialOffersStateType {

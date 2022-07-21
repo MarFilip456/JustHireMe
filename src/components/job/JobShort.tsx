@@ -13,6 +13,8 @@ const JobShort: React.FC<{
   id: string;
   key: string;
 }> = (props) => {
+  const undisclosedSalary =
+    props.minSalary !== undefined || props.maxSalary !== undefined;
   return (
     <Card styles={classes.job_short__container} onClick={props.onClick}>
       <img
@@ -22,9 +24,11 @@ const JobShort: React.FC<{
       />
       <div className={classes.job_short_cont1}>
         <h1 className={classes.job_short_company}>{props.jobPosition}</h1>
-        <h2
-          className={classes.job_short__salary}
-        >{`${props.minSalary} - ${props.maxSalary}`}</h2>
+        <h2 className={classes.job_short__salary}>
+          {undisclosedSalary
+            ? `${props.minSalary} - ${props.maxSalary}`
+            : "Undisclosed Salary"}
+        </h2>
       </div>
       <div className={classes.job_short_cont2}>
         <div>badge</div>

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-const useLocation = (address: string) => {
+const useGeolocation = (address: string) => {
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [lat, setLat] = useState<number>(0);
@@ -35,4 +35,4 @@ return {error, loading, lat, lng}
 
 };
 
-export default useLocation;
+export default useGeolocation;

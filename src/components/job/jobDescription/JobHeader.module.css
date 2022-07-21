@@ -1,35 +1,114 @@
 .offer_header {
-    display: grid;
-    grid-template-columns: min-content auto;
-    grid-template-rows: min-content min-content;
-    grid-template-areas:
-      "img position"
-      "salary salary";
-    width: 100%;
-    background-color: #63b9b9;
-    padding-top: 8%;
-    padding-left: 5%;
-    padding-bottom: 3%;
-    position: relative;
-    box-sizing: border-box;
-    border-radius: 5px;
-  }
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: min-content min-content;
+  grid-template-areas:
+    "img position"
+    "salary salary";
+  width: 100%;
+  background-color: #63b9b9;
+  background-image: url("../../../images/offerBackground.png"), linear-gradient(rgba(255, 255, 0, 0.5),rgba(255, 255, 0, 0.9) );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 7%;
+  padding-left: 3%;
+  padding-bottom: 3%;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 0 0 5px 5px;
+}
+
+.offer_header__backButton {
+  position: absolute;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  top: 5%;
+  left: 1%;
+  background: rgb(44, 44, 44, 0.1);
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin: 0 8px;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 14px;
+}
+
+.offer_header__backButton:hover {
+  background: rgba(44, 44, 44, 0.4);
+}
+
+.offer_header__backButton img {
+  width: 100%;
+}
+
+.offer_header__logo {
+  grid-area: img;
+  width: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.offer_header__logo img {
+  width: 100%;
+}
+
+.offer_header__position {
+  grid-area: position;
+  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.offer_header__position h1 {
+  font-size: 20px;
+  margin: 0;
+}
+.offer_header_location {
+  display: grid;
+  grid-template-columns: 20px auto;
+  grid-template-rows: min-content;
+  grid-auto-flow: row;
+  column-gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+.offer_header_location img {
+  width: 100%;
+  justify-self: center;
+}
+.offer_header__position p {
+  justify-self: left;
+  margin: 0;
+}
+
+.remote_badge {
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+  width: max-content;
+  box-shadow: 1px 1px 2px black;
+}
+
+.remote_badge p{
+  font-size: 12px;
+  color: red;
+}
+
+.offer_header__salary {
+  grid-area: salary;
+  font-weight: 500;
+  font-size: 17px;
   
-  .offer_header button {
-      position: absolute;
-      top: 5%;
-      left: 4%;
-  }
-  
-  .offer_header__logo {
-    grid-area: img;
-  }
-  
-  .offer_header__position {
-    grid-area: position;
-    margin: 0 15px;
-  }
-  
-  .offer_header__salary {
-    grid-area: salary;
-  }
+}
+
+.offer_header__salary p{
+  margin: 10px 0;
+}
+.offer_header__salary span {
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 12px;
+}

@@ -1,6 +1,6 @@
 .job_short__container {
   display: grid;
-  grid-template-columns: 3.5rem 7rem auto;
+  grid-template-columns: 3.5rem max-content auto;
   height: 3rem;
   padding: 0.5rem;
 }

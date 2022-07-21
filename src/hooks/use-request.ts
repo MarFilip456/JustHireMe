@@ -23,8 +23,6 @@ const useFetch = (url: string, type: string) => {
             id: responseData[key].id,
             logo: responseData[key].logo,
             jobPosition: responseData[key].jobPosition,
-            minSalary: responseData[key].minSalary,
-            maxSalary: responseData[key].maxSalary,
             location: responseData[key].location,
             aboutUs: responseData[key].aboutUs,
             companyName: responseData[key].companyName,
@@ -32,7 +30,10 @@ const useFetch = (url: string, type: string) => {
             description: responseData[key].description,
             expLevel: responseData[key].expLevel,
             requirements: responseData[key].requirements,
-            techStack: responseData[key].techStack
+            techStack: responseData[key].techStack,
+            date: responseData[key].date,
+            fullyRemote: responseData[key].fullyRemote,
+            employment: responseData[key].employment,
           });
         }
         dispatch(offersActions.setOffers(loadedOffers));
