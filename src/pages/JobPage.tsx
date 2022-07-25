@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/use-request";
 import { useAppSelector } from "../store/redux-hooks";
 import JobDescription from "../components/job/JobDescription";
-import Button from "../UI/Button";
 
 import classes from "./JobPage.module.css";
 
@@ -24,7 +23,6 @@ const JobPage = () => {
         {loading && <p>Loading...</p>}
         {error && <p>!Error message!</p>}
         {succesfulFetch && <JobDescription job={offers[0]} />}
-        <Button>Apply</Button>
       </div>
     </Fragment>
   );

@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "./store/redux-hooks";
 import MainPage from "./pages/MainPage";
 import JobPage from "./pages/JobPage";
 import MapPage from "./pages/MapPage";
+import DevPage from "./pages/DevPage";
 import Header from "./UI/Header";
 import Modal from "./components/modal/Modal";
 import DevLoginPage from "./pages/DevLoginPage";
@@ -14,6 +15,7 @@ import LoginPopup from "./UI/LoginPopup";
 import SideMenu from "./UI/SideMenu";
 
 import classes from "./App.module.css";
+
 
 function App() {
   const sideVisible = useAppSelector((state) => state.ui.visibleSide);
@@ -42,6 +44,7 @@ function App() {
           <Route path="/map" element={<MapPage />} />
           <Route path="/devlogin" element={<DevLoginPage />} />
           <Route path="/devregister" element={<DevNewAccPage />} />
+          <Route path="/dev/profile" element={<DevPage />} />
           <Route path="*" element={<MainPage />} />
         </Routes>
       </div>

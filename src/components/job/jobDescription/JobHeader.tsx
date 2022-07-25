@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../../store/redux-hooks";
 import { useNavigate } from "react-router-dom";
+import markerIcon from "../../../images/markerIcon.png";
 
 import classes from "./JobHeader.module.css";
 import React from "react";
@@ -13,16 +14,49 @@ const JobHeader = () => {
     navigate("/");
   };
   const arrowUrl = "https://cdn-icons-png.flaticon.com/512/271/271218.png";
-  const markerIconUrl = require("../../../images/markerIcon.png");
-  const undisclosedSalary =
-    offer.employment.b2b?.minSalary === undefined &&
-    offer.employment.uop?.minSalary === undefined;
 
   const remoteAtAll = offer.fullyRemote !== undefined;
+
+  const offerSalary = (offer: {
+    b2b?: { minSalary: string; maxSalary: string };
+    uop?: { minSalary: string; maxSalary: string };
+  }) => {
+    if (offer.b2b === undefined && offer.uop === undefined) {
+      return <p>Undisclosed Salary</p>;
+    } else if (offer.b2b === undefined && offer.uop) {
+      return (
+        <p>
+          {offer.uop.minSalary} - {offer.uop.maxSalary} PLN
+          <span>gross/month - UoP</span>
+        </p>
+      );
+    } else if (offer.b2b && offer.uop === undefined) {
+      return (
+        <p>
+          {offer.b2b.minSalary} - {offer.b2b.maxSalary} PLN
+          <span>net/month - B2B</span>
+        </p>
+      );
+    } else if (offer.b2b && offer.uop) {
+      return (
+        <div>
+          <p>
+            {offer.b2b.minSalary} - {offer.b2b.maxSalary} PLN
+            <span>net/month - B2B</span>
+          </p>
+          <p>
+            {offer.uop.minSalary} - {offer.uop.maxSalary} PLN
+            <span>gross/month - UoP</span>
+          </p>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className={classes.offer_header}>
       <button
+        id="backButton"
         onClick={backButtonHandler}
         className={classes.offer_header__backButton}
       >
@@ -34,7 +68,7 @@ const JobHeader = () => {
       <div className={classes.offer_header__position}>
         <h1>{offer.jobPosition}</h1>
         <div className={classes.offer_header_location}>
-          <img alt="marker_icon" src={markerIconUrl} />
+          <img alt="marker_icon" src={markerIcon} />
           <p>{offer.location}</p>
         </div>
         {remoteAtAll && (
@@ -44,19 +78,7 @@ const JobHeader = () => {
         )}
       </div>
       <div className={classes.offer_header__salary}>
-        {undisclosedSalary && <p>Undisclosed Salary</p>}
-        {offer.employment.b2b?.minSalary && (
-          <p>
-            {offer.employment.b2b.minSalary} - {offer.employment.b2b.maxSalary} PLN
-            <span>net/month - B2B</span>
-          </p>
-        )}
-        {offer.employment.uop?.minSalary && (
-          <p>
-            {offer.employment.uop.minSalary} - {offer.employment.uop.maxSalary} PLN
-            <span>gross/month - UoP</span>
-          </p>
-        )}
+        {offerSalary(offer.employment)}
       </div>
     </div>
   );

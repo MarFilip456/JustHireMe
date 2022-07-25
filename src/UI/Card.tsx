@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Card.module.css";
 
 const Card: React.FC<{
-  styles: React.CSSProperties;
+  styles?: React.CSSProperties;
   children: React.ReactNode;
   onClick?: (event: React.MouseEvent) => void;
 }> = (props) => {

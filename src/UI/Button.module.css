@@ -11,4 +11,5 @@
 .button:active {
     background: #c9c9c933;
     cursor: pointer;
+    transition: 0.3s;
 }

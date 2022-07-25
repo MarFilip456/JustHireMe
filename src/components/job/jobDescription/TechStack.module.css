@@ -25,3 +25,20 @@
   border: 2px solid #c9c9c933;
   background-color: white;
 }
+
+.stack_single p {
+  color: rgba(150, 150, 150);
+}
+
+.stack_container {
+  height: 10px;
+  width: 25%;
+  background-color: rgba(201, 201, 201, 0.4);
+  border-radius: 5px;
+}
+
+.stack_filler {
+  height: 100%;
+  background-color: #ff4081;
+  border-radius: 5px;
+}

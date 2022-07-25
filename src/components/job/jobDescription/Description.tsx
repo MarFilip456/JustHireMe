@@ -19,6 +19,7 @@ const Description = () => {
           {offer.requirements}
         </div>
       </div>
+      
     </Fragment>
   );
 };

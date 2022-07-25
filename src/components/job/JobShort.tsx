@@ -7,8 +7,8 @@ const JobShort: React.FC<{
   onClick?: (event: React.MouseEvent) => void;
   logo: string;
   jobPosition: string;
-  minSalary: string;
-  maxSalary: string;
+  minSalary?: string;
+  maxSalary?: string;
   location: string;
   id: string;
   key: string;

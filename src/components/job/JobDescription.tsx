@@ -6,6 +6,7 @@ import Rectangles from "./jobDescription/Rectangles";
 import Map from "../map/Map";
 import TechStack from "./jobDescription/TechStack";
 import Description from "./jobDescription/Description";
+import Button from "../../UI/Button";
 
 import classes from "./JobDescription.module.css";
 
@@ -30,6 +31,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       <Description />
       <div>Appearing bar top</div>
       <div>Appearing bar bottom</div>
+      <Button styles={classes.apply_button} >Apply</Button>
     </Fragment>
   );
 };

@@ -12,7 +12,7 @@ export type offerObject = {
   key: string;
   location: string;
   logo: string;
-  techStack: { desc: string; lang: string; value: number }[];
+  techStack: { lang: string; value: number }[];
   date: { day: number; month: number; year: number };
   fullyRemote: boolean;
   employment: {

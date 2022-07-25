@@ -1,14 +1,13 @@
 import { useAppSelector } from "../../../store/redux-hooks";
+import officeIcon from "../../../images/officeIcon.png";
+import peopleIcon from "../../../images/peopleIcon.png";
+import stockIcon from "../../../images/stockIcon.png";
+import calendarIcon from "../../../images/calendarIcon.png";
 
 import classes from "./Rectangles.module.css";
 
 const Rectangles = () => {
   const offer = useAppSelector((state) => state.offers.offers[0]);
-
-  const officeIconPath = require("../../../images/officeIcon.png");
-  const peopleIconPath = require("../../../images/peopleIcon.png");
-  const stockIconPath = require("../../../images/stockIcon.png");
-  const calendarIconPath = require("../../../images/calendarIcon.png");
 
   const countDays = () => {
     const currDate = new Date();
@@ -34,7 +33,7 @@ const Rectangles = () => {
     <div className={classes.offer_boxes}>
       <div className={classes.offer_boxes__sub}>
         <div className={classes.img_container}>
-          <img alt="office_icon" src={officeIconPath} />
+          <img alt="office_icon" src={officeIcon} />
         </div>
         <div className={classes.info_container}>
           <p className={classes.info_offer} >{offer.companyName}</p>
@@ -43,7 +42,7 @@ const Rectangles = () => {
       </div>
       <div className={classes.offer_boxes__sub}>
         <div className={classes.img_container}>
-          <img alt="people_icon" src={peopleIconPath} />
+          <img alt="people_icon" src={peopleIcon} />
         </div>
         <div className={classes.info_container}>
           <p className={classes.info_offer}>{offer.companySize}</p>
@@ -52,7 +51,7 @@ const Rectangles = () => {
       </div>
       <div className={classes.offer_boxes__sub}>
         <div className={classes.img_container}>
-          <img alt="stock_icon" src={stockIconPath} />
+          <img alt="stock_icon" src={stockIcon} />
         </div>
         <div className={classes.info_container}>
           <p className={classes.info_offer}>{offer.expLevel}</p>
@@ -61,7 +60,7 @@ const Rectangles = () => {
       </div>
       <div className={classes.offer_boxes__sub}>
         <div className={classes.img_container}>
-          <img alt="calendar_icon" src={calendarIconPath} />
+          <img alt="calendar_icon" src={calendarIcon} />
         </div>
         <div className={classes.info_container}>
           <p className={classes.info_offer}>{countDays()}</p>
