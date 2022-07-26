@@ -9,6 +9,11 @@ import { Fragment } from "react";
 const Header = () => {
   const dispatch = useAppDispatch();
   const isLogged = useAppSelector((state) => state.ui.isLoggedIn);
+  const logoutHandler = () => {
+    dispatch(uiActions.loggingInOut());
+    localStorage.removeItem("justHireMeLogin");
+    localStorage.removeItem("justHireMeDate");
+  };
 
   return (
     <Fragment>
@@ -20,9 +25,7 @@ const Header = () => {
         </div>
         <div className={classes.main_nav}>
           {isLogged ? (
-            <Button onClick={() => dispatch(uiActions.loggingInOut())}>
-              Sign out
-            </Button>
+            <Button onClick={logoutHandler}>Sign out</Button>
           ) : (
             <Button
               onClick={() => dispatch(uiActions.changeVisPopup())}

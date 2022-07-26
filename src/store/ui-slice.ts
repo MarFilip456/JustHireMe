@@ -7,15 +7,32 @@ interface initialUiStateType {
   isLoading: boolean;
   isError: boolean;
   isLoggedIn: boolean;
-};
+}
+let initialState: initialUiStateType;
+const isTokenInStorage = localStorage.getItem("justHireMeLogin");
+const expirationDate = localStorage.getItem("justHireMeDate");
+let isTimeLeft = false;
+if (expirationDate) {
+  isTimeLeft = (new Date(expirationDate).getTime()) - (new Date().getTime()) > 300000;
+}
 
-const initialState: initialUiStateType = {
-  visibleSide: false,
-  visiblePopup: false,
-  isLoading: false,
-  isError: false,
-  isLoggedIn: false,
-};
+if (isTokenInStorage && isTimeLeft ) {
+  initialState = {
+    visibleSide: false,
+    visiblePopup: false,
+    isLoading: false,
+    isError: false,
+    isLoggedIn: true,
+  };
+} else {
+  initialState = {
+    visibleSide: false,
+    visiblePopup: false,
+    isLoading: false,
+    isError: false,
+    isLoggedIn: false,
+  };
+}
 
 const uiSlice = createSlice({
   name: "ui",

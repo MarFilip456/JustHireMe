@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Fragment } from "react";
 import Button from "../../UI/Button";
 import useInput from "../../hooks/use-input";
+import useSignUpIn from "../../hooks/use-signupin";
 import classes from "./DevLoginForm.module.css";
 
 const DevLoginForm: React.FC<{
@@ -24,6 +25,7 @@ const DevLoginForm: React.FC<{
     inputBlurHandler: blurPasswordHandler,
     reset: resetPasswordInput,
   } = useInput("password");
+  const loginRegister = useSignUpIn(emailInput, passwordInput, props.act)
 
   const [passHidden, setPassHidden] = useState(true);
 
@@ -40,8 +42,9 @@ const DevLoginForm: React.FC<{
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!emailIsValid  || !passwordIsValid) {
-      console.log("dupa");
+      alert("Invalid email or password");
     } else {
+      loginRegister();
       resetEmailInput();
       resetPasswordInput();
       setPassHidden(true);

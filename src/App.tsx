@@ -16,10 +16,10 @@ import SideMenu from "./UI/SideMenu";
 
 import classes from "./App.module.css";
 
-
 function App() {
   const sideVisible = useAppSelector((state) => state.ui.visibleSide);
   const popupVisible = useAppSelector((state) => state.ui.visiblePopup);
+  const isLoggedIn = useAppSelector((state) => state.ui.isLoggedIn);
   const dispatch = useAppDispatch();
   return (
     <Fragment>
@@ -44,7 +44,10 @@ function App() {
           <Route path="/map" element={<MapPage />} />
           <Route path="/devlogin" element={<DevLoginPage />} />
           <Route path="/devregister" element={<DevNewAccPage />} />
-          <Route path="/dev/profile" element={<DevPage />} />
+          <Route
+            path="/dev/profile"
+            element={isLoggedIn ? <DevPage /> : <DevLoginPage />}
+          />
           <Route path="*" element={<MainPage />} />
         </Routes>
       </div>
