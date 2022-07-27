@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/redux-hooks";
 import { uiActions } from "../store/ui-slice";
 
 const useSignUpIn = (
   enteredEmail: string,
   enteredPassword: string,
-  act: string
+  act: string,
+  isDev: boolean,
 ) => {
   type authObject = {
     idToken: string;
@@ -14,7 +14,6 @@ const useSignUpIn = (
   };
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const loginRegister = async () => {
     let url: string | null;
@@ -45,12 +44,20 @@ const useSignUpIn = (
       const expirationDate = new Date(new Date().getTime() + (+duration) * 1000);
       localStorage.setItem("justHireMeDate", expirationDate.toISOString());
       localStorage.setItem("justHireMeLogin", token);
-      navigate("/dev/profile");
       dispatch(uiActions.loggingInOut());
+      if (isDev) {
+        localStorage.setItem("justHireMeDev", "dev");
+      }
     } catch (error) {
       alert(error);
     }
   };
+
+  /* const putUserInDatabase = async() => {
+    if (act === "Sign in") {
+      return
+    }
+  } */
 
   return loginRegister;
 };

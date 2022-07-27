@@ -21,7 +21,7 @@ const LoginPopup = () => {
             <p>Sign in as a developer</p>
           </Button>
         </Link>
-        <Link to="/devlogin" style={{textDecoration: "none"}} >
+        <Link to="/empllogin" style={{textDecoration: "none"}} >
           <Button styles={classes.login_popup_button} onClick={() => dispatch(uiActions.changeVisPopup())}>
             <img alt="briefcase_icon" src={briefcaseIcon} />
             <p>Sign in to Employer Panel</p>

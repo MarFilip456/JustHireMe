@@ -3,7 +3,12 @@ import { Fragment } from "react";
 import Button from "../../UI/Button";
 import useInput from "../../hooks/use-input";
 import useSignUpIn from "../../hooks/use-signupin";
+import emailIcon from "../../images/emailIcon.png";
+import keyIcon from "../../images/keyIcon.png";
+import eyeClosedIcon from "../../images/eyeClosedIcon.png";
+import eyeOpenIcon from "../../images/eyeOpenIcon.png";
 import classes from "./DevLoginForm.module.css";
+import { useNavigate } from "react-router-dom";
 
 const DevLoginForm: React.FC<{
   act: string;
@@ -25,9 +30,11 @@ const DevLoginForm: React.FC<{
     inputBlurHandler: blurPasswordHandler,
     reset: resetPasswordInput,
   } = useInput("password");
-  const loginRegister = useSignUpIn(emailInput, passwordInput, props.act)
+  const loginRegister = useSignUpIn(emailInput, passwordInput, props.act, true)
 
   const [passHidden, setPassHidden] = useState(true);
+
+  const navigate = useNavigate();
 
   const emailHasError = !emailIsValid && emailIsTouched;
   const passwordHasError = !passwordIsValid && passwordIsTouched;
@@ -48,6 +55,7 @@ const DevLoginForm: React.FC<{
       resetEmailInput();
       resetPasswordInput();
       setPassHidden(true);
+      navigate("/dev/profile");
     }
   };
 
@@ -61,7 +69,7 @@ const DevLoginForm: React.FC<{
           <div className={classes.devLogin_form_inputContainer_imgContainer}>
             <img
               alt="mail_logo"
-              src="http://cdn.onlinewebfonts.com/svg/img_146787.png"
+              src={emailIcon}
             />
           </div>
           <input
@@ -82,7 +90,7 @@ const DevLoginForm: React.FC<{
         <div className={classes.devLogin_form_inputContainer}>
           <div className={classes.devLogin_form_inputContainer_imgContainer}>
             <img
-              src="https://toppng.com/uploads/preview/library-stock-house-key-free-icon-designed-by-freepik-key-vector-11562922532djl58jicyw.png"
+              src={keyIcon}
               alt="key_picture"
             />
           </div>
@@ -102,13 +110,13 @@ const DevLoginForm: React.FC<{
           >
             {passHidden && (
               <img
-                src="https://toppng.com/uploads/preview/eye-closed-icon-11550225620ajweggaqlk.png"
+                src={eyeClosedIcon}
                 alt="eye_icon"
               />
             )}
             {!passHidden && (
               <img
-                src="https://toppng.com/uploads/preview/eye-icon-11550224069flugis6lrj.png"
+                src={eyeOpenIcon}
                 alt="eye_icon"
               />
             )}

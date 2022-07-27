@@ -1,0 +1,31 @@
+.main_page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(240, 240, 240);
+}
+
+.main_card {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  width: max-content;
+  background-color: rgb(255, 255, 255);
+}
+
+.main_card h1 {
+  color: rgb(50, 50, 50);
+}
+.main_card__link {
+  text-decoration: none;
+}
+
+.main_card__span {
+  color: rgb(255, 64, 129);
+  margin: 0 3px;
+}
+
+.main_card__span:hover {
+  text-decoration: underline;
+}

@@ -7,10 +7,13 @@ import MainPage from "./pages/MainPage";
 import JobPage from "./pages/JobPage";
 import MapPage from "./pages/MapPage";
 import DevPage from "./pages/DevPage";
+import EmplPage from "./pages/EmplPage";
 import Header from "./UI/Header";
 import Modal from "./components/modal/Modal";
 import DevLoginPage from "./pages/DevLoginPage";
 import DevNewAccPage from "./pages/DevNewAccPage";
+import EmplLoginPage from "./pages/EmplLoginPage";
+import EmplNewAccPage from "./pages/EmplNewAccPage";
 import LoginPopup from "./UI/LoginPopup";
 import SideMenu from "./UI/SideMenu";
 
@@ -20,6 +23,7 @@ function App() {
   const sideVisible = useAppSelector((state) => state.ui.visibleSide);
   const popupVisible = useAppSelector((state) => state.ui.visiblePopup);
   const isLoggedIn = useAppSelector((state) => state.ui.isLoggedIn);
+  const isDev = useAppSelector((state) => state.ui.isDev);
   const dispatch = useAppDispatch();
   return (
     <Fragment>
@@ -44,10 +48,20 @@ function App() {
           <Route path="/map" element={<MapPage />} />
           <Route path="/devlogin" element={<DevLoginPage />} />
           <Route path="/devregister" element={<DevNewAccPage />} />
-          <Route
-            path="/dev/profile"
-            element={isLoggedIn ? <DevPage /> : <DevLoginPage />}
-          />
+          <Route path="/empllogin" element={<EmplLoginPage />} />
+          <Route path="/emplregister" element={<EmplNewAccPage />} />
+          {isDev && (
+            <Route
+              path="/dev/profile"
+              element={isLoggedIn ? <DevPage /> : <DevLoginPage />}
+            />
+          )}
+          {!isDev && (
+            <Route
+              path="/empl/profile"
+              element={isLoggedIn ? <EmplPage /> : <EmplLoginPage />}
+            />
+          )}
           <Route path="*" element={<MainPage />} />
         </Routes>
       </div>

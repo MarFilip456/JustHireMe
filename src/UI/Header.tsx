@@ -9,10 +9,14 @@ import { Fragment } from "react";
 const Header = () => {
   const dispatch = useAppDispatch();
   const isLogged = useAppSelector((state) => state.ui.isLoggedIn);
+  const isDev = useAppSelector((state)=>state.ui.isDev);
   const logoutHandler = () => {
     dispatch(uiActions.loggingInOut());
     localStorage.removeItem("justHireMeLogin");
     localStorage.removeItem("justHireMeDate");
+    if (isDev) {
+      localStorage.removeItem("justHireMeDev");
+    }
   };
 
   return (
