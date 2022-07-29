@@ -39,6 +39,6 @@
 
 .stack_filler {
   height: 100%;
-  background-color: #ff4081;
+  background-color: rgb(255, 64, 129);
   border-radius: 5px;
 }

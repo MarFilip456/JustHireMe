@@ -5,7 +5,7 @@ const useSignUpIn = (
   enteredEmail: string,
   enteredPassword: string,
   act: string,
-  isDev: boolean,
+  isDev: boolean
 ) => {
   type authObject = {
     idToken: string;
@@ -14,8 +14,9 @@ const useSignUpIn = (
   };
 
   const dispatch = useAppDispatch();
-
+  let userId: string;
   const loginRegister = async () => {
+    // authenticating user
     let url: string | null;
     const apiKey = process.env.REACT_APP_AUTH_API_KEY;
     if (act === "Sign in") {
@@ -41,7 +42,9 @@ const useSignUpIn = (
       const responseData = (await response.json()) as authObject;
       const token = responseData.idToken;
       const duration = responseData.expiresIn;
-      const expirationDate = new Date(new Date().getTime() + (+duration) * 1000);
+      const expirationDate = new Date(new Date().getTime() + +duration * 1000);
+      userId = responseData.localId;
+      // saving data to keep after reload
       localStorage.setItem("justHireMeDate", expirationDate.toISOString());
       localStorage.setItem("justHireMeLogin", token);
       dispatch(uiActions.loggingInOut());
@@ -50,14 +53,46 @@ const useSignUpIn = (
       }
     } catch (error) {
       alert(error);
+    } finally {
+      // sending new user data to database
+      if (act === "Sign in") {
+        return;
+      }
+      let databaseUrl: string;
+      //for devs
+      if (isDev) {
+        databaseUrl = `${process.env.REACT_APP_API_DATABASE_USERS_URL}/devs.json`;
+        try {
+          const response = await fetch(databaseUrl, {
+            method: "POST",
+            body: JSON.stringify({
+              email: enteredEmail,
+              userId: userId,
+            }),
+            headers: { "Content-Type": "application/json" }
+          });
+          console.log(response);
+        } catch (error) {
+          alert(error);
+        }
+      } else if (!isDev) { //and for employers
+        databaseUrl = `${process.env.REACT_APP_API_DATABASE_USERS_URL}/employers.json`;
+        try {
+          const response = await fetch(databaseUrl, {
+            method: "POST",
+            body: JSON.stringify({
+              email: enteredEmail,
+              userId: userId,
+            }),
+            headers: { "Content-Type": "application/json" },
+          });
+          console.log(response);
+        } catch (error) {
+          alert(error);
+        }
+      }
     }
   };
-
-  /* const putUserInDatabase = async() => {
-    if (act === "Sign in") {
-      return
-    }
-  } */
 
   return loginRegister;
 };

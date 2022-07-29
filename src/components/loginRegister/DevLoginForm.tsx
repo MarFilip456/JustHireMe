@@ -30,7 +30,13 @@ const DevLoginForm: React.FC<{
     inputBlurHandler: blurPasswordHandler,
     reset: resetPasswordInput,
   } = useInput("password");
-  const loginRegister = useSignUpIn(emailInput, passwordInput, props.act, true)
+
+  const loginRegister = useSignUpIn(
+    emailInput,
+    passwordInput,
+    props.act,
+    true //isDev property, true for devs
+  );
 
   const [passHidden, setPassHidden] = useState(true);
 
@@ -43,12 +49,12 @@ const DevLoginForm: React.FC<{
 
   const togglePasswordHandler = (event: React.MouseEvent) => {
     event.preventDefault();
-    setPassHidden((prevState)=>!prevState);
+    setPassHidden((prevState) => !prevState);
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!emailIsValid  || !passwordIsValid) {
+    if (!emailIsValid || !passwordIsValid) {
       alert("Invalid email or password");
     } else {
       loginRegister();
@@ -67,10 +73,7 @@ const DevLoginForm: React.FC<{
         </div>
         <div className={classes.devLogin_form_inputContainer}>
           <div className={classes.devLogin_form_inputContainer_imgContainer}>
-            <img
-              alt="mail_logo"
-              src={emailIcon}
-            />
+            <img alt="mail_logo" src={emailIcon} />
           </div>
           <input
             onChange={correctEmailHandler}
@@ -89,10 +92,7 @@ const DevLoginForm: React.FC<{
         </div>
         <div className={classes.devLogin_form_inputContainer}>
           <div className={classes.devLogin_form_inputContainer_imgContainer}>
-            <img
-              src={keyIcon}
-              alt="key_picture"
-            />
+            <img src={keyIcon} alt="key_picture" />
           </div>
           <input
             onBlur={blurPasswordHandler}
@@ -108,18 +108,8 @@ const DevLoginForm: React.FC<{
             className={classes.devLogin_form_inputContainer_imgContainer}
             onClick={togglePasswordHandler}
           >
-            {passHidden && (
-              <img
-                src={eyeClosedIcon}
-                alt="eye_icon"
-              />
-            )}
-            {!passHidden && (
-              <img
-                src={eyeOpenIcon}
-                alt="eye_icon"
-              />
-            )}
+            {passHidden && <img src={eyeClosedIcon} alt="eye_icon" />}
+            {!passHidden && <img src={eyeOpenIcon} alt="eye_icon" />}
           </button>
         </div>
         {passwordHasError && <p>Not valid password!</p>}

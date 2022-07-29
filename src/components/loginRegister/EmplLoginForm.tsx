@@ -3,6 +3,8 @@ import Button from "../../UI/Button";
 import useInput from "../../hooks/use-input";
 import emailIcon from "../../images/emailIcon.png";
 import keyIcon from "../../images/keyIcon.png";
+import useSignUpIn from "../../hooks/use-signupin";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./EmplLoginForm.module.css";
 
@@ -28,15 +30,23 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
   const emailHasError = !emailIsValid && emailIsTouched;
   const passwordHasError = !passwordIsValid && passwordIsTouched;
 
+  const loginRegister = useSignUpIn(
+    emailInput,
+    passwordInput,
+    props.act,
+    false  //isDev property, false for employers
+  );
+  const navigate = useNavigate();
+
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!emailIsValid || !passwordIsValid) {
       alert("Invalid email or password");
     } else {
-      /* loginRegister(); */
+      loginRegister();
       resetEmailInput();
       resetPasswordInput();
-      alert("request send");
+      navigate("/empl/profile");
     }
   };
 

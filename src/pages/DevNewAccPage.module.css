@@ -33,8 +33,8 @@
       width: 100%;
       text-align: center;
       margin: 12px 0px 5px 0;
-      border-bottom: 1px #ebdede solid;
-      border-top: 1px #ebdede solid;
+      border-bottom: 1px rgb(235, 222, 222) solid;
+      border-top: 1px rgb(235, 222, 222) solid;
   }
   
   .devLogin_form_line h3 {
@@ -43,7 +43,7 @@
   }
   
   span.devLogin_form {
-      color: #ff4081;
+      color: rgb(255, 64, 129);
       margin: 0 3px;
   }
   
