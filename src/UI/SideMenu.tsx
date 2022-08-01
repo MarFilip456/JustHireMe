@@ -6,10 +6,16 @@ import { uiActions } from "../store/ui-slice";
 
 const SideMenu = () => {
   const isLogged = useAppSelector((state) => state.ui.isLoggedIn);
+  const isDev = useAppSelector((state) => state.ui.isDev);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const navigateHandler = () => {
-    navigate("/dev/profile");
+    if (isDev) {
+      navigate("/dev/profile");
+    } else {
+      navigate("/empl/profile");
+    }
+
     dispatch(uiActions.changeVisSide());
   };
 
@@ -17,7 +23,9 @@ const SideMenu = () => {
     <div className={classes.sideMenu}>
       <h1>MENU</h1>
       {isLogged ? (
-        <Button onClick={navigateHandler}>User Profile</Button>
+        <Button onClick={navigateHandler}>
+          {isDev ? "User Profile" : "Employer panel"}
+        </Button>
       ) : (
         <h2> Sign in to see more </h2>
       )}

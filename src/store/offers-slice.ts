@@ -4,6 +4,7 @@ export type offerObject = {
   companyName: string;
   description: string;
   aboutUs: string;
+  addedBy: string;
   companySize: number;
   expLevel: string;
   requirements: string;
@@ -15,6 +16,7 @@ export type offerObject = {
   techStack: { lang: string; value: number }[];
   date: { day: number; month: number; year: number };
   fullyRemote: boolean;
+  appliers: {devId:string}[];
   employment: {
     b2b: {
       minSalary: string;

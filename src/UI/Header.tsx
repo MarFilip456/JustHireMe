@@ -14,8 +14,10 @@ const Header = () => {
     dispatch(uiActions.loggingInOut());
     localStorage.removeItem("justHireMeLogin");
     localStorage.removeItem("justHireMeDate");
+    localStorage.removeItem("justHireMeId");
     if (isDev) {
       localStorage.removeItem("justHireMeDev");
+      dispatch(uiActions.setIsDev());
     }
   };
 

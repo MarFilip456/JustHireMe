@@ -25,6 +25,7 @@ const useFetch = (url: string, type: string) => {
             jobPosition: responseData[key].jobPosition,
             location: responseData[key].location,
             aboutUs: responseData[key].aboutUs,
+            addedBy: responseData[key].addedBy,
             companyName: responseData[key].companyName,
             companySize: responseData[key].companySize,
             description: responseData[key].description,
@@ -34,6 +35,7 @@ const useFetch = (url: string, type: string) => {
             date: responseData[key].date,
             fullyRemote: responseData[key].fullyRemote,
             employment: responseData[key].employment,
+            appliers: responseData[key].appliers
           });
         }
         dispatch(offersActions.setOffers(loadedOffers));

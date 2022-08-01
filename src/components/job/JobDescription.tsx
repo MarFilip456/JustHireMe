@@ -7,14 +7,22 @@ import Rectangles from "./jobDescription/Rectangles";
 import Map from "../map/Map";
 import TechStack from "./jobDescription/TechStack";
 import Description from "./jobDescription/Description";
+import AppliersList from "../emplProfile/AppliersList";
 import Button from "../../UI/Button";
 import { useAppSelector } from "../../store/redux-hooks";
+import useApply from "../../hooks/use-apply";
+import { useParams } from "react-router-dom";
 
 import classes from "./JobDescription.module.css";
 
+
 const JobDescription: React.FC<{ job: offerObject }> = (props) => {
+  const offer = useAppSelector((state) => state.offers.offers);
   const isLoggedIn = useAppSelector((state) => state.ui.isLoggedIn);
+  const isDev = useAppSelector((state) => state.ui.isDev);
   const navigate = useNavigate();
+  const params = useParams<{ jobId: string }>();
+  const actualApply = useApply(params.jobId!);
   const {
     error: mapError,
     loading: mapLoading,
@@ -22,10 +30,22 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
     lng: mapLng,
   } = useGeolocation(props.job.location);
 
-  const applyHandler = (event: React.MouseEvent) => {
-    if (isLoggedIn) {
+  const loggedExactEmpl =
+    offer[0].addedBy === localStorage.getItem("justHireMeId");
+  const loggedSomeEmpl = !isDev && isLoggedIn;
+  const loggedDev = isDev && isLoggedIn;
+
+  const CTAHandler = (event: React.MouseEvent) => {
+    if (loggedDev) {
       // aply for a job
-      console.log("Let's say you applied.");
+      actualApply();
+      // add logic for outputting some info that you already aplied
+    } else if (loggedExactEmpl) {
+      alert(
+        "After editing you loose acces to the devs that already appllied.Are you sure?"
+      );
+    } else if (loggedSomeEmpl) {
+      alert("As an employeer you cannot apply!");
     } else {
       navigate("/devlogin");
     }
@@ -44,9 +64,12 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       <Description />
       <div>Appearing bar top</div>
       <div>Appearing bar bottom</div>
-      <Button styles={classes.apply_button} onClick={applyHandler}>
-        Apply
+      <Button styles={classes.CTA_button} onClick={CTAHandler}>
+        {loggedExactEmpl ? "Edit" : "Apply"}
       </Button>
+      {loggedExactEmpl && (
+        <AppliersList />
+      )}
     </Fragment>
   );
 };

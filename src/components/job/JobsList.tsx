@@ -20,7 +20,7 @@ const JobsList = () => {
         {error && <p>!Error message!</p>}
         {offers &&
           offers.map((job) => (
-            <Link to={"jobdescr/" + job.id} key={job.id}>
+            <Link to={"/jobdescr/" + job.id} key={job.id}>
               <JobShort
                 key={job.id}
                 id={job.id}

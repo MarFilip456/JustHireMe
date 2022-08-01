@@ -29,7 +29,16 @@ const DevPage = () => {
             <textarea />
           </Card>
           <Card>
-            <h1>YEARS OF EXPERIENCE</h1>
+            <h1>EXPERIENCE</h1>
+            <p>Select your main language</p>
+            <select name="languages" id="languages">
+              <option value="js">JS</option>
+              <option value="html">HTML</option>
+              <option value="php">PHP</option>
+              <option value="ruby">Ruby</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+            </select>
             <p>How many years of experience do you have?</p>
             <label htmlFor="0-1">0-1 years</label>
             <input type="radio" id="0-1" name="0-1" />

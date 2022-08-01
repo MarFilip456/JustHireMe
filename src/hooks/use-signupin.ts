@@ -45,11 +45,13 @@ const useSignUpIn = (
       const expirationDate = new Date(new Date().getTime() + +duration * 1000);
       userId = responseData.localId;
       // saving data to keep after reload
+      localStorage.setItem("justHireMeId", userId);
       localStorage.setItem("justHireMeDate", expirationDate.toISOString());
       localStorage.setItem("justHireMeLogin", token);
       dispatch(uiActions.loggingInOut());
       if (isDev) {
         localStorage.setItem("justHireMeDev", "dev");
+        dispatch(uiActions.setIsDev());
       }
     } catch (error) {
       alert(error);
