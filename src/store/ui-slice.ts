@@ -38,6 +38,10 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     isDev: false,
   };
 } else {
+  localStorage.removeItem("justHireMeLogin");
+  localStorage.removeItem("justHireMeDev");
+  localStorage.removeItem("justHireMeDate");
+  localStorage.removeItem("justHireMeId");
   initialState = {
     visibleSide: false,
     visiblePopup: false,

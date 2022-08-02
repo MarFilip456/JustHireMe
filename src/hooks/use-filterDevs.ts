@@ -1,23 +1,12 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useEffect } from "react";
+import { devType } from "../store/filteredDevs-slice";
+import { useAppDispatch } from "../store/redux-hooks";
+import { devsActions } from "../store/filteredDevs-slice";
 
 const useFilterDevs = (appliedArr: { id: string }[]) => {
-  type devArrayType = {
-    name?: string;
-    surname?: string;
-    logo?: string;
-    email: string;
-    experience?: string;
-    mainLang?: string;
-    location?: string;
-    aboutYou?: string;
-    gitHub?: string;
-    linkedIn?: string;
-    id: string;
-    key: string;
-  }[];
-
-  let allDevsArray: devArrayType = useMemo(() => [], []);
-  let filteredDevsArray: devArrayType = useMemo(() => [], []);
+  const dispatch = useAppDispatch();
+  let allDevsArray: devType[] = useMemo(() => [], []);
+  let filteredDevsArray: devType[] = useMemo(() => [], []);
   const actualFilter = useCallback(async () => {
     try {
       const response = await fetch(
@@ -45,21 +34,24 @@ const useFilterDevs = (appliedArr: { id: string }[]) => {
       }
     } catch (error) {
       alert(error);
-    } finally {
-      let i: number;
-      let j: number;
-      for (i = 0; i < allDevsArray!.length; i++) {
-        for (j = 0; j < appliedArr.length; j++) {
-          if (allDevsArray![i] === appliedArr[j]) {
-            filteredDevsArray.push(allDevsArray[i]);
-          }
+    }
+    let i: number;
+    let j: number;
+
+    for (i = 0; i < allDevsArray.length; i++) {
+      for (j = 0; j < appliedArr.length; j++) {
+        if (allDevsArray[i].id === appliedArr[j].id) {
+          filteredDevsArray.push(allDevsArray[i]);
         }
       }
     }
-  }, [appliedArr, allDevsArray, filteredDevsArray]);
-  console.log(filteredDevsArray);
-
-  return actualFilter;
+    dispatch(devsActions.setDevs(filteredDevsArray));
+  }, [appliedArr, allDevsArray, filteredDevsArray, dispatch]);
+  // when i add actualFilter to dependency array, then it executes multiple times
+  useEffect(() => {
+    actualFilter();
+  }, []);
+  return;
 };
 
 export default useFilterDevs;

@@ -1,8 +1,10 @@
 .job_short__container {
     display: grid;
-    grid-template-columns: 3.5rem max-content auto;
-    height: 3rem;
+    grid-template-columns: 48px max-content auto;
+    height: 56px;
+    box-sizing: border-box;
     padding: 0.5rem;
+    width: 100%;
   }
   
   .job_short_cont1 {
@@ -17,7 +19,6 @@
     flex-direction: column;
     justify-content: space-between;
     margin: 0;
-    /* padding: auto 0.5rem; */
     justify-self: end;
   }
   

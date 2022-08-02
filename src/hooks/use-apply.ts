@@ -16,7 +16,6 @@ const useApply = (jobId: string) => {
       if (!response.ok) {
         alert("Something went wrong");
       }
-      console.log(response);
     } catch (error) {
       alert(error);
     }

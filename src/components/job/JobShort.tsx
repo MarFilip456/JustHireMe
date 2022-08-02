@@ -4,7 +4,6 @@ import Card from "../../UI/Card";
 import classes from "./JobShort.module.css";
 
 const JobShort: React.FC<{
-  onClick?: (event: React.MouseEvent) => void;
   logo: string;
   jobPosition: string;
   minSalary?: string;
@@ -16,7 +15,7 @@ const JobShort: React.FC<{
   const undisclosedSalary =
     props.minSalary !== undefined || props.maxSalary !== undefined;
   return (
-    <Card styles={classes.job_short__container} onClick={props.onClick}>
+    <Card styles={classes.job_short__container} >
       <img
         alt={"company_logo"}
         src={props.logo}

@@ -61,7 +61,7 @@ const DevLoginForm: React.FC<{
       resetEmailInput();
       resetPasswordInput();
       setPassHidden(true);
-      navigate("/dev/profile");
+      navigate(-1);
     }
   };
 

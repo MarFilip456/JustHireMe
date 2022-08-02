@@ -80,7 +80,7 @@ const useSignUpIn = (
       } else if (!isDev) { //and for employers
         databaseUrl = `${process.env.REACT_APP_API_DATABASE_USERS_URL}/employers.json`;
         try {
-          const response = await fetch(databaseUrl, {
+          await fetch(databaseUrl, {
             method: "POST",
             body: JSON.stringify({
               email: enteredEmail,
@@ -88,7 +88,6 @@ const useSignUpIn = (
             }),
             headers: { "Content-Type": "application/json" },
           });
-          console.log(response);
         } catch (error) {
           alert(error);
         }
