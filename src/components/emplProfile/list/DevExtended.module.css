@@ -1,0 +1,13 @@
+.add_content__visible {
+    display: block;
+    transition-property: visibility;
+    transition-duration: 4s;
+    transition-timing-function: linear;
+  }
+  
+  .add_content__nonVisible {
+   display: none;
+    transition-property: visibility;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+  }

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import DevShort from "./DevShort";
-import useFilterDevs from "../../hooks/use-filterDevs";
-import { useAppSelector } from "../../store/redux-hooks";
+import ApplierItem from "./ApplierItem";
+import useFilterDevs from "../../../hooks/use-filterDevs";
+import { useAppSelector } from "../../../store/redux-hooks";
 
 import classes from "./AppliersList.module.css";
 
@@ -27,9 +27,8 @@ const AppliersList = () => {
         {filteredDevs &&
           filteredDevs!.map((dev) => (
             <li key={dev.id} className={classes.list_item}>
-                <DevShort
+                <ApplierItem
                   id={dev.id}
-                  key={dev.id}
                   name={dev.name!}
                   surname={dev.surname!}
                   mainLang={dev.mainLang!}

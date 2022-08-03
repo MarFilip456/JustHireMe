@@ -7,7 +7,7 @@ import Rectangles from "./jobDescription/Rectangles";
 import Map from "../map/Map";
 import TechStack from "./jobDescription/TechStack";
 import Description from "./jobDescription/Description";
-import AppliersList from "../emplProfile/AppliersList";
+import AppliersList from "../emplProfile/list/AppliersList";
 import Button from "../../UI/Button";
 import { useAppSelector } from "../../store/redux-hooks";
 import useApply from "../../hooks/use-apply";

@@ -46,7 +46,7 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
       loginRegister();
       resetEmailInput();
       resetPasswordInput();
-      navigate("/empl/profile");
+      navigate(-1);
     }
   };
 
