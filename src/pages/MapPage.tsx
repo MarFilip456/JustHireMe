@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Map from "../components/map/Map";
-import Filters from "../components/Filters";
+import Filters from "../components/filters/Filters";
 
 const MapPage = () => {
   return (

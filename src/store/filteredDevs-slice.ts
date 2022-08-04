@@ -1,26 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type devType = {
-    name?: string;
-    surname?: string;
-    logo?: string;
+    name: string;
+    surname: string;
+    logo: string;
     email: string;
-    experience?: string;
-    mainLang?: string;
-    location?: string;
-    aboutYou?: string;
-    gitHub?: string;
-    linkedIn?: string;
+    experience: string;
+    mainLang: string;
+    location: string;
+    aboutYou: string;
+    gitHub: string;
+    linkedIn: string;
     id: string;
     key: string;
   };
 
 interface initialDevsStateType {
-  devs: devType[] | undefined;
+  devs: devType[];
 }
 
 const initialState: initialDevsStateType = {
-  devs: undefined,
+  devs: [],
 };
 
 const filteredDevsSlice = createSlice({

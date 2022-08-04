@@ -29,7 +29,6 @@ const SideMenu = () => {
       ) : (
         <h2> Sign in to see more </h2>
       )}
-      <Button />
     </div>
   );
 };

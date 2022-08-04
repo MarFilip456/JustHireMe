@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import Filters from "../components/Filters";
-import SwitchTabs from "../components/SwitchTabs";
+import Filters from "../components/filters/Filters";
+import SwitchTabs from "../components/filters/SwitchTabs";
 import JobsList from "../components/job/JobsList";
 import classes from "./MainPage.module.css";
 import Button from "../UI/Button";

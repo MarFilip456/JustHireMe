@@ -2,13 +2,15 @@ import { useCallback, useMemo, useEffect } from "react";
 import { devType } from "../store/filteredDevs-slice";
 import { useAppDispatch } from "../store/redux-hooks";
 import { devsActions } from "../store/filteredDevs-slice";
+import { uiActions } from "../store/ui-slice";
 
-const useFilterDevs = (appliedArr: { id: string }[]) => {
+const useFilterDevs = (desiredIdArr: { id: string }[]) => {
   const dispatch = useAppDispatch();
   let allDevsArray: devType[] = useMemo(() => [], []);
   let filteredDevsArray: devType[] = useMemo(() => [], []);
   const actualFilter = useCallback(async () => {
     try {
+      dispatch(uiActions.setLoading());
       const response = await fetch(
         process.env.REACT_APP_API_DATABASE_USERS_URL + "/devs.json"
       );
@@ -39,14 +41,15 @@ const useFilterDevs = (appliedArr: { id: string }[]) => {
     let j: number;
 
     for (i = 0; i < allDevsArray.length; i++) {
-      for (j = 0; j < appliedArr.length; j++) {
-        if (allDevsArray[i].id === appliedArr[j].id) {
+      for (j = 0; j < desiredIdArr.length; j++) {
+        if (allDevsArray[i].id === desiredIdArr[j].id) {
           filteredDevsArray.push(allDevsArray[i]);
         }
       }
     }
     dispatch(devsActions.setDevs(filteredDevsArray));
-  }, [appliedArr, allDevsArray, filteredDevsArray, dispatch]);
+    dispatch(uiActions.setLoading());
+  }, [desiredIdArr, allDevsArray, filteredDevsArray, dispatch]);
   // when i add actualFilter to dependency array, then it executes multiple times
   useEffect(() => {
     actualFilter();

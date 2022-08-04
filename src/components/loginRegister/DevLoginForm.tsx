@@ -61,6 +61,9 @@ const DevLoginForm: React.FC<{
       resetEmailInput();
       resetPasswordInput();
       setPassHidden(true);
+      if (props.act==="Register") {
+        navigate(-2);
+      } else if (props.act==="Sign in")
       navigate(-1);
     }
   };

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/use-request";
 import { useAppSelector } from "../store/redux-hooks";
 import JobDescription from "../components/job/JobDescription";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 import classes from "./JobPage.module.css";
 
@@ -20,7 +21,7 @@ const JobPage = () => {
   return (
     <Fragment>
       <div className={classes.test}>
-        {loading && <p>Loading...</p>}
+        {loading && <LoadingSpinner />}
         {error && <p>!Error message!</p>}
         {succesfulFetch && <JobDescription job={offers[0]} />}
       </div>

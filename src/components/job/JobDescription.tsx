@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import useGeolocation from "../../hooks/use-geolocation";
 import { useNavigate } from "react-router-dom";
 import { offerObject } from "../../store/offers-slice";
@@ -15,7 +15,6 @@ import { useParams } from "react-router-dom";
 
 import classes from "./JobDescription.module.css";
 
-
 const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   const offer = useAppSelector((state) => state.offers.offers);
   const isLoggedIn = useAppSelector((state) => state.ui.isLoggedIn);
@@ -29,16 +28,36 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
     lat: mapLat,
     lng: mapLng,
   } = useGeolocation(props.job.location);
-
-  const loggedExactEmpl =
-    offer[0].addedBy === localStorage.getItem("justHireMeId");
+  const loggedUser = localStorage.getItem("justHireMeId");
+  const loggedExactEmpl = offer[0].addedBy === loggedUser;
   const loggedSomeEmpl = !isDev && isLoggedIn;
   const loggedDev = isDev && isLoggedIn;
+  // contructing an array of id's of devs that already applied
+  let appliersArray: { id: string }[] = [];
 
+  for (const key in offer[0].appliers) {
+    appliersArray!.push({
+      id: offer[0].appliers[key].devId,
+    });
+  }
+  // checking if user has already applied for posiion
+  const [devAlreadyApplied, setDevAlreadyApplied] = useState(false);
+
+  useEffect(() => {
+    let i: number;
+    for (i = 0; i < appliersArray.length; i++) {
+      if (appliersArray[i].id === loggedUser) {
+        setDevAlreadyApplied(true);
+      }
+    }
+  }, [appliersArray, loggedUser]);
+
+  // edit/aply handler
   const CTAHandler = (event: React.MouseEvent) => {
     if (loggedDev) {
       // aply for a job
       actualApply();
+      setDevAlreadyApplied(true);
       // add logic for outputting some info that you already aplied
     } else if (loggedExactEmpl) {
       alert(
@@ -58,18 +77,21 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       <div className={classes.offer_map}>
         {mapError && <p>Error occured!</p>}
         {mapLoading && <p>Loading spinner</p>}
-        {/* {mapLat!==0 && <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />} */}
+        {mapLat !== 0 && (
+          <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />
+        )}
       </div>
       <TechStack />
       <Description />
       <div>Appearing bar top</div>
       <div>Appearing bar bottom</div>
-      <Button styles={classes.CTA_button} onClick={CTAHandler}>
-        {loggedExactEmpl ? "Edit" : "Apply"}
-      </Button>
-      {loggedExactEmpl && (
-        <AppliersList />
+      {devAlreadyApplied && <p>You already applied for this position</p>}
+      {!devAlreadyApplied && (
+        <Button styles={classes.CTA_button} onClick={CTAHandler}>
+          {loggedExactEmpl ? "Edit" : "Apply"}
+        </Button>
       )}
+      {loggedExactEmpl && <AppliersList appliersArray={appliersArray} />}
     </Fragment>
   );
 };
