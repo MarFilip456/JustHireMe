@@ -19,13 +19,21 @@ const SideMenu = () => {
     dispatch(uiActions.changeVisSide());
   };
 
+  const navigateToFormHandler = () =>{
+    navigate("/empl/addOffer");
+    dispatch(uiActions.changeVisSide());
+  }
+
   return (
     <div className={classes.sideMenu}>
       <h1>MENU</h1>
       {isLogged ? (
-        <Button onClick={navigateHandler}>
-          {isDev ? "User Profile" : "Employer panel"}
-        </Button>
+        <div>
+          <Button onClick={navigateHandler}>
+            {isDev ? "User Profile" : "Employer panel"}
+          </Button>
+          {!isDev && <Button onClick={navigateToFormHandler} >Add Offer</Button>}
+        </div>
       ) : (
         <h2> Sign in to see more </h2>
       )}

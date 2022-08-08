@@ -30,7 +30,7 @@ const TechStack: React.FC = () => {
         <h1>Tech Stack</h1>
       </div>
       <div className={classes.stack_single}>
-        {arrayTechStack.map((stack) => (
+        {arrayTechStack!.map((stack) => (
           <div key={Math.random()}>
             <h3>{stack.lang}</h3>
             <div className={classes.stack_container}>

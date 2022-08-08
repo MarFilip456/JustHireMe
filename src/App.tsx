@@ -8,6 +8,7 @@ import JobPage from "./pages/JobPage";
 import MapPage from "./pages/MapPage";
 import DevPage from "./pages/DevPage";
 import EmplPage from "./pages/EmplPage";
+import AddOfferPage from "./pages/AddOfferPage";
 import Header from "./UI/Header";
 import Modal from "./components/modal/Modal";
 import DevLoginPage from "./pages/DevLoginPage";
@@ -60,6 +61,12 @@ function App() {
             <Route
               path="/empl/profile"
               element={isLoggedIn ? <EmplPage /> : <EmplLoginPage />}
+            />
+          )}
+          {!isDev && (
+            <Route
+              path="/empl/addOffer"
+              element={isLoggedIn ? <AddOfferPage /> : <EmplLoginPage />}
             />
           )}
           <Route path="*" element={<MainPage />} />

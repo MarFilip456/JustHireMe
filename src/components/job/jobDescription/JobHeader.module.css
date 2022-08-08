@@ -6,8 +6,9 @@
     "img position"
     "salary salary";
   width: 100%;
+
   background-color: #63b9b9;
-  background-image: url("../../../images/offerBackground.png"), linear-gradient(rgba(255, 255, 0, 0.5),rgba(255, 255, 0, 0.9) );
+  background-image: url("../../../images/offerBackground.png"), linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 0, 0.9));
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -92,7 +93,7 @@
   box-shadow: 1px 1px 2px black;
 }
 
-.remote_badge p{
+.remote_badge p {
   font-size: 12px;
   color: red;
 }
@@ -101,10 +102,9 @@
   grid-area: salary;
   font-weight: 500;
   font-size: 17px;
-  
 }
 
-.offer_header__salary p{
+.offer_header__salary p {
   margin: 10px 0;
 }
 .offer_header__salary span {

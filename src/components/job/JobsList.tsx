@@ -13,6 +13,13 @@ const JobsList = () => {
   );
   const offers = useAppSelector((state) => state.offers.offers);
 
+  const loggedEmpl = localStorage.getItem("justHireMeId");
+  const isNotEmpl = localStorage.getItem("justHireMeDev");
+
+  if (loggedEmpl && !isNotEmpl) {
+    offers.filter((offer) => offer.addedBy === loggedEmpl);
+  }
+
   return (
     <Fragment>
       <ul className={classes.job_list}>
@@ -22,21 +29,21 @@ const JobsList = () => {
           offers.map((job) => (
             <Link to={"/jobdescr/" + job.id} key={job.id}>
               <JobShort
-                key={job.id}
-                id={job.id}
-                logo={job.logo}
-                jobPosition={job.jobPosition}
+                key={job.id!}
+                id={job.id!}
+                logo={job.logo!}
+                jobPosition={job.jobPosition!}
                 minSalary={
-                  job.employment.b2b?.minSalary
-                    ? job.employment.b2b.minSalary
-                    : job.employment.uop!.minSalary
+                  job.employment!.b2b?.minSalary
+                    ? job.employment!.b2b.minSalary
+                    : job.employment!.uop!.minSalary
                 }
                 maxSalary={
-                  job.employment.b2b?.maxSalary
-                    ? job.employment.b2b.maxSalary
-                    : job.employment.uop!.maxSalary
+                  job.employment!.b2b?.maxSalary
+                    ? job.employment!.b2b.maxSalary
+                    : job.employment!.uop!.maxSalary
                 }
-                location={job.location}
+                location={job.location!}
               />
             </Link>
           ))}

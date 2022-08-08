@@ -35,7 +35,8 @@ const useFetch = (url: string, type: string) => {
             date: responseData[key].date,
             fullyRemote: responseData[key].fullyRemote,
             employment: responseData[key].employment,
-            appliers: responseData[key].appliers
+            appliers: responseData[key].appliers,
+            mainLang: responseData[key].mainLang,
           });
         }
         dispatch(offersActions.setOffers(loadedOffers));

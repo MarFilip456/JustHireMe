@@ -10,7 +10,6 @@ const JobHeader = () => {
   const navigate = useNavigate();
 
   const backButtonHandler = (event: React.MouseEvent) => {
-    event.preventDefault();
     navigate("/");
   };
   const arrowUrl = "https://cdn-icons-png.flaticon.com/512/271/271218.png";
@@ -78,7 +77,7 @@ const JobHeader = () => {
         )}
       </div>
       <div className={classes.offer_header__salary}>
-        {offerSalary(offer.employment)}
+        {offerSalary(offer.employment!)}
       </div>
     </div>
   );

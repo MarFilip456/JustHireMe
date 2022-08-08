@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useMemo } from "react";
 import useGeolocation from "../../hooks/use-geolocation";
 import { useNavigate } from "react-router-dom";
 import { offerObject } from "../../store/offers-slice";
@@ -27,19 +27,20 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
     loading: mapLoading,
     lat: mapLat,
     lng: mapLng,
-  } = useGeolocation(props.job.location);
+  } = useGeolocation(props.job.location!);
   const loggedUser = localStorage.getItem("justHireMeId");
   const loggedExactEmpl = offer[0].addedBy === loggedUser;
   const loggedSomeEmpl = !isDev && isLoggedIn;
   const loggedDev = isDev && isLoggedIn;
   // contructing an array of id's of devs that already applied
-  let appliersArray: { id: string }[] = [];
+  let appliersArray: { id: string }[] = useMemo(()=>[], []);
 
-  for (const key in offer[0].appliers) {
-    appliersArray!.push({
+  for (const key in offer[0].appliers!) {
+    appliersArray.push({
       id: offer[0].appliers[key].devId,
     });
   }
+
   // checking if user has already applied for posiion
   const [devAlreadyApplied, setDevAlreadyApplied] = useState(false);
 
@@ -77,9 +78,9 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       <div className={classes.offer_map}>
         {mapError && <p>Error occured!</p>}
         {mapLoading && <p>Loading spinner</p>}
-        {mapLat !== 0 && (
+        {/* {mapLat !== 0 && (
           <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />
-        )}
+        )} */}
       </div>
       <TechStack />
       <Description />

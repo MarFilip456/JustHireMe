@@ -12,9 +12,9 @@ const Rectangles = () => {
   const countDays = () => {
     const currDate = new Date();
     const offerDate = new Date(
-      offer.date.year,
-      offer.date.month - 1,
-      offer.date.day
+      offer.date!.year,
+      offer.date!.month - 1,
+      offer.date!.day
     );
     const difference =
       (currDate.getTime() - offerDate.getTime()) / 1000 / 3600 / 24;
