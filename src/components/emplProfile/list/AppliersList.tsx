@@ -6,9 +6,8 @@ import { useAppSelector } from "../../../store/redux-hooks";
 import classes from "./AppliersList.module.css";
 
 const AppliersList: React.FC<{ appliersArray: { id: string }[] }> = (props) => {
-
   useFilterDevs(props.appliersArray);
-
+  
   const filteredDevs = useAppSelector((state) => state.devs.devs);
 
   return (

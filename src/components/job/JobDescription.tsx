@@ -33,14 +33,18 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   const loggedSomeEmpl = !isDev && isLoggedIn;
   const loggedDev = isDev && isLoggedIn;
   // contructing an array of id's of devs that already applied
-  let appliersArray: { id: string }[] = useMemo(()=>[], []);
+  let appliersArray: { id: string }[] = useMemo(() => [], []);
 
-  for (const key in offer[0].appliers!) {
-    appliersArray.push({
-      id: offer[0].appliers[key].devId,
-    });
-  }
-
+  useEffect(() => {
+    for (const key in offer[0].appliers!) {
+      if (appliersArray.length === 0) {
+        appliersArray.push({
+          id: offer[0].appliers[key].devId,
+        });
+      }
+    }
+  }, [appliersArray, offer]);
+  console.log(appliersArray);
   // checking if user has already applied for posiion
   const [devAlreadyApplied, setDevAlreadyApplied] = useState(false);
 

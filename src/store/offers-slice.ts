@@ -7,7 +7,7 @@ export type offerObject = {
   addedBy?: string;
   companySize?: number;
   expLevel?: string;
-  mainLang?:string;
+  mainLang?: string;
   requirements?: string;
   id?: string;
   jobPosition?: string;
@@ -17,8 +17,9 @@ export type offerObject = {
   techStack?: { lang: string; value: number }[];
   date?: { day: number; month: number; year: number };
   fullyRemote?: boolean;
-  appliers?: {devId:string}[];
+  appliers?: { devId: string }[];
   employment?: {
+    undisclosed: boolean;
     b2b?: {
       minSalary: string;
       maxSalary: string;
@@ -27,7 +28,7 @@ export type offerObject = {
       minSalary: string;
       maxSalary: string;
     };
-  }
+  };
 };
 
 interface initialOffersStateType {

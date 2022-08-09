@@ -27,6 +27,34 @@ const OfferForm2: React.FC<{
     props.onIncrement(event);
   };
 
+  const expLevelArray = ["Junior", "Mid", "Senior", "Expert"];
+  const mainLangArray = [
+    "JS",
+    "HTML",
+    "PHP",
+    "Ruby",
+    "Python",
+    "Java",
+    ".Net",
+    "Scala",
+    "C",
+    "Mobile",
+    "Testing",
+    "DevOps",
+    "Admin",
+    "UX/UI",
+    "PM",
+    "Game",
+    "Analytics",
+    "Security",
+    "Data",
+    "Go",
+    "Support",
+    "ERP",
+    "Architecture",
+    "Other",
+  ];
+
   const jobPositionRef = useRef<HTMLInputElement>(null);
   const experienceRef = useRef<HTMLSelectElement>(null);
   const mainLangRef = useRef<HTMLSelectElement>(null);
@@ -43,54 +71,24 @@ const OfferForm2: React.FC<{
           ref={jobPositionRef}
         />
         <label htmlFor="mainLang">Main language</label>
-        <input
-          name="mainLang"
-          type="text"
-          placeholder="Selected main language"
-          value={offer.mainLang}
-          readOnly
-        />
-        <select name="mainLang" ref={mainLangRef}>
-          <option value="">Change</option>
-          <option value="js">JS</option>
-          <option value="html">HTML</option>
-          <option value="php">PHP</option>
-          <option value="ruby">Ruby</option>
-          <option value="python">Python</option>
-          <option value="java">Java</option>
-          <option value=".net">.Net</option>
-          <option value="scala">Scala</option>
-          <option value="c">C</option>
-          <option value="mobile">Mobile</option>
-          <option value="testing">Testing</option>
-          <option value="devOps">DevOps</option>
-          <option value="admin">Admin</option>
-          <option value="ux/ui">UX/UI</option>
-          <option value="pm">PM</option>
-          <option value="game">Game</option>
-          <option value="analytics">Analytics</option>
-          <option value="security">Security</option>
-          <option value="data">Data</option>
-          <option value="go">Go</option>
-          <option value="support">Support</option>
-          <option value="erp">ERP</option>
-          <option value="architecture">Architecture</option>
-          <option value="other">Other</option>
+        <select name="mainLang" ref={mainLangRef} defaultValue={offer.mainLang}>
+          {mainLangArray.map((mainLang) => (
+            <option key={mainLangArray.indexOf(mainLang)} value={mainLang}>
+              {mainLang}
+            </option>
+          ))}
         </select>
         <label htmlFor="experience">Experience</label>
-        <input
+        <select
           name="experience"
-          type="text"
-          placeholder="Selected experience"
-          value={offer.expLevel}
-          readOnly
-        />
-        <select name="experience" ref={experienceRef}>
-          <option value="">Change</option>
-          <option value="junior">Junior</option>
-          <option value="mid">Mid</option>
-          <option value="senior">Senior</option>
-          <option value="expert">Expert</option>
+          ref={experienceRef}
+          defaultValue={offer.expLevel}
+        >
+          {expLevelArray.map((expLevel) => (
+            <option key={expLevelArray.indexOf(expLevel)} value={expLevel}>
+              {expLevel}
+            </option>
+          ))}
         </select>
       </form>
       <Button onClick={previousStepHandler}>Back</Button>

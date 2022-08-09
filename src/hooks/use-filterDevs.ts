@@ -53,7 +53,7 @@ const useFilterDevs = (desiredIdArr: { id: string }[]) => {
   // when i add actualFilter to dependency array, then it executes multiple times
   useEffect(() => {
     actualFilter();
-  }, []);
+  }, [actualFilter]);
   return;
 };
 

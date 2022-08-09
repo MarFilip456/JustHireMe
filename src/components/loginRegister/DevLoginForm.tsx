@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 const DevLoginForm: React.FC<{
   act: string;
 }> = (props) => {
+
   const {
     value: emailInput,
     isTouched: emailIsTouched,
@@ -61,10 +62,11 @@ const DevLoginForm: React.FC<{
       resetEmailInput();
       resetPasswordInput();
       setPassHidden(true);
-      if (props.act==="Register") {
+      if (props.act === "Register") {
         navigate(-2);
-      } else if (props.act==="Sign in")
-      navigate(-1);
+      } else if (props.act === "Sign in") {
+        navigate(-1);
+      }
     }
   };
 
