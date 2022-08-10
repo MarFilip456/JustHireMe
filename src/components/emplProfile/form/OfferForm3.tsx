@@ -3,14 +3,33 @@ import { useAppDispatch, useAppSelector } from "../../../store/redux-hooks";
 import { offersActions } from "../../../store/offers-slice";
 import Button from "../../../UI/Button";
 
+import classes from "./OfferForm3.module.css";
+
 const OfferForm3: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
   onDecrement: (event: React.MouseEvent) => void;
 }> = (props) => {
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offers.addingOffer);
-  
+
   const previousStepHandler = (event: React.MouseEvent) => {
+    dispatch(
+      offersActions.addOffer(
+        Object.assign({}, offer, {
+          employment: {
+            undisclosed: undisclosed,
+            b2b: {
+              maxSalary: b2bSalaryMaxRef.current?.value,
+              minSalary: b2bSalaryMinRef.current?.value,
+            },
+            uop: {
+              maxSalary: uopSalaryMaxRef.current?.value,
+              minSalary: uopSalaryMinRef.current?.value,
+            },
+          },
+        })
+      )
+    );
     props.onDecrement(event);
   };
 
@@ -69,36 +88,42 @@ const OfferForm3: React.FC<{
 
   return (
     <Fragment>
-      <p>Third form</p>
-      <form>
+      <form className={classes.main_form}>
         <p>Undisclosed salary?</p>
-        <label htmlFor="undisclosed">Yes</label>
-        <input
-          name="undisclosed"
-          type="radio"
-          value="yes"
-          onChange={setUndisclosedTrueHandler}
-          defaultChecked={undisclosed}
-        />
-        <label htmlFor="undisclosed">No</label>
-        <input
-          name="undisclosed"
-          type="radio"
-          value="no"
-          onChange={setUndisclosedFalseHandler}
-          defaultChecked={!undisclosed}
-        />
+        <div>
+          <label htmlFor="undisclosed">Yes</label>
+          <input
+            name="undisclosed"
+            type="radio"
+            value="yes"
+            onChange={setUndisclosedTrueHandler}
+            defaultChecked={undisclosed}
+          />
+        </div>
+        <div>
+          <label htmlFor="undisclosed">No</label>
+          <input
+            name="undisclosed"
+            type="radio"
+            value="no"
+            onChange={setUndisclosedFalseHandler}
+            defaultChecked={!undisclosed}
+          />
+        </div>
+
         {!undisclosed && (
-          <Fragment>
-            <label htmlFor="setUop">Set salary range for UoP</label>
-            <input
-              name="setUop"
-              type="checkbox"
-              onChange={setUopHandler}
-              defaultChecked={uop}
-            />
+          <div>
+            <div>
+              <label htmlFor="setUop">Set salary range for UoP</label>
+              <input
+                name="setUop"
+                type="checkbox"
+                onChange={setUopHandler}
+                defaultChecked={uop}
+              />
+            </div>
             {uop && (
-              <div>
+              <div className={classes.flex_container} >
                 <label htmlFor="uopSalaryMin">Minimum salary</label>
                 <input
                   name="uopSalaryMin"
@@ -127,7 +152,7 @@ const OfferForm3: React.FC<{
               defaultChecked={b2b}
             />
             {b2b && (
-              <div>
+              <div className={classes.flex_container}  >
                 <label htmlFor="b2bSalaryMin">Minimum salary</label>
                 <input
                   name="b2bSalaryMin"
@@ -148,11 +173,13 @@ const OfferForm3: React.FC<{
                 />
               </div>
             )}
-          </Fragment>
+          </div>
         )}
       </form>
-      <Button onClick={previousStepHandler}>Back</Button>
-      <Button onClick={nextStephandler}>Next</Button>
+      <div>
+        <Button onClick={previousStepHandler}>Back</Button>
+        <Button onClick={nextStephandler}>Next</Button>
+      </div>
     </Fragment>
   );
 };

@@ -1,5 +1,9 @@
 import { Fragment, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../store/redux-hooks";
+import { offersActions } from "../../../store/offers-slice";
+import useAddOffer from "../../../hooks/use-addOffer";
 import Button from "../../../UI/Button";
+import Card from "../../../UI/Card";
 import OfferForm1 from "./OfferForm1";
 import OfferForm2 from "./OfferForm2";
 import OfferForm3 from "./OfferForm3";
@@ -9,10 +13,20 @@ import OfferForm5 from "./OfferForm5";
 import classes from "./OfferForm.module.css";
 
 const OfferForm = () => {
+  const dispatch = useAppDispatch();
+
+  const offer = useAppSelector((state) => state.offers.addingOffer);
+  const addOffer = useAddOffer(offer);
+
   const [formNumber, setFormNumber] = useState(0);
   // i assumed there is 5 steps
   const calculateWidth = (value: number) => {
     return ((value - 1) / 5) * 100;
+  };
+
+  const startHandler = () => {
+    dispatch(offersActions.addOffer({}));
+    setFormNumber((prevState) => prevState + 1);
   };
 
   const incrementHandler = () => {
@@ -22,18 +36,32 @@ const OfferForm = () => {
     setFormNumber((prevState) => prevState - 1);
   };
 
+  const addOfferHandler = () => {
+    addOffer();
+  };
+
   return (
-    <Fragment>
+    <Card styles={classes.main_card}>
       {formNumber === 0 && (
-        <div>
-          <h1>Here you can add new offers.</h1>
-          <p>Start when you're ready!</p>
-        </div>
+        <Fragment>
+          <div className={classes.introduction_title}>
+            <h1>Here you can add new offers.</h1>
+          </div>
+          <div className={classes.introduction__description}>
+            <p>
+              Our offer creator will take you through 5 steps. In the end you
+              will be able to preview the effect of your work. In case of a
+              mistake or a change of mind, you can always take a step back and
+              implement any changes.
+            </p>
+            <p>Start when you're ready!</p>
+          </div>
+        </Fragment>
       )}
       {formNumber !== 0 && (
-        <div>
+        <div className={classes.progress_bar__container}>
           <p>Completed: {Math.round(calculateWidth(formNumber))}%</p>
-          <div className={classes.progress_bar}>
+          <div className={classes.progress_bar__background}>
             <div
               className={classes.progress_bar__fill}
               style={{ width: calculateWidth(formNumber).toString() + "%" }}
@@ -73,10 +101,18 @@ const OfferForm = () => {
       )}
       {formNumber === 6 && <p>End</p>}
 
-      {formNumber === 0 && <Button onClick={incrementHandler}>Start</Button>}
-      {formNumber === 6 && <Button onClick={decrementHandler}>Back</Button>}
-      {formNumber === 6 && <Button>Add offer!</Button>}
-    </Fragment>
+      {formNumber === 0 && (
+        <Button styles={classes.CTA_button} onClick={startHandler}>
+          Start
+        </Button>
+      )}
+      {formNumber === 6 && (
+        <div>
+          <Button onClick={decrementHandler}>Back</Button>
+          <Button onClick={addOfferHandler}>Add offer!</Button>
+        </div>
+      )}
+    </Card>
   );
 };
 

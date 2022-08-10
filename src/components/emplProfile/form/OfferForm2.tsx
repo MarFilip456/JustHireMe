@@ -3,6 +3,8 @@ import Button from "../../../UI/Button";
 import { useAppSelector, useAppDispatch } from "../../../store/redux-hooks";
 import { offersActions } from "../../../store/offers-slice";
 
+import classes from "./OfferForm2.module.css";
+
 const OfferForm2: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
   onDecrement: (event: React.MouseEvent) => void;
@@ -11,6 +13,15 @@ const OfferForm2: React.FC<{
   const offer = useAppSelector((state) => state.offers.addingOffer);
 
   const previousStepHandler = (event: React.MouseEvent) => {
+    dispatch(
+      offersActions.addOffer(
+        Object.assign({}, offer, {
+          jobPosition: jobPositionRef.current!.value,
+          expLevel: experienceRef.current!.value,
+          mainLang: mainLangRef.current!.value,
+        })
+      )
+    );
     props.onDecrement(event);
   };
 
@@ -61,8 +72,7 @@ const OfferForm2: React.FC<{
 
   return (
     <Fragment>
-      <p>Second form</p>
-      <form>
+      <form className={classes.main_form} >
         <label htmlFor="jobPosition">Position</label>
         <input
           name="jobPosition"
@@ -91,8 +101,10 @@ const OfferForm2: React.FC<{
           ))}
         </select>
       </form>
-      <Button onClick={previousStepHandler}>Back</Button>
-      <Button onClick={nextStephandler}>Next</Button>
+      <div>
+        <Button onClick={previousStepHandler}>Back</Button>
+        <Button onClick={nextStephandler}>Next</Button>
+      </div>
     </Fragment>
   );
 };

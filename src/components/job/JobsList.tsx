@@ -27,9 +27,10 @@ const JobsList = () => {
         {error && <p>!Error message!</p>}
         {offers &&
           offers.map((job) => (
+            // after going back from offer to list after first render warning
             <Link to={"/jobdescr/" + job.id} key={job.id}>
               <JobShort
-                key={job.id!}
+                key={job.id+"child"}
                 id={job.id!}
                 logo={job.logo!}
                 jobPosition={job.jobPosition!}

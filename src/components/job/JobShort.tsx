@@ -10,7 +10,6 @@ const JobShort: React.FC<{
   maxSalary?: string;
   location: string;
   id: string;
-  key: string;
 }> = (props) => {
   const undisclosedSalary =
     props.minSalary !== undefined || props.maxSalary !== undefined;

@@ -10,7 +10,7 @@ const JobHeader = () => {
   const navigate = useNavigate();
 
   const backButtonHandler = (event: React.MouseEvent) => {
-    navigate("/");
+    navigate(-1);
   };
   const arrowUrl = "https://cdn-icons-png.flaticon.com/512/271/271218.png";
 

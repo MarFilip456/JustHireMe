@@ -1,27 +1,26 @@
-import { useAppSelector } from "../../../store/redux-hooks";
+import { techStackType } from "../../../store/offers-slice";
 
 import classes from "./TechStack.module.css";
 
-const TechStack: React.FC = () => {
-  const offer = useAppSelector((state) => state.offers.offers);
-  const arrayTechStack = offer[0].techStack;
+const TechStack: React.FC<{offerArray: techStackType[]}> = (props) => {
+  const arrayTechStack = props.offerArray;
 
-  const stackDesc = (value: number) => {
-    if (value === 1) {
-      return "nice to have";
-    } else if (value === 2) {
-      return "junior";
-    } else if (value === 3) {
-      return "regular";
-    } else if (value === 4) {
-      return "advanced";
+  const stackDesc = (value: string) => {
+    if (value === "nice to have") {
+      return 1;
+    } else if (value === "junior") {
+      return 2;
+    } else if (value === "regular") {
+      return 3;
+    } else if (value === "advanced") {
+      return 4;
     } else {
-      return "master";
+      return 5;
     }
   };
 
-  const calculateWidth = (value: number) => {
-    return ((value / 5) * 100).toString() + "%";
+  const calculateWidth = (value: string) => {
+    return ((stackDesc(value) / 5) * 100).toString() + "%";
   };
 
   return (
@@ -39,7 +38,7 @@ const TechStack: React.FC = () => {
                 style={{ width: calculateWidth(stack.value) }}
               />
             </div>
-            <p>{stackDesc(stack.value)}</p>
+            <p>{stack.value}</p>
           </div>
         ))}
       </div>

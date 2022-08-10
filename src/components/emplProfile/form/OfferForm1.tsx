@@ -3,6 +3,8 @@ import { useAppSelector, useAppDispatch } from "../../../store/redux-hooks";
 import { offersActions } from "../../../store/offers-slice";
 import Button from "../../../UI/Button";
 
+import classes from "./OfferForm1.module.css";
+
 const OfferForm1: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
   onDecrement: (event: React.MouseEvent) => void;
@@ -11,9 +13,19 @@ const OfferForm1: React.FC<{
   const offer = useAppSelector((state) => state.offers.addingOffer);
 
   const previousStepHandler = (event: React.MouseEvent) => {
+    dispatch(
+      offersActions.addOffer(
+        Object.assign({}, offer, {
+          companyName: companyNameRef.current!.value,
+          companySize: companySizeRef.current!.value,
+          location: companyLocationRef.current!.value,
+          logo: companyLogoRef.current!.value,
+        })
+      )
+    );
     props.onDecrement(event);
   };
-  
+
   const nextStepHandler = (event: React.MouseEvent) => {
     dispatch(
       offersActions.addOffer(
@@ -35,8 +47,7 @@ const OfferForm1: React.FC<{
 
   return (
     <Fragment>
-      <p>First form</p>
-      <form>
+      <form className={classes.main_form}>
         <label htmlFor="companyName">Company's name</label>
         <input
           name="companyName"
@@ -45,7 +56,7 @@ const OfferForm1: React.FC<{
           ref={companyNameRef}
         />
         <label htmlFor="companySize">
-          Company's size (number of people employed)
+          Company's size <span>(number of people employed)</span>
         </label>
         <input
           name="companySize"
@@ -53,7 +64,7 @@ const OfferForm1: React.FC<{
           defaultValue={offer.companySize}
           ref={companySizeRef}
         />
-        <label htmlFor="location">Office location</label>
+        <label htmlFor="location">Office location <span>(Country, City, Street)</span> </label>
         <input
           name="location"
           type="text"
@@ -68,8 +79,10 @@ const OfferForm1: React.FC<{
           ref={companyLogoRef}
         />
       </form>
-      <Button onClick={previousStepHandler}>Back</Button>
-      <Button onClick={nextStepHandler}>Next</Button>
+      <div>
+        <Button onClick={previousStepHandler}>Leave</Button>
+        <Button onClick={nextStepHandler}>Next</Button>
+      </div>
     </Fragment>
   );
 };

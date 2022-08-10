@@ -14,8 +14,10 @@ const OfferForm5: React.FC<{
   return (
     <Fragment>
       <p>Fifth form</p>
-      <Button onClick={previousStepHandler}>Back</Button>
-      <Button onClick={nextStephandler}>Next</Button>
+      <div>
+        <Button onClick={previousStepHandler}>Back</Button>
+        <Button onClick={nextStephandler}>Next</Button>
+      </div>
     </Fragment>
   );
 };

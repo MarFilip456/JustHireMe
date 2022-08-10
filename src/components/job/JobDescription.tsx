@@ -44,7 +44,6 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       }
     }
   }, [appliersArray, offer]);
-  console.log(appliersArray);
   // checking if user has already applied for posiion
   const [devAlreadyApplied, setDevAlreadyApplied] = useState(false);
 
@@ -86,7 +85,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
           <Map width="100%" height="200px" lat={mapLat} lng={mapLng} />
         )} */}
       </div>
-      <TechStack />
+      <TechStack offerArray={offer[0].techStack!} />
       <Description />
       <div>Appearing bar top</div>
       <div>Appearing bar bottom</div>

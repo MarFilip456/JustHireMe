@@ -19,8 +19,7 @@ const useFetch = (url: string, type: string) => {
         const loadedOffers: object[] = [];
         for (const key in responseData) {
           loadedOffers.push({
-            key: key,
-            id: responseData[key].id,
+            id: key,
             logo: responseData[key].logo,
             jobPosition: responseData[key].jobPosition,
             location: responseData[key].location,

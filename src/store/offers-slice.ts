@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type techStackType = {
+  id: string;
+  lang: string;
+  value: string;
+}
+
 export type offerObject = {
   companyName?: string;
   description?: string;
@@ -11,10 +17,9 @@ export type offerObject = {
   requirements?: string;
   id?: string;
   jobPosition?: string;
-  key?: string;
   location?: string;
   logo?: string;
-  techStack?: { lang: string; value: number }[];
+  techStack?: techStackType[];
   date?: { day: number; month: number; year: number };
   fullyRemote?: boolean;
   appliers?: { devId: string }[];

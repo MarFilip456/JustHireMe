@@ -6,6 +6,7 @@ const Button: React.FC<{
   onClick?: (event: React.MouseEvent) => void;
   children?: React.ReactNode;
   act?: string;
+  id?: string;
 }> = (props) => {
   return (
     <button
