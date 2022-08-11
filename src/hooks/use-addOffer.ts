@@ -31,10 +31,6 @@ const useAddOffer = (addingOffer: offerObject) => {
         }),
         headers: { "Content-Type": "application/json" },
       });
-
-      if (response.ok) {
-        console.log("poszło");
-      }
     } catch (error) {
       console.log(error);
     }

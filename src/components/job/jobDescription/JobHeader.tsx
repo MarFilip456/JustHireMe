@@ -8,6 +8,7 @@ import React from "react";
 const JobHeader = () => {
   const offer = useAppSelector((state) => state.offers.offers[0]);
   const navigate = useNavigate();
+  console.log(offer);
 
   const backButtonHandler = (event: React.MouseEvent) => {
     navigate(-1);
@@ -17,26 +18,27 @@ const JobHeader = () => {
   const remoteAtAll = offer.fullyRemote !== undefined;
 
   const offerSalary = (offer: {
-    b2b?: { minSalary: string; maxSalary: string };
-    uop?: { minSalary: string; maxSalary: string };
+    undisclosed: boolean;
+    b2b?: { allowB2b: boolean; minSalary: string; maxSalary: string };
+    uop?: { allowUop: boolean; minSalary: string; maxSalary: string };
   }) => {
-    if (offer.b2b === undefined && offer.uop === undefined) {
+    if (offer.undisclosed) {
       return <p>Undisclosed Salary</p>;
-    } else if (offer.b2b === undefined && offer.uop) {
+    } else if (!offer.b2b?.allowB2b && offer.uop?.allowUop) {
       return (
         <p>
           {offer.uop.minSalary} - {offer.uop.maxSalary} PLN
           <span>gross/month - UoP</span>
         </p>
       );
-    } else if (offer.b2b && offer.uop === undefined) {
+    } else if (offer.b2b?.allowB2b && !offer.uop?.allowUop) {
       return (
         <p>
           {offer.b2b.minSalary} - {offer.b2b.maxSalary} PLN
           <span>net/month - B2B</span>
         </p>
       );
-    } else if (offer.b2b && offer.uop) {
+    } else if (offer.b2b?.allowB2b && offer.uop?.allowUop) {
       return (
         <div>
           <p>

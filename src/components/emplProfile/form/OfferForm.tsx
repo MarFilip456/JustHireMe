@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/redux-hooks";
 import { offersActions } from "../../../store/offers-slice";
+import { useNavigate } from "react-router-dom";
 import useAddOffer from "../../../hooks/use-addOffer";
 import Button from "../../../UI/Button";
 import Card from "../../../UI/Card";
@@ -14,6 +15,7 @@ import classes from "./OfferForm.module.css";
 
 const OfferForm = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const offer = useAppSelector((state) => state.offers.addingOffer);
   const addOffer = useAddOffer(offer);
@@ -38,6 +40,7 @@ const OfferForm = () => {
 
   const addOfferHandler = () => {
     addOffer();
+    navigate("/")
   };
 
   return (

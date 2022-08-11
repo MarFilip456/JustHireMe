@@ -12,6 +12,9 @@ import Button from "../../UI/Button";
 import { useAppSelector } from "../../store/redux-hooks";
 import useApply from "../../hooks/use-apply";
 import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../../store/redux-hooks";
+import { uiActions } from "../../store/ui-slice";
+import { offersActions } from "../../store/offers-slice";
 
 import classes from "./JobDescription.module.css";
 
@@ -21,6 +24,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   const isDev = useAppSelector((state) => state.ui.isDev);
   const navigate = useNavigate();
   const params = useParams<{ jobId: string }>();
+  const dispatch = useAppDispatch();
   const actualApply = useApply(params.jobId!);
   const {
     error: mapError,
@@ -74,6 +78,17 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
     }
   };
 
+  const deleteHandler = () => {
+    dispatch(
+      offersActions.setOffers(
+        Object.assign({}, offer, {
+          id: params.jobId,
+        })
+      )
+    );
+    dispatch(uiActions.changeDeletePopup());
+  };
+
   return (
     <Fragment>
       <JobHeader />
@@ -87,14 +102,13 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       </div>
       <TechStack offerArray={offer[0].techStack!} />
       <Description />
-      <div>Appearing bar top</div>
-      <div>Appearing bar bottom</div>
       {devAlreadyApplied && <p>You already applied for this position</p>}
       {!devAlreadyApplied && (
         <Button styles={classes.CTA_button} onClick={CTAHandler}>
           {loggedExactEmpl ? "Edit" : "Apply"}
         </Button>
       )}
+      {loggedExactEmpl && <Button onClick={deleteHandler}>Delete offer</Button>}
       {loggedExactEmpl && <AppliersList appliersArray={appliersArray} />}
     </Fragment>
   );

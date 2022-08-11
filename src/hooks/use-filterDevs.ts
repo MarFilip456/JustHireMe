@@ -50,10 +50,10 @@ const useFilterDevs = (desiredIdArr: { id: string }[]) => {
     dispatch(devsActions.setDevs(filteredDevsArray));
     dispatch(uiActions.setLoading());
   }, [desiredIdArr, allDevsArray, filteredDevsArray, dispatch]);
-  // when i add actualFilter to dependency array, then it executes multiple times
+  
   useEffect(() => {
     actualFilter();
-  }, [actualFilter]);
+  }, []);
   return;
 };
 

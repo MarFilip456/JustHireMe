@@ -15,6 +15,7 @@ const useFetch = (url: string, type: string) => {
         throw new Error("Something went wrong");
       }
       const responseData = await response.json();
+      
       if (type === "all") {
         const loadedOffers: object[] = [];
         for (const key in responseData) {

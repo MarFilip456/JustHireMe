@@ -1,0 +1,6 @@
+.delete_card {
+    z-index: 2;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+}

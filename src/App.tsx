@@ -17,6 +17,7 @@ import EmplLoginPage from "./pages/EmplLoginPage";
 import EmplNewAccPage from "./pages/EmplNewAccPage";
 import LoginPopup from "./UI/LoginPopup";
 import SideMenu from "./UI/SideMenu";
+import DeletePopup from "./UI/DeletePopup";
 
 import classes from "./App.module.css";
 
@@ -47,10 +48,16 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/jobdescr/:jobId" element={<JobPage />} />
           <Route path="/map" element={<MapPage />} />
-          <Route path="/devlogin" element={<DevLoginPage />} />
-          <Route path="/devregister" element={<DevNewAccPage />} />
-          <Route path="/empllogin" element={<EmplLoginPage />} />
-          <Route path="/emplregister" element={<EmplNewAccPage />} />
+          {!isLoggedIn && <Route path="/devlogin" element={<DevLoginPage />} />}
+          {!isLoggedIn && (
+            <Route path="/devregister" element={<DevNewAccPage />} />
+          )}
+          {!isLoggedIn && (
+            <Route path="/empllogin" element={<EmplLoginPage />} />
+          )}
+          {!isLoggedIn && (
+            <Route path="/emplregister" element={<EmplNewAccPage />} />
+          )}
           {isDev && (
             <Route
               path="/dev/profile"

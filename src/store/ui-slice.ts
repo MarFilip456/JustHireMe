@@ -4,6 +4,7 @@ import type { RootState } from "./index";
 interface initialUiStateType {
   visibleSide: boolean;
   visiblePopup: boolean;
+  deletePopup: boolean;
   isLoading: boolean;
   isError: boolean;
   isLoggedIn: boolean;
@@ -23,6 +24,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
   initialState = {
     visibleSide: false,
     visiblePopup: false,
+    deletePopup: false,
     isLoading: false,
     isError: false,
     isLoggedIn: true,
@@ -32,6 +34,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
   initialState = {
     visibleSide: false,
     visiblePopup: false,
+    deletePopup: false,
     isLoading: false,
     isError: false,
     isLoggedIn: true,
@@ -45,6 +48,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
   initialState = {
     visibleSide: false,
     visiblePopup: false,
+    deletePopup: false,
     isLoading: false,
     isError: false,
     isLoggedIn: false,
@@ -61,6 +65,9 @@ const uiSlice = createSlice({
     },
     changeVisPopup: (state) => {
       state.visiblePopup = !state.visiblePopup;
+    },
+    changeDeletePopup: (state) => {
+      state.deletePopup = !state.deletePopup;
     },
     setLoading: (state) => {
       state.isLoading = !state.isLoading;

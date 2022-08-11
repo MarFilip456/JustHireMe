@@ -19,12 +19,22 @@ const OfferForm3: React.FC<{
           employment: {
             undisclosed: undisclosed,
             b2b: {
-              maxSalary: b2bSalaryMaxRef.current?.value,
-              minSalary: b2bSalaryMinRef.current?.value,
+              allowB2b: b2b,
+              maxSalary: b2bSalaryMaxRef.current?.value
+                ? b2bSalaryMaxRef.current?.value
+                : 0,
+              minSalary: b2bSalaryMinRef.current?.value
+                ? b2bSalaryMinRef.current?.value
+                : 0,
             },
             uop: {
-              maxSalary: uopSalaryMaxRef.current?.value,
-              minSalary: uopSalaryMinRef.current?.value,
+              allowUop: uop,
+              maxSalary: uopSalaryMaxRef.current?.value
+                ? uopSalaryMaxRef.current?.value
+                : 0,
+              minSalary: uopSalaryMinRef.current?.value
+                ? uopSalaryMinRef.current?.value
+                : 0,
             },
           },
         })
@@ -40,12 +50,22 @@ const OfferForm3: React.FC<{
           employment: {
             undisclosed: undisclosed,
             b2b: {
-              maxSalary: b2bSalaryMaxRef.current?.value,
-              minSalary: b2bSalaryMinRef.current?.value,
+              allowB2b: b2b,
+              maxSalary: b2bSalaryMaxRef.current?.value
+                ? b2bSalaryMaxRef.current?.value
+                : 0,
+              minSalary: b2bSalaryMinRef.current?.value
+                ? b2bSalaryMinRef.current?.value
+                : 0,
             },
             uop: {
-              maxSalary: uopSalaryMaxRef.current?.value,
-              minSalary: uopSalaryMinRef.current?.value,
+              allowUop: uop,
+              maxSalary: uopSalaryMaxRef.current?.value
+                ? uopSalaryMaxRef.current?.value
+                : 0,
+              minSalary: uopSalaryMinRef.current?.value
+                ? uopSalaryMinRef.current?.value
+                : 0,
             },
           },
         })
@@ -123,7 +143,7 @@ const OfferForm3: React.FC<{
               />
             </div>
             {uop && (
-              <div className={classes.flex_container} >
+              <div className={classes.flex_container}>
                 <label htmlFor="uopSalaryMin">Minimum salary</label>
                 <input
                   name="uopSalaryMin"
@@ -152,7 +172,7 @@ const OfferForm3: React.FC<{
               defaultChecked={b2b}
             />
             {b2b && (
-              <div className={classes.flex_container}  >
+              <div className={classes.flex_container}>
                 <label htmlFor="b2bSalaryMin">Minimum salary</label>
                 <input
                   name="b2bSalaryMin"

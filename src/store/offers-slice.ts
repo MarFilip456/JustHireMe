@@ -25,11 +25,13 @@ export type offerObject = {
   appliers?: { devId: string }[];
   employment?: {
     undisclosed: boolean;
-    b2b?: {
+    b2b: {
+      allowB2b: boolean;
       minSalary: string;
       maxSalary: string;
     };
-    uop?: {
+    uop: {
+      allowUop: boolean;
       minSalary: string;
       maxSalary: string;
     };

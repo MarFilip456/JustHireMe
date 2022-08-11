@@ -1,20 +1,22 @@
 import React from "react";
 import Card from "../../UI/Card";
+import useCountDays from "../../hooks/use-countDays";
 
 import classes from "./JobShort.module.css";
 
 const JobShort: React.FC<{
   logo: string;
   jobPosition: string;
+  undisclosed: boolean;
   minSalary?: string;
   maxSalary?: string;
   location: string;
   id: string;
+  date: { year: number; month: number; day: number };
 }> = (props) => {
-  const undisclosedSalary =
-    props.minSalary !== undefined || props.maxSalary !== undefined;
+ 
   return (
-    <Card styles={classes.job_short__container} >
+    <Card styles={classes.job_short__container}>
       <img
         alt={"company_logo"}
         src={props.logo}
@@ -23,13 +25,13 @@ const JobShort: React.FC<{
       <div className={classes.job_short_cont1}>
         <h1 className={classes.job_short_company}>{props.jobPosition}</h1>
         <h2 className={classes.job_short__salary}>
-          {undisclosedSalary
+          {!props.undisclosed
             ? `${props.minSalary} - ${props.maxSalary}`
             : "Undisclosed Salary"}
         </h2>
       </div>
       <div className={classes.job_short_cont2}>
-        <div>badge</div>
+        <div>{useCountDays(props.date)}</div>
         <h2 className={classes.job_short__location}>{props.location}</h2>
       </div>
     </Card>
