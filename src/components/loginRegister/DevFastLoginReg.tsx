@@ -3,7 +3,7 @@ import Button from "../../UI/Button";
 
 import classes from "./DevFastLoginReg.module.css";
 
-const DevFastLoginReg:React.FC<{act: string}> = (props) => {
+const DevFastLoginReg: React.FC<{ act: string }> = (props) => {
   const fastLogin = [
     {
       id: "Google",
@@ -29,7 +29,11 @@ const DevFastLoginReg:React.FC<{act: string}> = (props) => {
   return (
     <Fragment>
       {fastLogin.map((opt) => (
-        <Button key={opt.id} styles={classes.devLogin_form_login} act={props.act}>
+        <Button
+          key={opt.id}
+          styles={classes.devLogin_form_login}
+          act={props.act}
+        >
           <img
             className={classes.devLogin_form}
             alt={`${opt.id} logo`}

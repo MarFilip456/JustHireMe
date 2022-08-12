@@ -1,9 +1,9 @@
-import { Fragment, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/redux-hooks";
-import { offersActions } from "../../../store/offers-slice";
-import Button from "../../../UI/Button";
+import React, { useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../store/redux-hooks';
+import { offersActions } from '../../../store/offers-slice';
+import Button from '../../../UI/Button';
 
-import classes from "./OfferForm3.module.css";
+import classes from './OfferForm3.module.css';
 
 const OfferForm3: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
@@ -17,7 +17,7 @@ const OfferForm3: React.FC<{
       offersActions.addOffer(
         Object.assign({}, offer, {
           employment: {
-            undisclosed: undisclosed,
+            undisclosed,
             b2b: {
               allowB2b: b2b,
               maxSalary: b2bSalaryMaxRef.current?.value
@@ -25,7 +25,7 @@ const OfferForm3: React.FC<{
                 : 0,
               minSalary: b2bSalaryMinRef.current?.value
                 ? b2bSalaryMinRef.current?.value
-                : 0,
+                : 0
             },
             uop: {
               allowUop: uop,
@@ -34,9 +34,9 @@ const OfferForm3: React.FC<{
                 : 0,
               minSalary: uopSalaryMinRef.current?.value
                 ? uopSalaryMinRef.current?.value
-                : 0,
-            },
-          },
+                : 0
+            }
+          }
         })
       )
     );
@@ -56,7 +56,7 @@ const OfferForm3: React.FC<{
                 : 0,
               minSalary: b2bSalaryMinRef.current?.value
                 ? b2bSalaryMinRef.current?.value
-                : 0,
+                : 0
             },
             uop: {
               allowUop: uop,
@@ -65,17 +65,17 @@ const OfferForm3: React.FC<{
                 : 0,
               minSalary: uopSalaryMinRef.current?.value
                 ? uopSalaryMinRef.current?.value
-                : 0,
-            },
-          },
+                : 0
+            }
+          }
         })
       )
     );
     props.onIncrement(event);
   };
 
-  const defaultAllowedUop = offer.employment?.uop?.minSalary ? true : false;
-  const defaultAllowedB2b = offer.employment?.b2b?.minSalary ? true : false;
+  const defaultAllowedUop = !!offer.employment?.uop?.minSalary;
+  const defaultAllowedB2b = !!offer.employment?.b2b?.minSalary;
   const defaultUndisclosed = offer.employment?.undisclosed
     ? offer.employment.undisclosed
     : false;
@@ -107,7 +107,7 @@ const OfferForm3: React.FC<{
   };
 
   return (
-    <Fragment>
+    <React.Fragment>
       <form className={classes.main_form}>
         <p>Undisclosed salary?</p>
         <div>
@@ -200,7 +200,7 @@ const OfferForm3: React.FC<{
         <Button onClick={previousStepHandler}>Back</Button>
         <Button onClick={nextStephandler}>Next</Button>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
 

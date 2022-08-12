@@ -1,10 +1,12 @@
-import { Fragment } from "react";
-import OfferForm from "../components/emplProfile/form/OfferForm";
+import React from 'react'
+import OfferForm from '../components/emplProfile/form/OfferForm'
 
 const AddOfferPage = () => {
-    return <Fragment>
-        <OfferForm />
-    </Fragment>
+  return (
+    <React.Fragment>
+      <OfferForm />
+    </React.Fragment>
+  )
 }
 
-export default AddOfferPage;
+export default AddOfferPage

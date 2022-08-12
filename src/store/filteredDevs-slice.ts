@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export type devType = {
     name: string;
@@ -20,17 +20,17 @@ interface initialDevsStateType {
 }
 
 const initialState: initialDevsStateType = {
-  devs: [],
+  devs: []
 };
 
 const filteredDevsSlice = createSlice({
-  name: "devs",
+  name: 'devs',
   initialState,
   reducers: {
     setDevs: (state, action) => {
       state.devs = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const devsActions = filteredDevsSlice.actions;

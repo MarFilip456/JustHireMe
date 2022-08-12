@@ -1,52 +1,52 @@
-import { Fragment, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/redux-hooks";
-import { offersActions } from "../../../store/offers-slice";
-import { useNavigate } from "react-router-dom";
-import useAddOffer from "../../../hooks/use-addOffer";
-import Button from "../../../UI/Button";
-import Card from "../../../UI/Card";
-import OfferForm1 from "./OfferForm1";
-import OfferForm2 from "./OfferForm2";
-import OfferForm3 from "./OfferForm3";
-import OfferForm4 from "./OfferForm4";
-import OfferForm5 from "./OfferForm5";
+import React, { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../store/redux-hooks'
+import { offersActions } from '../../../store/offers-slice'
+import { useNavigate } from 'react-router-dom'
+import useAddOffer from '../../../hooks/use-addOffer'
+import Button from '../../../UI/Button'
+import Card from '../../../UI/Card'
+import OfferForm1 from './OfferForm1'
+import OfferForm2 from './OfferForm2'
+import OfferForm3 from './OfferForm3'
+import OfferForm4 from './OfferForm4'
+import OfferForm5 from './OfferForm5'
 
-import classes from "./OfferForm.module.css";
+import classes from './OfferForm.module.css'
 
 const OfferForm = () => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const offer = useAppSelector((state) => state.offers.addingOffer);
-  const addOffer = useAddOffer(offer);
+  const offer = useAppSelector((state) => state.offers.addingOffer)
+  const addOffer = useAddOffer(offer)
 
-  const [formNumber, setFormNumber] = useState(0);
+  const [formNumber, setFormNumber] = useState(0)
   // i assumed there is 5 steps
   const calculateWidth = (value: number) => {
-    return ((value - 1) / 5) * 100;
-  };
+    return ((value - 1) / 5) * 100
+  }
 
   const startHandler = () => {
-    dispatch(offersActions.addOffer({}));
-    setFormNumber((prevState) => prevState + 1);
-  };
+    dispatch(offersActions.addOffer({}))
+    setFormNumber((prevState) => prevState + 1)
+  }
 
   const incrementHandler = () => {
-    setFormNumber((prevState) => prevState + 1);
-  };
+    setFormNumber((prevState) => prevState + 1)
+  }
   const decrementHandler = () => {
-    setFormNumber((prevState) => prevState - 1);
-  };
+    setFormNumber((prevState) => prevState - 1)
+  }
 
   const addOfferHandler = () => {
-    addOffer();
-    navigate("/")
-  };
+    addOffer()
+    navigate('/')
+  }
 
   return (
     <Card styles={classes.main_card}>
       {formNumber === 0 && (
-        <Fragment>
+        <React.Fragment>
           <div className={classes.introduction_title}>
             <h1>Here you can add new offers.</h1>
           </div>
@@ -57,9 +57,9 @@ const OfferForm = () => {
               mistake or a change of mind, you can always take a step back and
               implement any changes.
             </p>
-            <p>Start when you're ready!</p>
+            <p>Start when you`&apos`re ready!</p>
           </div>
-        </Fragment>
+        </React.Fragment>
       )}
       {formNumber !== 0 && (
         <div className={classes.progress_bar__container}>
@@ -67,7 +67,7 @@ const OfferForm = () => {
           <div className={classes.progress_bar__background}>
             <div
               className={classes.progress_bar__fill}
-              style={{ width: calculateWidth(formNumber).toString() + "%" }}
+              style={{ width: calculateWidth(formNumber).toString() + '%' }}
             />
           </div>
         </div>
@@ -116,7 +116,7 @@ const OfferForm = () => {
         </div>
       )}
     </Card>
-  );
-};
+  )
+}
 
-export default OfferForm;
+export default OfferForm

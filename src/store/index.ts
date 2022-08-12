@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import uiReducer from "./ui-slice";
-import offersReducer from "./offers-slice";
-import devsReducer from "./filteredDevs-slice";
+import { configureStore } from '@reduxjs/toolkit';
+import uiReducer from './ui-slice';
+import offersReducer from './offers-slice';
+import devsReducer from './filteredDevs-slice';
 
 const store = configureStore({
   reducer: {

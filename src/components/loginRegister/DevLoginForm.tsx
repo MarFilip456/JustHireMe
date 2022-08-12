@@ -1,27 +1,25 @@
-import React, { useState } from "react";
-import { Fragment } from "react";
-import Button from "../../UI/Button";
-import useInput from "../../hooks/use-input";
-import useSignUpIn from "../../hooks/use-signupin";
-import emailIcon from "../../images/emailIcon.png";
-import keyIcon from "../../images/keyIcon.png";
-import eyeClosedIcon from "../../images/eyeClosedIcon.png";
-import eyeOpenIcon from "../../images/eyeOpenIcon.png";
-import classes from "./DevLoginForm.module.css";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import Button from '../../UI/Button';
+import useInput from '../../hooks/use-input';
+import useSignUpIn from '../../hooks/use-signupin';
+import emailIcon from '../../images/emailIcon.png';
+import keyIcon from '../../images/keyIcon.png';
+import eyeClosedIcon from '../../images/eyeClosedIcon.png';
+import eyeOpenIcon from '../../images/eyeOpenIcon.png';
+import classes from './DevLoginForm.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const DevLoginForm: React.FC<{
   act: string;
 }> = (props) => {
-
   const {
     value: emailInput,
     isTouched: emailIsTouched,
     isValid: emailIsValid,
     valueChangeHandler: correctEmailHandler,
     inputBlurHandler: blurEmailHandler,
-    reset: resetEmailInput,
-  } = useInput("email");
+    reset: resetEmailInput
+  } = useInput('email');
 
   const {
     value: passwordInput,
@@ -29,14 +27,14 @@ const DevLoginForm: React.FC<{
     isValid: passwordIsValid,
     valueChangeHandler: correctPasswordHandler,
     inputBlurHandler: blurPasswordHandler,
-    reset: resetPasswordInput,
-  } = useInput("password");
+    reset: resetPasswordInput
+  } = useInput('password');
 
   const loginRegister = useSignUpIn(
     emailInput,
     passwordInput,
     props.act,
-    true //isDev property, true for devs
+    true // isDev property, true for devs
   );
 
   const [passHidden, setPassHidden] = useState(true);
@@ -46,7 +44,8 @@ const DevLoginForm: React.FC<{
   const emailHasError = !emailIsValid && emailIsTouched;
   const passwordHasError = !passwordIsValid && passwordIsTouched;
 
-  let passwordType = passHidden ? "password" : "text";
+  // eslint-disable-next-line prefer-const
+  let passwordType = passHidden ? 'password' : 'text';
 
   const togglePasswordHandler = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -56,22 +55,22 @@ const DevLoginForm: React.FC<{
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!emailIsValid || !passwordIsValid) {
-      alert("Invalid email or password");
+      alert('Invalid email or password');
     } else {
       loginRegister();
       resetEmailInput();
       resetPasswordInput();
       setPassHidden(true);
-      if (props.act === "Register") {
+      if (props.act === 'Register') {
         navigate(-2);
-      } else if (props.act === "Sign in") {
+      } else if (props.act === 'Sign in') {
         navigate(-1);
       }
     }
   };
 
   return (
-    <Fragment>
+    <>
       <form className={classes.devLogin_form} onSubmit={formSubmitHandler}>
         <div className={classes.devLogin_form_labelContainer}>
           <label htmlFor="email">Email</label>
@@ -120,7 +119,7 @@ const DevLoginForm: React.FC<{
         {passwordHasError && <p>Not valid password!</p>}
         <Button act={props.act}>{props.act}</Button>
       </form>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const useInput = (inputType: string) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [isTouched, setIsTouched] = useState(false);
   const [isValid, setIsValid] = useState(false);
 
@@ -15,18 +15,18 @@ const useInput = (inputType: string) => {
 
   const reset = () => {
     setIsTouched(false);
-    setInputValue("");
+    setInputValue('');
     setIsValid(false);
   };
 
   useEffect(() => {
     const validity = setTimeout(() => {
-      if (inputType === "email") {
-        setIsValid(inputValue.includes("@"));
-      } else if (inputType === "password") {
-        const regex1 = new RegExp("[A-Z]");
-        const regex2 = new RegExp("[a-z]");
-        const regex3 = new RegExp("[0-9]");
+      if (inputType === 'email') {
+        setIsValid(inputValue.includes('@'));
+      } else if (inputType === 'password') {
+        const regex1 = /[A-Z]/;
+        const regex2 = /[a-z]/;
+        const regex3 = /[0-9]/;
 
         setIsValid(
           regex1.test(inputValue) &&
@@ -41,14 +41,13 @@ const useInput = (inputType: string) => {
     };
   }, [inputType, inputValue]);
 
-
   return {
     value: inputValue,
-    isValid: isValid,
-    isTouched: isTouched,
+    isValid,
+    isTouched,
     valueChangeHandler,
     inputBlurHandler,
-    reset,
+    reset
   };
 };
 

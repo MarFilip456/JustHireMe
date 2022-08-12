@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback } from "react";
-import { offersActions } from "../store/offers-slice";
-import { useAppDispatch } from "../store/redux-hooks";
+import { useEffect, useState, useCallback } from 'react';
+import { offersActions } from '../store/offers-slice';
+import { useAppDispatch } from '../store/redux-hooks';
 
 const useFetch = (url: string, type: string) => {
   const dispatch = useAppDispatch();
@@ -12,11 +12,11 @@ const useFetch = (url: string, type: string) => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        throw new Error('Something went wrong');
       }
       const responseData = await response.json();
-      
-      if (type === "all") {
+
+      if (type === 'all') {
         const loadedOffers: object[] = [];
         for (const key in responseData) {
           loadedOffers.push({
@@ -36,11 +36,11 @@ const useFetch = (url: string, type: string) => {
             fullyRemote: responseData[key].fullyRemote,
             employment: responseData[key].employment,
             appliers: responseData[key].appliers,
-            mainLang: responseData[key].mainLang,
+            mainLang: responseData[key].mainLang
           });
         }
         dispatch(offersActions.setOffers(loadedOffers));
-      } else if (type==="one") {
+      } else if (type === 'one') {
         const tempArr = [];
         tempArr.push(responseData);
         dispatch(offersActions.setOffers(tempArr));
@@ -50,7 +50,7 @@ const useFetch = (url: string, type: string) => {
     }
     setLoading(false);
   }, [url, type, dispatch]);
- 
+
   useEffect(() => {
     getThatData();
   }, [getThatData]);

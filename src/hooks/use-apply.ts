@@ -1,20 +1,20 @@
 const useApply = (jobId: string) => {
   const actualApply = async () => {
-    const devId = localStorage.getItem("justHireMeId");
+    const devId = localStorage.getItem('justHireMeId');
     const url = process.env.REACT_APP_API_DATABASE_URL;
     const continueUrl = `/${jobId}/appliers.json`;
     try {
       const response = await fetch(url + continueUrl, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
-          devId: devId,
+          devId: devId
         }),
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Content-Type': 'application/json'
+        }
       });
       if (!response.ok) {
-        alert("Something went wrong");
+        alert('Something went wrong');
       }
     } catch (error) {
       alert(error);

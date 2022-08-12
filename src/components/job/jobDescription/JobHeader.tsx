@@ -1,9 +1,9 @@
-import { useAppSelector } from "../../../store/redux-hooks";
-import { useNavigate } from "react-router-dom";
-import markerIcon from "../../../images/markerIcon.png";
+import { useAppSelector } from '../../../store/redux-hooks';
+import { useNavigate } from 'react-router-dom';
+import markerIcon from '../../../images/markerIcon.png';
 
-import classes from "./JobHeader.module.css";
-import React from "react";
+import classes from './JobHeader.module.css';
+import React from 'react';
 
 const JobHeader = () => {
   const offer = useAppSelector((state) => state.offers.offers[0]);
@@ -13,7 +13,7 @@ const JobHeader = () => {
   const backButtonHandler = (event: React.MouseEvent) => {
     navigate(-1);
   };
-  const arrowUrl = "https://cdn-icons-png.flaticon.com/512/271/271218.png";
+  const arrowUrl = 'https://cdn-icons-png.flaticon.com/512/271/271218.png';
 
   const remoteAtAll = offer.fullyRemote !== undefined;
 
@@ -74,7 +74,7 @@ const JobHeader = () => {
         </div>
         {remoteAtAll && (
           <div className={classes.remote_badge}>
-            <p>{offer.fullyRemote ? "Fully Remote" : "Partly Remote"}</p>
+            <p>{offer.fullyRemote ? 'Fully Remote' : 'Partly Remote'}</p>
           </div>
         )}
       </div>

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export type techStackType = {
   id: string;
@@ -45,11 +45,11 @@ interface initialOffersStateType {
 
 const initialState: initialOffersStateType = {
   offers: [],
-  addingOffer: {},
+  addingOffer: {}
 };
 
 const offersSlice = createSlice({
-  name: "offers",
+  name: 'offers',
   initialState,
   reducers: {
     setOffers: (state, action) => {
@@ -57,8 +57,8 @@ const offersSlice = createSlice({
     },
     addOffer: (state, action) => {
       state.addingOffer = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const offersActions = offersSlice.actions;

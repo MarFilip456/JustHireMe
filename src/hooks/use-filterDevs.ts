@@ -1,21 +1,22 @@
-import { useCallback, useMemo, useEffect } from "react";
-import { devType } from "../store/filteredDevs-slice";
-import { useAppDispatch } from "../store/redux-hooks";
-import { devsActions } from "../store/filteredDevs-slice";
-import { uiActions } from "../store/ui-slice";
+import { useCallback, useMemo, useEffect } from 'react';
+import { devType, devsActions } from '../store/filteredDevs-slice';
+import { useAppDispatch } from '../store/redux-hooks';
+import { uiActions } from '../store/ui-slice';
 
 const useFilterDevs = (desiredIdArr: { id: string }[]) => {
   const dispatch = useAppDispatch();
+  // eslint-disable-next-line prefer-const
   let allDevsArray: devType[] = useMemo(() => [], []);
+  // eslint-disable-next-line prefer-const
   let filteredDevsArray: devType[] = useMemo(() => [], []);
   const actualFilter = useCallback(async () => {
     try {
       dispatch(uiActions.setLoading());
       const response = await fetch(
-        process.env.REACT_APP_API_DATABASE_USERS_URL + "/devs.json"
+        process.env.REACT_APP_API_DATABASE_USERS_URL + '/devs.json'
       );
       if (!response.ok) {
-        alert("response not okay");
+        alert('response not okay');
       }
       const responseData = await response.json();
       for (const key in responseData) {
@@ -31,7 +32,7 @@ const useFilterDevs = (desiredIdArr: { id: string }[]) => {
           gitHub: responseData[key].gitHub,
           linkedIn: responseData[key].linkedIn,
           id: responseData[key].userId,
-          key: responseData[key].userId,
+          key: responseData[key].userId
         });
       }
     } catch (error) {
@@ -50,10 +51,11 @@ const useFilterDevs = (desiredIdArr: { id: string }[]) => {
     dispatch(devsActions.setDevs(filteredDevsArray));
     dispatch(uiActions.setLoading());
   }, [desiredIdArr, allDevsArray, filteredDevsArray, dispatch]);
-  
+
   useEffect(() => {
     actualFilter();
   }, []);
+  // eslint-disable-next-line no-useless-return
   return;
 };
 

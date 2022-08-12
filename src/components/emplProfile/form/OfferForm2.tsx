@@ -1,9 +1,9 @@
-import React, { Fragment, useRef } from "react";
-import Button from "../../../UI/Button";
-import { useAppSelector, useAppDispatch } from "../../../store/redux-hooks";
-import { offersActions } from "../../../store/offers-slice";
+import React, { Fragment, useRef } from 'react';
+import Button from '../../../UI/Button';
+import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
+import { offersActions } from '../../../store/offers-slice';
 
-import classes from "./OfferForm2.module.css";
+import classes from './OfferForm2.module.css';
 
 const OfferForm2: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
@@ -18,7 +18,7 @@ const OfferForm2: React.FC<{
         Object.assign({}, offer, {
           jobPosition: jobPositionRef.current!.value,
           expLevel: experienceRef.current!.value,
-          mainLang: mainLangRef.current!.value,
+          mainLang: mainLangRef.current!.value
         })
       )
     );
@@ -31,39 +31,39 @@ const OfferForm2: React.FC<{
         Object.assign({}, offer, {
           jobPosition: jobPositionRef.current!.value,
           expLevel: experienceRef.current!.value,
-          mainLang: mainLangRef.current!.value,
+          mainLang: mainLangRef.current!.value
         })
       )
     );
     props.onIncrement(event);
   };
 
-  const expLevelArray = ["Junior", "Mid", "Senior", "Expert"];
+  const expLevelArray = ['Junior', 'Mid', 'Senior', 'Expert'];
   const mainLangArray = [
-    "JS",
-    "HTML",
-    "PHP",
-    "Ruby",
-    "Python",
-    "Java",
-    ".Net",
-    "Scala",
-    "C",
-    "Mobile",
-    "Testing",
-    "DevOps",
-    "Admin",
-    "UX/UI",
-    "PM",
-    "Game",
-    "Analytics",
-    "Security",
-    "Data",
-    "Go",
-    "Support",
-    "ERP",
-    "Architecture",
-    "Other",
+    'JS',
+    'HTML',
+    'PHP',
+    'Ruby',
+    'Python',
+    'Java',
+    '.Net',
+    'Scala',
+    'C',
+    'Mobile',
+    'Testing',
+    'DevOps',
+    'Admin',
+    'UX/UI',
+    'PM',
+    'Game',
+    'Analytics',
+    'Security',
+    'Data',
+    'Go',
+    'Support',
+    'ERP',
+    'Architecture',
+    'Other'
   ];
 
   const jobPositionRef = useRef<HTMLInputElement>(null);
@@ -72,7 +72,7 @@ const OfferForm2: React.FC<{
 
   return (
     <Fragment>
-      <form className={classes.main_form} >
+      <form className={classes.main_form}>
         <label htmlFor="jobPosition">Position</label>
         <input
           name="jobPosition"

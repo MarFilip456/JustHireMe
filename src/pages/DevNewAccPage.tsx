@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import { Fragment } from "react";
-import DevFastLoginReg from "../components/loginRegister/DevFastLoginReg";
-import DevLoginForm from "../components/loginRegister/DevLoginForm";
-import SlideShow from "../components/loginRegister/SlideShow";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import DevFastLoginReg from '../components/loginRegister/DevFastLoginReg';
+import DevLoginForm from '../components/loginRegister/DevLoginForm';
+import SlideShow from '../components/loginRegister/SlideShow';
 
-import classes from "./DevNewAccPage.module.css";
+import classes from './DevNewAccPage.module.css';
 
 const DevNewAccPage = () => {
   return (
-    <Fragment>
+    <React.Fragment>
       <div className={classes.devLogin_main}>
         <div className={classes.devLogin_main_split}>
           <h1 className={classes.devLogin_form}>Get started for free!</h1>
@@ -26,7 +26,7 @@ const DevNewAccPage = () => {
         </div>
         <SlideShow />
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
 

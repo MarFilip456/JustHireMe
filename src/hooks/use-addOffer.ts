@@ -1,13 +1,13 @@
-import { offerObject } from "../store/offers-slice";
+import { offerObject } from '../store/offers-slice';
 
 const useAddOffer = (addingOffer: offerObject) => {
-  const employersId = localStorage.getItem("justHireMeId");
+  const employersId = localStorage.getItem('justHireMeId');
   const date = new Date();
 
   const addOffer = async () => {
     try {
-      const response = await fetch(process.env.REACT_APP_API_DATABASE_URL+".json", {
-        method: "POST",
+      await fetch(process.env.REACT_APP_API_DATABASE_URL + '.json', {
+        method: 'POST',
         body: JSON.stringify({
           companyName: addingOffer.companyName,
           description: addingOffer.description,
@@ -23,13 +23,13 @@ const useAddOffer = (addingOffer: offerObject) => {
           techStack: addingOffer.techStack,
           date: {
             day: date.getDate(),
-            month: date.getMonth()+1,
-            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            year: date.getFullYear()
           },
           fullyRemote: addingOffer.fullyRemote,
-          employment: addingOffer.employment,
+          employment: addingOffer.employment
         }),
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Content-Type': 'application/json' }
       });
     } catch (error) {
       console.log(error);

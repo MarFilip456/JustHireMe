@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
 const useGeolocation = (address: string) => {
   const [error, setError] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const useGeolocation = (address: string) => {
       )}&key=${myAPIKey}`;
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error("Something went wrong");
+        throw new Error('Something went wrong');
       }
       const responseData = await response.json();
       setLat(responseData.results[0].geometry.location.lat);
@@ -27,12 +27,11 @@ const useGeolocation = (address: string) => {
     setLoading(false);
   }, [address]);
 
-useEffect(()=>{
+  useEffect(() => {
     getNumbers();
-}, [getNumbers])
+  }, [getNumbers])
 
-return {error, loading, lat, lng}
-
+  return { error, loading, lat, lng }
 };
 
 export default useGeolocation;

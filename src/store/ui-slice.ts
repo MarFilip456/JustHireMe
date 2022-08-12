@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "./index";
+import { createSlice } from '@reduxjs/toolkit';
+import type { RootState } from './index';
 
 interface initialUiStateType {
   visibleSide: boolean;
@@ -11,9 +11,9 @@ interface initialUiStateType {
   isDev: boolean;
 }
 let initialState: initialUiStateType;
-const isTokenInStorage = localStorage.getItem("justHireMeLogin");
-const isDevStorage = localStorage.getItem("justHireMeDev");
-const expirationDate = localStorage.getItem("justHireMeDate");
+const isTokenInStorage = localStorage.getItem('justHireMeLogin');
+const isDevStorage = localStorage.getItem('justHireMeDev');
+const expirationDate = localStorage.getItem('justHireMeDate');
 let isTimeLeft = false;
 if (expirationDate) {
   isTimeLeft =
@@ -28,7 +28,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     isLoading: false,
     isError: false,
     isLoggedIn: true,
-    isDev: true,
+    isDev: true
   };
 } else if (isTokenInStorage && isTimeLeft) {
   initialState = {
@@ -38,13 +38,13 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     isLoading: false,
     isError: false,
     isLoggedIn: true,
-    isDev: false,
+    isDev: false
   };
 } else {
-  localStorage.removeItem("justHireMeLogin");
-  localStorage.removeItem("justHireMeDev");
-  localStorage.removeItem("justHireMeDate");
-  localStorage.removeItem("justHireMeId");
+  localStorage.removeItem('justHireMeLogin');
+  localStorage.removeItem('justHireMeDev');
+  localStorage.removeItem('justHireMeDate');
+  localStorage.removeItem('justHireMeId');
   initialState = {
     visibleSide: false,
     visiblePopup: false,
@@ -52,12 +52,12 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     isLoading: false,
     isError: false,
     isLoggedIn: false,
-    isDev: false,
+    isDev: false
   };
 }
 
 const uiSlice = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState,
   reducers: {
     changeVisSide: (state) => {
@@ -81,7 +81,7 @@ const uiSlice = createSlice({
     setIsDev: (state) => {
       state.isDev = !state.isDev;
     }
-  },
+  }
 });
 
 export const uiActions = uiSlice.actions;

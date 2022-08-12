@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import Button from "../../../UI/Button";
+import React from 'react';
+import Button from '../../../UI/Button';
 
 const OfferForm5: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
@@ -12,13 +12,13 @@ const OfferForm5: React.FC<{
     props.onDecrement(event);
   };
   return (
-    <Fragment>
+    <React.Fragment>
       <p>Fifth form</p>
       <div>
         <Button onClick={previousStepHandler}>Back</Button>
         <Button onClick={nextStephandler}>Next</Button>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
 

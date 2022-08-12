@@ -1,30 +1,31 @@
-import Card from "./Card";
-import Button from "./Button";
-import { useAppDispatch } from "../store/redux-hooks";
-import { uiActions } from "../store/ui-slice";
-import useDeleteOffer from "../hooks/use-deleteOffer";
-import { useParams, useNavigate } from "react-router-dom";
+import React from 'react';
+import Card from './Card';
+import Button from './Button';
+import { useAppDispatch } from '../store/redux-hooks';
+import { uiActions } from '../store/ui-slice';
+import useDeleteOffer from '../hooks/use-deleteOffer';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import classes from "./DeletePopup.module.css";
+import classes from './DeletePopup.module.css';
 
 const DeletePopup = () => {
-    const dispatch = useAppDispatch();
-    const params = useParams<{ jobId: string }>();
-    const navigate = useNavigate();
-    const deleteOffer = useDeleteOffer(params.jobId!);
-const declineHandler = () => {
+  const dispatch = useAppDispatch();
+  const params = useParams<{ jobId: string }>();
+  const navigate = useNavigate();
+  const deleteOffer = useDeleteOffer(params.jobId!);
+  const declineHandler = () => {
     dispatch(uiActions.changeDeletePopup());
-}
-const confirmHandler = () => {
-    navigate("/")
-   deleteOffer();
-}
+  };
+  const confirmHandler = () => {
+    navigate('/');
+    deleteOffer();
+  };
 
   return (
-    <Card styles={classes.delete_card} >
+    <Card styles={classes.delete_card}>
       <p>Do you want to delete this offer?</p>
-      <Button onClick={declineHandler} >No</Button>
-      <Button onClick={confirmHandler} >Yes</Button>
+      <Button onClick={declineHandler}>No</Button>
+      <Button onClick={confirmHandler}>Yes</Button>
     </Card>
   );
 };

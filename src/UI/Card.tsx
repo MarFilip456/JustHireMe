@@ -1,5 +1,5 @@
-import React from "react";
-import classes from "./Card.module.css";
+import React from 'react'
+import classes from './Card.module.css'
 
 const Card: React.FC<{
   styles?: React.CSSProperties;
@@ -13,7 +13,7 @@ const Card: React.FC<{
     >
       {props.children}
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

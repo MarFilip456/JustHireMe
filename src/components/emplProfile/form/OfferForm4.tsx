@@ -1,10 +1,9 @@
-import React, { Fragment, useState } from "react";
-import { useAppSelector, useAppDispatch } from "../../../store/redux-hooks";
-import { offersActions } from "../../../store/offers-slice";
-import Button from "../../../UI/Button";
-import { techStackType } from "../../../store/offers-slice";
+import React, { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
+import { offersActions, techStackType } from '../../../store/offers-slice';
+import Button from '../../../UI/Button';
 
-import classes from "./OfferForm4.module.css";
+import classes from './OfferForm4.module.css';
 
 const OfferForm4: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
@@ -18,7 +17,7 @@ const OfferForm4: React.FC<{
     dispatch(
       offersActions.addOffer(
         Object.assign({}, offer, {
-          techStack: stackArray,
+          techStack: stackArray
         })
       )
     );
@@ -29,15 +28,15 @@ const OfferForm4: React.FC<{
     dispatch(
       offersActions.addOffer(
         Object.assign({}, offer, {
-          techStack: stackArray,
+          techStack: stackArray
         })
       )
     );
     props.onIncrement(event);
   };
 
-  const [techLang, setTechLang] = useState("");
-  const [techValue, setTechValue] = useState("nice to have");
+  const [techLang, setTechLang] = useState('');
+  const [techValue, setTechValue] = useState('nice to have');
 
   const techLangHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTechLang(event.target.value);
@@ -65,11 +64,11 @@ const OfferForm4: React.FC<{
       {
         id: techLang,
         lang: techLang,
-        value: techValue,
-      },
+        value: techValue
+      }
     ]);
-    setTechLang("");
-    setTechValue("nice to have");
+    setTechLang('');
+    setTechValue('nice to have');
   };
 
   const deleteTechStackHandler = (id: string) => {
@@ -77,11 +76,11 @@ const OfferForm4: React.FC<{
   };
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div className={classes.tech_stack__container}>
         <div className={classes.tech_stack__form}>
           <p>Required:</p>
-          <div className={classes.tech_stack__form_input} >
+          <div className={classes.tech_stack__form_input}>
             <label htmlFor="lang">skill</label>
             <input
               type="text"
@@ -90,7 +89,7 @@ const OfferForm4: React.FC<{
               onChange={techLangHandler}
             />
           </div>
-          <div className={classes.tech_stack__form_input} >
+          <div className={classes.tech_stack__form_input}>
             <label htmlFor="value">knowledge</label>
             <select name="value" value={techValue} onChange={techValueHandler}>
               <option value="nice to have">nice to have</option>
@@ -104,7 +103,11 @@ const OfferForm4: React.FC<{
         <Button
           styles={classes.tech_stack__button}
           onClick={
-            techLang.length > 0 ? () => addtechStackhandler(techLang) : () => {}
+            techLang.length > 0
+              ? () => addtechStackhandler(techLang)
+              : () => {
+                  console.log('add fallback function');
+                }
           }
         >
           Add
@@ -132,7 +135,7 @@ const OfferForm4: React.FC<{
         <Button onClick={previousStepHandler}>Back</Button>
         <Button onClick={nextStephandler}>Next</Button>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
 

@@ -5,14 +5,14 @@ import classes from "./EmplNewAccPage.module.css";
 
 const EmplNewAccPage = () => {
   return (
-    <div className={classes.main_page} >
-      <Card styles={classes.main_card} >
+    <div className={classes.main_page}>
+      <Card styles={classes.main_card}>
         <h1>justhire.me</h1>
         <EmplLoginForm act="Register" />
         <p>
           Already registered?
-          <Link to="/empllogin" className={classes.main_card__link} >
-            <span className={classes.main_card__span} >Sign in</span>
+          <Link to="/empllogin" className={classes.main_card__link}>
+            <span className={classes.main_card__span}>Sign in</span>
           </Link>
         </p>
       </Card>

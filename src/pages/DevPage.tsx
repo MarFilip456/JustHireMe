@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import Button from "../UI/Button";
-import Card from "../UI/Card";
-import userIcon from "../images/userIcon.png";
-import LoadingSpinner from "../UI/LoadingSpinner";
-import { useAppSelector } from "../store/redux-hooks";
+import React, { Fragment } from 'react';
+import Button from '../UI/Button';
+import Card from '../UI/Card';
+import userIcon from '../images/userIcon.png';
+import LoadingSpinner from '../UI/LoadingSpinner';
+import { useAppSelector } from '../store/redux-hooks';
 
-import useFilterDevs from "../hooks/use-filterDevs";
+import useFilterDevs from '../hooks/use-filterDevs';
 
 const DevPage = () => {
   const profileUpdateHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -14,36 +14,36 @@ const DevPage = () => {
   const loadingState = useAppSelector((state) => state.ui.isLoading);
   const dev = useAppSelector((state) => state.devs.devs[0]);
   const finishedLoading: boolean = !loadingState && dev !== undefined;
-  const loggedDev = [{ id: localStorage.getItem("justHireMeId")! }];
+  const loggedDev = [{ id: localStorage.getItem('justHireMeId')! }];
   useFilterDevs(loggedDev);
 
   const mainLangArray = [
-    "JS",
-    "HTML",
-    "PHP",
-    "Ruby",
-    "Python",
-    "Java",
-    ".Net",
-    "Scala",
-    "C",
-    "Mobile",
-    "Testing",
-    "DevOps",
-    "Admin",
-    "UX/UI",
-    "PM",
-    "Game",
-    "Analytics",
-    "Security",
-    "Data",
-    "Go",
-    "Support",
-    "ERP",
-    "Architecture",
-    "Other",
+    'JS',
+    'HTML',
+    'PHP',
+    'Ruby',
+    'Python',
+    'Java',
+    '.Net',
+    'Scala',
+    'C',
+    'Mobile',
+    'Testing',
+    'DevOps',
+    'Admin',
+    'UX/UI',
+    'PM',
+    'Game',
+    'Analytics',
+    'Security',
+    'Data',
+    'Go',
+    'Support',
+    'ERP',
+    'Architecture',
+    'Other'
   ];
-  const experienceArray = ["0-1", "1-2", "2-4", "4-6", "6-10", "10+"];
+  const experienceArray = ['0-1', '1-2', '2-4', '4-6', '6-10', '10+'];
 
   return (
     <Fragment>

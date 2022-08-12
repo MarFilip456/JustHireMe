@@ -4,9 +4,9 @@ const useDeleteOffer = (offerId: string) => {
   const deletingOffer = async () => {
     try {
       await fetch(wholeUrl, {
-        method: "DELETE",
+        method: 'DELETE'
       });
-    } catch (error) { 
+    } catch (error) {
       console.log(error);
     }
   };

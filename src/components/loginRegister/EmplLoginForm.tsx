@@ -1,12 +1,12 @@
-import { Fragment } from "react";
-import Button from "../../UI/Button";
-import useInput from "../../hooks/use-input";
-import emailIcon from "../../images/emailIcon.png";
-import keyIcon from "../../images/keyIcon.png";
-import useSignUpIn from "../../hooks/use-signupin";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Button from '../../UI/Button';
+import useInput from '../../hooks/use-input';
+import emailIcon from '../../images/emailIcon.png';
+import keyIcon from '../../images/keyIcon.png';
+import useSignUpIn from '../../hooks/use-signupin';
+import { useNavigate } from 'react-router-dom';
 
-import classes from "./EmplLoginForm.module.css";
+import classes from './EmplLoginForm.module.css';
 
 const EmplLoginForm: React.FC<{ act: string }> = (props) => {
   const {
@@ -15,8 +15,8 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
     isValid: emailIsValid,
     valueChangeHandler: correctEmailHandler,
     inputBlurHandler: blurEmailHandler,
-    reset: resetEmailInput,
-  } = useInput("email");
+    reset: resetEmailInput
+  } = useInput('email');
 
   const {
     value: passwordInput,
@@ -24,8 +24,8 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
     isValid: passwordIsValid,
     valueChangeHandler: correctPasswordHandler,
     inputBlurHandler: blurPasswordHandler,
-    reset: resetPasswordInput,
-  } = useInput("password");
+    reset: resetPasswordInput
+  } = useInput('password');
 
   const emailHasError = !emailIsValid && emailIsTouched;
   const passwordHasError = !passwordIsValid && passwordIsTouched;
@@ -34,14 +34,14 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
     emailInput,
     passwordInput,
     props.act,
-    false  //isDev property, false for employers
+    false // isDev property, false for employers
   );
   const navigate = useNavigate();
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!emailIsValid || !passwordIsValid) {
-      alert("Invalid email or password");
+      alert('Invalid email or password');
     } else {
       loginRegister();
       resetEmailInput();
@@ -51,7 +51,7 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
   };
 
   return (
-    <Fragment>
+    <React.Fragment>
       <form className={classes.form} onSubmit={formSubmitHandler}>
         <label htmlFor="email" />
         <div className={classes.form_split}>
@@ -87,7 +87,7 @@ const EmplLoginForm: React.FC<{ act: string }> = (props) => {
         </div>
         <Button styles={classes.CTA_button}>{props.act}</Button>
       </form>
-    </Fragment>
+    </React.Fragment>
   );
 };
 

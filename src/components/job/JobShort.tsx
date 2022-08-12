@@ -1,8 +1,8 @@
-import React from "react";
-import Card from "../../UI/Card";
-import useCountDays from "../../hooks/use-countDays";
+import React from 'react';
+import Card from '../../UI/Card';
+import useCountDays from '../../hooks/use-countDays';
 
-import classes from "./JobShort.module.css";
+import classes from './JobShort.module.css';
 
 const JobShort: React.FC<{
   logo: string;
@@ -14,11 +14,10 @@ const JobShort: React.FC<{
   id: string;
   date: { year: number; month: number; day: number };
 }> = (props) => {
- 
   return (
     <Card styles={classes.job_short__container}>
       <img
-        alt={"company_logo"}
+        alt={'company_logo'}
         src={props.logo}
         className={classes.job_short_img}
       />
@@ -27,7 +26,7 @@ const JobShort: React.FC<{
         <h2 className={classes.job_short__salary}>
           {!props.undisclosed
             ? `${props.minSalary} - ${props.maxSalary}`
-            : "Undisclosed Salary"}
+            : 'Undisclosed Salary'}
         </h2>
       </div>
       <div className={classes.job_short_cont2}>
