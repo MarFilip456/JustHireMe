@@ -1,0 +1,17 @@
+.popup_backdrop {
+    background: transparent;
+    position: absolute;
+}
+
+.overallDisp {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 6vh auto;
+}
+
+.hiddenScroll {
+    height: 100%;
+    display: grid;
+    grid-template-rows:min-content auto;
+    overflow: hidden;
+}

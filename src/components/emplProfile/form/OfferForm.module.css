@@ -1,0 +1,57 @@
+.main_card {
+  align-self: center;
+  margin: auto;
+  width: 80%;
+  height: 60%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 15% 70% 15%;
+  align-items: center;
+  justify-items: center;
+}
+
+.introduction_title {
+    width: 80%;
+    text-align: center;
+    font-size: 15px;
+}
+
+.introduction__description {
+    width: 80%;
+    text-align: center;
+}
+
+.progress_bar__container {
+    width: 90%;
+    text-align: center;
+}
+
+.progress_bar__background {
+    height: 20px;
+    border-radius: 10px;
+    border: black solid 1px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  
+  .progress_bar__fill {
+    background-color: rgb(138, 43, 226);
+    height: 100%;
+    border-radius: 10px;
+  }
+
+.CTA_button {
+  color: white;
+  width: 40%;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: rgb(255, 64, 129);
+  border: none;
+  border-radius: 15px;
+}
+
+.CTA_button:hover {
+  background-color: rgb(196, 27, 83);
+}

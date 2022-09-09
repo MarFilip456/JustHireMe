@@ -1,0 +1,37 @@
+.login_popup {
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: max-content max-content;
+    grid-auto-flow: column;
+    row-gap: 5px;
+    top: 6%;
+    right: 10%;
+    z-index: 1;
+    padding: 10px;
+    width: 250px;
+}
+
+.login_popup_button {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: min-content max-content;
+    grid-template-rows: 100%;
+    column-gap: 15px;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.login_popup_button img {
+    width: 28px;
+}
+
+.login_popup_button p {
+   font-weight: 500;
+   color: rgb(122,122,122);
+}

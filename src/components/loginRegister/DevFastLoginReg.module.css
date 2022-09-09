@@ -1,0 +1,22 @@
+.devLogin {
+  width: 80%;
+}
+
+.devLogin_form_login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0;
+    border-radius: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+img.devLogin_form {
+  width: 1.8rem;
+  margin: 0 10px;
+}
+
+p.devLogin_form {
+  color: #4e4e4e;
+}

@@ -1,0 +1,46 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.form_split {
+  display: flex;
+  flex-direction: row;
+  margin:  10px 0;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.form_split input {
+  border: none;
+  background-color: transparent;
+}
+
+.form_split input:focus-visible {
+    outline: none;
+  }
+
+.form__image_container {
+  width: 30px;
+  margin-right: 5px;
+}
+
+.form__image_container img {
+  width: 100%;
+}
+
+.CTA_button {
+  width: 100%;
+  padding: 10px 55px;
+  margin: 10px auto 5px auto;
+  background: #ff4081;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.CTA_button:hover {
+  background: #c41b53;
+}

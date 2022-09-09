@@ -1,0 +1,20 @@
+.job_short__container {
+  height: 40px;
+  width: 100%;
+  padding: 8px;
+  margin: 8px;
+  transition-property: height, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}
+
+.expand_container {
+  height: 400px;
+  width: 100%;
+  background: rgb(200, 200, 200);
+  padding: 8px;
+  margin: 8px;
+  transition-property: height, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}

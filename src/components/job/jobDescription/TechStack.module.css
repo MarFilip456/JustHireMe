@@ -1,0 +1,44 @@
+.offer_stack {
+  width: 100%;
+}
+
+.stack {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid #c9c9c933;
+  background-color: white;
+  padding-left: 5%;
+}
+
+.stack h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.stack_single {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 0 5%;
+  grid-auto-flow: row;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid #c9c9c933;
+  background-color: white;
+}
+
+.stack_single p {
+  color: rgba(150, 150, 150);
+}
+
+.stack_container {
+  height: 10px;
+  width: 25%;
+  background-color: rgba(201, 201, 201, 0.4);
+  border-radius: 5px;
+}
+
+.stack_filler {
+  height: 100%;
+  background-color: rgb(255, 64, 129);
+  border-radius: 5px;
+}

@@ -1,0 +1,12 @@
+.sideMenu {
+    box-sizing: border-box;
+    position: absolute;
+    max-width: 30%;
+    height: 100vh;
+    background-image: linear-gradient(rgb(230, 230, 230), rgb(150, 150, 150));
+    right: 0;
+    top: 0;
+    z-index: 2;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
