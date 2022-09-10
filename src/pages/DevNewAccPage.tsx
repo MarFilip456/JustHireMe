@@ -11,7 +11,7 @@ const DevNewAccPage = () => {
         <h2>Register as a developer</h2>
         <SignUpForm role='user' />
         <p>
-          Want to become an employer?
+          Want to be an employer?
           <Link to="/emplregister" className={classes.main_card__link}>
             <span className={classes.main_card__span}>Sign up here</span>
           </Link>

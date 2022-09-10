@@ -1,12 +1,40 @@
 .sideMenu {
     box-sizing: border-box;
-    position: absolute;
-    max-width: 30%;
+    position: fixed;
+    width: 80%;
     height: 100vh;
     background-image: linear-gradient(rgb(230, 230, 230), rgb(150, 150, 150));
     right: 0;
     top: 0;
     z-index: 2;
-    padding-left: 2rem;
-    padding-right: 1rem;
+    transition: right 0.5s ease-in;
+}
+.sideMenu h1 {
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+.button_container {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 20%;
+    justify-content: space-around;
+}
+@media only screen and (min-width: 512px) {
+    .sideMenu {
+        width: 20%;
+        max-width: 200px;
+    }
+    .button_container {
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 20%;
+        justify-content: space-around;
+    }
 }

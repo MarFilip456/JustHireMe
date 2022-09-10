@@ -26,6 +26,7 @@ function App () {
   const isDev = useAppSelector((state) => state.ui.isDev);
   const dispatch = useAppDispatch();
   const appClasses = informationVisible ? classes.hiddenScroll : classes.overallDisp;
+  const sideMenuClasses = sideVisible ? '' : classes.hideSideMenu;
   useEffect(() => {
     if (informationVisible) {
       window.scrollTo(0, 0);
@@ -34,11 +35,8 @@ function App () {
   return (
     <>
       <div className={appClasses}>
-        {sideVisible && (
-          <Modal onClick={() => dispatch(uiActions.changeVisSide())}>
-            <SideMenu />
-          </Modal>
-        )}
+        {sideVisible && <Modal onClick={() => dispatch(uiActions.changeVisSide())} />}
+         <SideMenu styles={sideMenuClasses} />
         {popupVisible && (
           <Modal
             onClick={() => dispatch(uiActions.changeVisPopup())}

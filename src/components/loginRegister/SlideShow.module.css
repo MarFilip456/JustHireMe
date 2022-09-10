@@ -100,5 +100,6 @@
     align-items: center;
     border: 0.5px #ebdede solid;
     border-top: none;
+    background-color: rgba(240, 240, 240, 0.2);
   }
 }

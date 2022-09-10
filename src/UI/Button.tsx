@@ -10,6 +10,7 @@ const Button: React.FC<{
 }> = (props) => {
   return (
     <button
+    id={props.id}
       className={`${classes.button} && ${props.styles}`}
       onClick={props.onClick}
     >

@@ -1,15 +1,16 @@
 .button {
-    background: white;
+    background: rgb(255, 255, 255);
     border: 2px solid  rgb(122, 122, 122);
     margin: 0 8px;
     border-radius: 8px;
     font: inherit;
     font-size: 14px;
+    transition: all 0.5s ease;
 }
 
 .button:hover, 
 .button:active {
     background: rgba(201, 201, 201, 0.2);
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.5s ease;
 }

@@ -10,8 +10,9 @@
   flex-direction: column;
   align-self: center;
   align-items: center;
-  width: max-content;
+  width: 100%;
   background-color: rgb(255, 255, 255);
+  margin: 0;
 }
 .main_card h1 {
   color: rgb(50, 50, 50);
@@ -28,4 +29,20 @@
 
 .main_card__span:hover {
     text-decoration: underline;
+}
+@media only screen and (min-width: 360px) {
+  .main_page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(240, 240, 240);
+  }
+  .main_card {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    width: max-content;
+    background-color: rgb(255, 255, 255);
+  }
 }

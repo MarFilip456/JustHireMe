@@ -1,16 +1,43 @@
 .filter_list {
   box-sizing: border-box;
-  border: 2px solid black;
-  border-radius: 0 0 10px 10px;
-  background-color: rgba(122, 122, 122, 0.5);
+  /* border: 2px solid black; */
+ /*  border-radius: 0 0 10px 10px; */
+  /* background-color: rgba(220, 220, 220, 0.5); */
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  overflow: hidden;
+  justify-content: center;
   align-items: center;
-  margin: 0.5rem;
   height: 100%;
+  padding-left: 2%;
   margin: 0;
 }
 .filter_list button {
-    height: min-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 90%;
+    margin: 0;
+    border-radius: 20px
+}
+
+@media only screen and (min-width: 512px) {
+  .filter_list {
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .filter_list {
+    justify-content: flex-start;
+    padding-left: 1%;
+    align-items: center;
+    margin: 0;
+  }
+  .filter_list button {
+    padding-left: 2%;
+    padding-right: 2%;
+    margin: 0 5px;
+}
 }

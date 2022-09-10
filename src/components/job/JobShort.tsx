@@ -14,6 +14,13 @@ const JobShort: React.FC<{
   id: string;
   date: { year: number; month: number; day: number };
 }> = (props) => {
+  // eslint-disable-next-line no-undef
+  let dateConetnt;
+  if (useCountDays(props.date) === 'New') {
+    dateConetnt = <p className={classes.newOffer} >New</p>
+  } else {
+    dateConetnt = useCountDays(props.date);
+  }
   return (
     <Card styles={classes.job_short__container}>
       <img
@@ -21,6 +28,7 @@ const JobShort: React.FC<{
         src={props.logo}
         className={classes.job_short_img}
       />
+      <div className={classes.job_short__containerTwo} >
       <div className={classes.job_short_cont1}>
         <h1 className={classes.job_short_company}>{props.jobPosition}</h1>
         <h2 className={classes.job_short__salary}>
@@ -30,8 +38,9 @@ const JobShort: React.FC<{
         </h2>
       </div>
       <div className={classes.job_short_cont2}>
-        <div>{useCountDays(props.date)}</div>
+        <div>{dateConetnt}</div>
         <h2 className={classes.job_short__location}>{props.location}</h2>
+      </div>
       </div>
     </Card>
   );
