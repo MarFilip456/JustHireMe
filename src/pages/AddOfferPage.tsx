@@ -1,11 +1,12 @@
-import React from 'react'
 import OfferForm from '../components/emplProfile/form/OfferForm'
+
+import classes from './AddOfferPage.module.css'
 
 const AddOfferPage = () => {
   return (
-    <React.Fragment>
+    <div className={classes.main} >
       <OfferForm />
-    </React.Fragment>
+    </div>
   )
 }
 

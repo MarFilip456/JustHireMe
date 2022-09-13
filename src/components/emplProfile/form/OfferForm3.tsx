@@ -148,6 +148,7 @@ const OfferForm3: React.FC<{
                 <input
                   name="uopSalaryMin"
                   type="number"
+                  step={1000}
                   ref={uopSalaryMinRef}
                   defaultValue={
                     offer.employment?.uop ? offer.employment.uop.minSalary : 0
@@ -197,8 +198,8 @@ const OfferForm3: React.FC<{
         )}
       </form>
       <div>
-        <Button onClick={previousStepHandler}>Back</Button>
-        <Button onClick={nextStephandler}>Next</Button>
+        <Button styles={classes.main_form__button} onClick={previousStepHandler}>Back</Button>
+        <Button styles={classes.main_form__button} onClick={nextStephandler}>Next</Button>
       </div>
     </React.Fragment>
   );

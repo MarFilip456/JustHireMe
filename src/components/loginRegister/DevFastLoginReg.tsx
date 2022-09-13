@@ -31,6 +31,7 @@ const DevFastLoginReg: React.FC<{ act: string }> = (props) => {
   ];
   const clickHandler = (event: React.MouseEvent) => {
     dispatch(uiActions.changeInformationPopup());
+    dispatch(uiActions.setInformationError());
     dispatch(
       uiActions.showInforamtion(
         `Signing in with ${event.currentTarget.id} is not possible yet.`

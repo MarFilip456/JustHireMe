@@ -1,25 +1,33 @@
-import Card from './Card';
-import Button from './Button';
 import { useAppDispatch, useAppSelector } from '../store/redux-hooks';
 import { uiActions } from '../store/ui-slice';
-
-import classes from './InformationPopup.module.css';
-import Modal from '../components/modal/Modal';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const InformationPopup = () => {
   const dispatch = useAppDispatch();
-  const information = useAppSelector((state) => state.ui.information);
-  const confirmHandler = () => {
+  const informationString = useAppSelector(
+    (state) => state.ui.informationString
+  );
+  const openSnackBar = useAppSelector((state) => state.ui.visibleInformation);
+  const isError = useAppSelector((state) => state.ui.informationError);
+  const closeHandler = () => {
     dispatch(uiActions.changeInformationPopup());
+    if (isError) {
+      dispatch(uiActions.setInformationError());
+    }
   };
+  const alertSeverity = isError ? 'error' : 'success';
 
   return (
-    <Modal onClick={confirmHandler}>
-      <Card styles={classes.information_card}>
-        <p>{information}</p>
-        <Button onClick={confirmHandler}>OK</Button>
-      </Card>
-    </Modal>
+    <Snackbar
+      open={openSnackBar}
+      onClose={closeHandler}
+      autoHideDuration={4000}
+    >
+      <Alert severity={alertSeverity} onClose={closeHandler}>
+        {informationString}
+      </Alert>
+    </Snackbar>
   );
 };
 

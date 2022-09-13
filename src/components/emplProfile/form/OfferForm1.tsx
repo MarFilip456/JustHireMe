@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { Fragment, useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
 import { offersActions } from '../../../store/offers-slice';
@@ -12,6 +13,13 @@ const OfferForm1: React.FC<{
 }> = (props) => {
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offers.addingOffer);
+  const companyNameRef = useRef<HTMLInputElement>(null);
+  const companySizeRef = useRef<HTMLInputElement>(null);
+  const companyLocationRef = useRef<HTMLInputElement>(null);
+  const companyRemote1Ref = useRef<HTMLInputElement>(null);
+  const companyRemote2Ref = useRef<HTMLInputElement>(null);
+  const companyRemote3Ref = useRef<HTMLInputElement>(null);
+  const companyLogoRef = useRef<HTMLInputElement>(null);
   const myAPIKey = process.env.REACT_APP_MAP_KEY;
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
     offer.location!
@@ -34,6 +42,7 @@ const OfferForm1: React.FC<{
       )
     );
   };
+
   const onBlurLocationHandler = () => {
     dispatch(
       offersActions.addOffer(
@@ -42,6 +51,33 @@ const OfferForm1: React.FC<{
         })
       )
     );
+  };
+  const onChangeRemoteHandler = () => {
+    if (companyRemote1Ref.current!.checked) {
+      dispatch(
+        offersActions.addOffer(
+          Object.assign({}, offer, {
+            fullyRemote: companyRemote1Ref.current!.checked
+          })
+        )
+      );
+    } else if (companyRemote2Ref.current!.checked) {
+      dispatch(
+        offersActions.addOffer(
+          Object.assign({}, offer, {
+            fullyRemote: !companyRemote2Ref.current!.checked
+          })
+        )
+      );
+    } else if (companyRemote3Ref.current!.checked) {
+      dispatch(
+        offersActions.addOffer(
+          Object.assign({}, offer, {
+            fullyRemote: undefined
+          })
+        )
+      );
+    }
   };
   const onBlurLogoUrlHandler = () => {
     dispatch(
@@ -92,15 +128,10 @@ const OfferForm1: React.FC<{
     props.onIncrement(event);
   };
 
-  const companyNameRef = useRef<HTMLInputElement>(null);
-  const companySizeRef = useRef<HTMLInputElement>(null);
-  const companyLocationRef = useRef<HTMLInputElement>(null);
-  const companyLogoRef = useRef<HTMLInputElement>(null);
-
   return (
     <Fragment>
       <form className={classes.main_form}>
-        <label htmlFor="companyName">Company`&apos`s name</label>
+        <label htmlFor="companyName">Company's name</label>
         <input
           name="companyName"
           type="text"
@@ -109,7 +140,7 @@ const OfferForm1: React.FC<{
           onBlur={onBlurCompanyNameHandler}
         />
         <label htmlFor="companySize">
-          Company`&apos`s size <span>(number of people employed)</span>
+          Company's size
         </label>
         <input
           name="companySize"
@@ -117,18 +148,55 @@ const OfferForm1: React.FC<{
           defaultValue={offer.companySize}
           ref={companySizeRef}
           onBlur={onBlurCompanySizeHandler}
+          placeholder={'Number of people employed'}
         />
         <label htmlFor="location">
-          Office location <span>(Country, City, Street)</span>{' '}
+          Office location
         </label>
         <input
           name="location"
           type="text"
           defaultValue={offer.location}
+          placeholder={'Country, City, Street'}
           ref={companyLocationRef}
           onBlur={onBlurLocationHandler}
         />
-        <label htmlFor="logo">URL to your company`&apos`s logo</label>
+        <div className={classes.remote_div}>
+          <p>Job can be done remotely?</p>
+          <div className={classes.remote_div__labels}>
+            <div>
+              <label className={classes.label_option} htmlFor="remote">Fully</label>
+              <input
+                name="remote"
+                type="radio"
+                defaultChecked={offer.fullyRemote === true}
+                ref={companyRemote1Ref}
+                onChange={onChangeRemoteHandler}
+              />
+            </div>
+            <div>
+              <label className={classes.label_option} htmlFor="remote">Partly</label>
+              <input
+                name="remote"
+                type="radio"
+                defaultChecked={offer.fullyRemote === false}
+                ref={companyRemote2Ref}
+                onChange={onChangeRemoteHandler}
+              />
+            </div>
+            <div>
+              <label className={classes.label_option} htmlFor="remote">Not at all</label>
+              <input
+                name="remote"
+                type="radio"
+                defaultChecked={offer.fullyRemote === undefined}
+                ref={companyRemote3Ref}
+                onChange={onChangeRemoteHandler}
+              />
+            </div>
+          </div>
+        </div>
+        <label htmlFor="logo">URL to your company's logo</label>
         <input
           name="logo"
           type="text"
@@ -138,8 +206,8 @@ const OfferForm1: React.FC<{
         />
       </form>
       <div>
-        <Button onClick={previousStepHandler}>Leave</Button>
-        <Button onClick={nextStepHandler}>Next</Button>
+        <Button styles={classes.main_form__button} onClick={previousStepHandler}>Leave</Button>
+        <Button styles={classes.main_form__button} onClick={nextStepHandler}>Next</Button>
       </div>
     </Fragment>
   );

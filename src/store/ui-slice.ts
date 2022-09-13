@@ -5,7 +5,8 @@ interface initialUiStateType {
   visibleSide: boolean;
   visiblePopup: boolean;
   visibleInformation: boolean;
-  information: string | null;
+  informationString: string | null;
+  informationError: boolean;
   deletePopup: boolean;
   isLoading: boolean;
   isError: boolean;
@@ -27,7 +28,8 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     visibleSide: false,
     visiblePopup: false,
     visibleInformation: false,
-    information: null,
+    informationString: null,
+    informationError: false,
     deletePopup: false,
     isLoading: false,
     isError: false,
@@ -39,7 +41,8 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     visibleSide: false,
     visiblePopup: false,
     visibleInformation: false,
-    information: null,
+    informationString: null,
+    informationError: false,
     deletePopup: false,
     isLoading: false,
     isError: false,
@@ -55,7 +58,8 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
     visibleSide: false,
     visiblePopup: false,
     visibleInformation: false,
-    information: null,
+    informationString: null,
+    informationError: false,
     deletePopup: false,
     isLoading: false,
     isError: false,
@@ -81,7 +85,10 @@ const uiSlice = createSlice({
       state.visibleInformation = !state.visibleInformation;
     },
     showInforamtion: (state, action) => {
-      state.information = action.payload;
+      state.informationString = action.payload;
+    },
+    setInformationError: (state) => {
+      state.informationError = !state.informationError;
     },
     setLoading: (state) => {
       state.isLoading = !state.isLoading;

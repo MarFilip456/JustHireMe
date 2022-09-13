@@ -34,6 +34,7 @@ const useAddOffer = () => {
       })
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
+        dispatch(uiActions.setInformationError());
         dispatch(uiActions.showInforamtion(`Error occured: ${error.message}.`));
       });
   };

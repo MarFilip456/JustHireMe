@@ -13,7 +13,7 @@ export type offerObject = {
   addedBy?: string;
   companySize?: number;
   expLevel?: string;
-  mainLang?: string;
+  mainField?: string;
   requirements?: string;
   id?: string;
   jobPosition?: string;

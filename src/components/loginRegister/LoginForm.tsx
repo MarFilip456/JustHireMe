@@ -47,6 +47,7 @@ const LoginForm: React.FC<{
       })
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
+        dispatch(uiActions.setInformationError());
         dispatch(
           uiActions.showInforamtion(`User does not exist: ${error.message}`)
         );
@@ -79,6 +80,7 @@ const LoginForm: React.FC<{
     event.preventDefault();
     if (!emailIsValid || !passwordIsValid) {
       dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInforamtion('Incorrect password or email!'));
     } else {
       signInFunction();

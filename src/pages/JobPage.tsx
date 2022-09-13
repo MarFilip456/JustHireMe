@@ -25,6 +25,7 @@ const JobPage = () => {
   useEffect(() => {
     if (error) {
       dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInforamtion('Could not fetch offer data!'));
     }
   }, [error]);

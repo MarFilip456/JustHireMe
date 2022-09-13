@@ -87,6 +87,7 @@ const OfferForm4: React.FC<{
               name="lang"
               value={techLang}
               onChange={techLangHandler}
+              placeholder={'required skill...'}
             />
           </div>
           <div className={classes.tech_stack__form_input}>
@@ -132,8 +133,8 @@ const OfferForm4: React.FC<{
         </div>
       </div>
       <div>
-        <Button onClick={previousStepHandler}>Back</Button>
-        <Button onClick={nextStephandler}>Next</Button>
+        <Button styles={classes.main_form__button} onClick={previousStepHandler}>Back</Button>
+        <Button styles={classes.main_form__button} onClick={nextStephandler}>Next</Button>
       </div>
     </React.Fragment>
   );

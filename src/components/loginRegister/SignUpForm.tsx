@@ -62,6 +62,7 @@ const SignUpForm: React.FC<{ role: string }> = (props) => {
     event.preventDefault();
     if (!emailIsValid || !passwordIsValid) {
       dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInforamtion('Invalid email or password!'));
     } else {
       signUpFunction();

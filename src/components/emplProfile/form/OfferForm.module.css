@@ -9,6 +9,7 @@
   align-items: center;
   justify-items: center;
   padding: 0;
+  background-color: rgba(255,255,255);
 }
 
 .introduction_title {
@@ -28,16 +29,16 @@
 }
 
 .progress_bar__background {
-    height: 20px;
+    height: 15px;
     border-radius: 10px;
-    border: black solid 1px;
+    /* border: black solid 1px; */
     width: 100%;
     box-sizing: border-box;
-    background-color: white;
+    background-color: rgba(201, 201, 201, 0.4);
   }
   
   .progress_bar__fill {
-    background-color: rgb(138, 43, 226);
+    background-color: rgb(255, 64, 129);
     height: 100%;
     border-radius: 10px;
   }
@@ -54,6 +55,28 @@
 }
 
 .CTA_button:hover {
+  background-color: rgb(196, 27, 83);
+}
+
+.main_card__button {
+  color: white;
+    background-color: rgb(255, 64, 129);
+    border: none;
+    padding: 5px 10px;
+}
+
+.main_card__addOffer {
+  color: white;
+  background-color: rgb(255, 64, 129);
+  border: none;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+.main_card__addOffer:hover {
+  background-color: rgb(196, 27, 83);
+}
+
+.main_card__button:hover {
   background-color: rgb(196, 27, 83);
 }
 

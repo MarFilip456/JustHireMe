@@ -46,6 +46,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
       setDevAlreadyApplied(true);
     } else if (loggedSomeEmpl) {
       dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInforamtion('As an employer you cannot apply!'));
     } else {
       navigate('/login');

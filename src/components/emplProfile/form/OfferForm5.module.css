@@ -1,0 +1,10 @@
+.main_form__button {
+    color: white;
+    background-color: rgb(255, 64, 129);
+    border: none;
+    padding: 5px 10px;
+  }
+  
+  .main_form__button:hover {
+      background-color: rgb(196, 27, 83);
+  }

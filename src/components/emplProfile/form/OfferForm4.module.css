@@ -16,6 +16,9 @@
   align-items: center;
   grid-area: form;
 }
+.tech_stack__form p {
+  font-weight: 600;
+}
 
 .tech_stack__form_input {
     display: flex;
@@ -25,14 +28,17 @@
 }
 
 .tech_stack__form input {
-    width: 50px;
+    width: 100px;
   }
 
 .tech_stack__button {
   grid-area: button;
+  margin-right: 25px;
 }
 
 .tech_stack__stack {
+  margin-left: 20px;
+  margin-right: 20px;
   grid-area: techStack;
   display: grid;
   grid-auto-flow: column;
@@ -71,4 +77,15 @@
 
 .tech_stack__single button {
   justify-self: flex-end;
+}
+
+.main_form__button {
+  color: white;
+  background-color: rgb(255, 64, 129);
+  border: none;
+  padding: 5px 10px;
+}
+
+.main_form__button:hover {
+    background-color: rgb(196, 27, 83);
 }

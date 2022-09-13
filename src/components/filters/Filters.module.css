@@ -1,14 +1,12 @@
 .filter_list {
   box-sizing: border-box;
-  /* border: 2px solid black; */
- /*  border-radius: 0 0 10px 10px; */
-  /* background-color: rgba(220, 220, 220, 0.5); */
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  align-self: center;
+  height: 80%;
   padding-left: 2%;
   margin: 0;
 }

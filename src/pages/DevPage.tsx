@@ -72,17 +72,22 @@ const DevPage = () => {
       })
       .then((response) => {
         if (response.status === 200) {
+          dispatch(uiActions.showInforamtion('Profile updated!'))
           dispatch(uiActions.changeInformationPopup());
-          dispatch(uiActions.showInforamtion('Profile updated'));
+          /* dispatch(uiActions.changeInformationPopup());
+          dispatch(uiActions.showInforamtion('Profile updated')); */
         }
       })
       .catch((error) => {
+        dispatch(uiActions.showInforamtion(`Error occured: ${error.message}`))
+        dispatch(uiActions.setInformationError());
         dispatch(uiActions.changeInformationPopup());
+        /* dispatch(uiActions.changeInformationPopup());
         dispatch(
           uiActions.showInforamtion(
             `Check if given email is valid: ${error.message}`
           )
-        );
+        ); */
       });
   };
   const devLogoRef = useRef<HTMLInputElement>(null);
