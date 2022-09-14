@@ -33,14 +33,13 @@
   display: flex;
   box-sizing: border-box;
   padding: 0 0.3rem;
-  background-color: black;
-  border-radius: 16px;
-  margin: auto;
+  background-color: black !important;
+  border-radius: 16px !important;
+  margin: auto !important;
 }
 
 .bottomMap__button:hover,
 .bottomMap__button:active {
-  background-color: black;
   border: 2px solid transparent;
 }
 

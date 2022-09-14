@@ -17,7 +17,7 @@ const SearchFilter: React.FC<{ searchFor: string }> = (props) => {
       <div className={classes.container_img}>
         <img src={searchIcon} alt="search_icon" />
       </div>
-      <input type="text" placeholder={`Search by ${searchString!}...`} />
+      <input type="search" placeholder={`Search by ${searchString!}...`} />
     </div>
   );
 };

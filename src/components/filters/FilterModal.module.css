@@ -1,0 +1,26 @@
+.main {
+    width: 80%;
+    height: 90%;
+    z-index: 2;
+    position: absolute;
+    align-self: center;
+    text-align: center;
+    justify-self: center;
+    display: grid;
+    grid-template-rows: 95% 5%;
+    background-color: rgb(255,255,255);
+}
+.main_button {
+    align-self: center;
+    justify-self: center;
+    height: min-content;
+    width: min-content;
+    padding: 0 15px;
+}
+
+@media only screen and (min-width: 768px) {
+    .main {
+        width: 50%;
+        height: 60%;
+    }
+}

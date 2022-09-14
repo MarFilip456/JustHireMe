@@ -17,11 +17,13 @@ import InformationPopup from './UI/InformationPopup';
 import SideMenu from './UI/SideMenu';
 
 import classes from './App.module.css';
+import FilterModal from './components/filters/FilterModal';
 
 function App () {
   const sideVisible = useAppSelector((state) => state.ui.visibleSide);
   const popupVisible = useAppSelector((state) => state.ui.visiblePopup);
   const informationVisible = useAppSelector((state) => state.ui.visibleInformation);
+  const filtersVisible = useAppSelector((state) => state.ui.visibleFilterModal);
   const isLoggedIn = useAppSelector((state) => state.ui.isLoggedIn);
   const isDev = useAppSelector((state) => state.ui.isDev);
   const dispatch = useAppDispatch();
@@ -45,6 +47,7 @@ function App () {
             <LoginPopup />
           </Modal>
         )}
+        {filtersVisible && <FilterModal />}
         {informationVisible && (
             <InformationPopup />
         )}

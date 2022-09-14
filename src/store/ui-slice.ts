@@ -4,6 +4,7 @@ import type { RootState } from './index';
 interface initialUiStateType {
   visibleSide: boolean;
   visiblePopup: boolean;
+  visibleFilterModal: boolean;
   visibleInformation: boolean;
   informationString: string | null;
   informationError: boolean;
@@ -27,6 +28,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
   initialState = {
     visibleSide: false,
     visiblePopup: false,
+    visibleFilterModal: false,
     visibleInformation: false,
     informationString: null,
     informationError: false,
@@ -40,6 +42,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
   initialState = {
     visibleSide: false,
     visiblePopup: false,
+    visibleFilterModal: false,
     visibleInformation: false,
     informationString: null,
     informationError: false,
@@ -57,6 +60,7 @@ if (isTokenInStorage && isTimeLeft && isDevStorage) {
   initialState = {
     visibleSide: false,
     visiblePopup: false,
+    visibleFilterModal: false,
     visibleInformation: false,
     informationString: null,
     informationError: false,
@@ -77,6 +81,9 @@ const uiSlice = createSlice({
     },
     changeVisPopup: (state) => {
       state.visiblePopup = !state.visiblePopup;
+    },
+    changeVisFilter: (state) => {
+      state.visibleFilterModal = !state.visibleFilterModal;
     },
     changeDeletePopup: (state) => {
       state.deletePopup = !state.deletePopup;

@@ -1,0 +1,11 @@
+.filter_button {
+    align-self: center;
+    font-weight: 500;
+    height: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+    .filter_button {
+        width: 30%;
+    }
+}

@@ -52,14 +52,26 @@ export type offerObject = {
   };
 };
 
+export type queryObject = {
+  search?: string;
+  location?:string;
+  mainField?: string;
+  minSalary?: number;
+  maxSalary?: number;
+  employment?: string;
+  experience?: string;
+}
+
 interface initialOffersStateType {
   offers: offerObject[];
   addingOffer: offerObject;
+  queries: queryObject;
 }
 
 const initialState: initialOffersStateType = {
   offers: [],
-  addingOffer: {}
+  addingOffer: {},
+  queries: {}
 };
 
 const offersSlice = createSlice({
@@ -71,6 +83,9 @@ const offersSlice = createSlice({
     },
     addOffer: (state, action) => {
       state.addingOffer = action.payload;
+    },
+    setQueryObject: (state, action) => {
+      state.queries = action.payload;
     }
   }
 });

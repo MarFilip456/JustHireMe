@@ -14,7 +14,7 @@ const SideMenu: React.FC<{ styles: React.CSSProperties }> = (props) => {
   const navigateHandler = (event: React.MouseEvent) => {
     const id = event.currentTarget.id;
     if (id === 'offers') {
-      navigate('/');
+      navigate('/offer');
     }
     if (id === 'signIn') {
       navigate('/login');

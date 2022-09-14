@@ -1,14 +1,14 @@
-import Filters from '../components/filters/Filters';
 import JobsList from '../components/job/JobsList';
 import classes from './MainPage.module.css';
 import Button from '../UI/Button';
 import Map from '../components/map/Map';
 import { useState, useEffect } from 'react';
-import { useAppDispatch } from '../store/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../store/redux-hooks';
 import { useQuery } from 'react-query';
 import { offerObject } from '../store/offers-slice';
-import { getOffers } from '../api/Api';
 import { uiActions } from '../store/ui-slice';
+import axios from 'axios';
+import FilterButton from '../components/filters/FilterButton';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
@@ -21,14 +21,27 @@ const MainPage = () => {
     ? classes.letMapVisible
     : classes.letListVisible;
   const [offers, setOffers] = useState<offerObject[]>([]);
-  // have to clear cache and reload
-  const { data, isLoading, isError } = useQuery('offers', getOffers);
+  const queryObject = useAppSelector((state) => state.offers.queries);
+  const getOffers = () => {
+    return axios
+      .get(`${process.env.REACT_APP_API_ADRESS}/offer`, { params: queryObject })
+      .catch((error) => {
+        dispatch(uiActions.changeInformationPopup());
+        dispatch(uiActions.setInformationError());
+        dispatch(uiActions.showInforamtion(`Could not fetch data! ${error}`));
+      });
+  };
+  const { data, isLoading, isError, refetch } = useQuery('offers', getOffers);
+  useEffect(() => {
+    refetch()
+  }, [queryObject]);
   useEffect(() => {
     if (data !== undefined) {
       setOffers(data.data);
     }
     if (isError) {
       dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInforamtion('Could not fetch data!'));
     }
   }, [data]);
@@ -38,7 +51,7 @@ const MainPage = () => {
 
   return (
     <div className={classes.mainPage}>
-      <Filters />
+      <FilterButton />
       <div className={splitDivClasses}>
         <JobsList data={offers} isLoading={isLoading} />
         <Map

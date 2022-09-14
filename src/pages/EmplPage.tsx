@@ -4,7 +4,7 @@ import { offerObject } from '../store/offers-slice';
 import { useQuery } from 'react-query';
 import { useAppDispatch } from '../store/redux-hooks';
 import { uiActions } from '../store/ui-slice';
-import { getOffers } from '../api/Api';
+import axios from 'axios';
 
 import classes from './EmpPage.module.css';
 
@@ -12,7 +12,15 @@ const EmplPage = () => {
   const dispatch = useAppDispatch();
   const empId = localStorage.getItem('justHireMeId')!;
   const [offers, setOffers] = useState<offerObject[]>([]);
-  // have to clear cache and reload
+  const getOffers = () => {
+    return axios
+      .get(`${process.env.REACT_APP_API_ADRESS}/offer`)
+      .catch((error) => {
+        dispatch(uiActions.changeInformationPopup());
+        dispatch(uiActions.setInformationError());
+        dispatch(uiActions.showInforamtion(`Could not fetch data! ${error}`));
+      });
+  };
   const { data, isLoading, isError } = useQuery('offers', getOffers);
   useEffect(() => {
     if (data !== undefined) {

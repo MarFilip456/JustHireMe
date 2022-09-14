@@ -4,7 +4,12 @@
     border: 2px solid rgb(180,180,180);
     border-radius: 20px;
     padding-left: 5px;
-    height: 80%;
+    transition: background-color 2s ease;
+}
+
+.main:hover {
+    background-color: rgba(220,220,220,0.5);
+    transition: background-color 2s ease;
 }
 
 .main input {

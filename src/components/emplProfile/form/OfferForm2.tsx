@@ -5,6 +5,33 @@ import { offersActions } from '../../../store/offers-slice';
 
 import classes from './OfferForm2.module.css';
 
+export const mainFieldArray = [
+  'JS',
+  'HTML',
+  'PHP',
+  'Ruby',
+  'Python',
+  'Java',
+  '.Net',
+  'Scala',
+  'C',
+  'Mobile',
+  'Testing',
+  'DevOps',
+  'Admin',
+  'UX/UI',
+  'PM',
+  'Game',
+  'Analytics',
+  'Security',
+  'Data',
+  'Go',
+  'Support',
+  'ERP',
+  'Architecture',
+  'Other'
+];
+
 const OfferForm2: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
   onDecrement: (event: React.MouseEvent) => void;
@@ -39,32 +66,6 @@ const OfferForm2: React.FC<{
   };
 
   const expLevelArray = ['Junior', 'Mid', 'Senior', 'Expert'];
-  const mainFieldArray = [
-    'JS',
-    'HTML',
-    'PHP',
-    'Ruby',
-    'Python',
-    'Java',
-    '.Net',
-    'Scala',
-    'C',
-    'Mobile',
-    'Testing',
-    'DevOps',
-    'Admin',
-    'UX/UI',
-    'PM',
-    'Game',
-    'Analytics',
-    'Security',
-    'Data',
-    'Go',
-    'Support',
-    'ERP',
-    'Architecture',
-    'Other'
-  ];
 
   const jobPositionRef = useRef<HTMLInputElement>(null);
   const experienceRef = useRef<HTMLSelectElement>(null);
