@@ -6,6 +6,7 @@ import Button from '../../../UI/Button';
 import axios from 'axios';
 
 import classes from './OfferForm1.module.css';
+import { uiActions } from '../../../store/ui-slice';
 
 const OfferForm1: React.FC<{
   onIncrement: (event: React.MouseEvent) => void;
@@ -89,43 +90,43 @@ const OfferForm1: React.FC<{
     );
   };
   const previousStepHandler = (event: React.MouseEvent) => {
-    axios
-      .get(url)
-      .then((response) => {
-        const responseData = response.data;
-        dispatch(
-          offersActions.addOffer(
-            Object.assign({}, offer, {
-              lat: responseData.results[0].geometry.location.lat,
-              lng: responseData.results[0].geometry.location.lng
-            })
-          )
-        );
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    dispatch(offersActions.addOffer(Object.assign({}, offer, {})));
     props.onDecrement(event);
   };
 
   const nextStepHandler = (event: React.MouseEvent) => {
-    axios
-      .get(url)
-      .then((response) => {
-        const responseData = response.data;
-        dispatch(
-          offersActions.addOffer(
-            Object.assign({}, offer, {
-              lat: responseData.results[0].geometry.location.lat,
-              lng: responseData.results[0].geometry.location.lng
-            })
-          )
-        );
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-    props.onIncrement(event);
+    if (
+      offer.location &&
+      offer.companyName &&
+      offer.companySize &&
+      offer.logo
+    ) {
+      axios
+        .get(url)
+        .then((response) => {
+          const responseData = response.data;
+          dispatch(
+            offersActions.addOffer(
+              Object.assign({}, offer, {
+                lat: responseData.results[0].geometry.location.lat,
+                lng: responseData.results[0].geometry.location.lng
+              })
+            )
+          );
+        })
+        .catch((error) => {
+          dispatch(uiActions.changeInformationPopup());
+          dispatch(uiActions.setInformationError());
+          dispatch(uiActions.showInforamtion(error.message));
+        })
+        .finally(() => {
+          props.onIncrement(event);
+        });
+    } else {
+      dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
+      dispatch(uiActions.showInforamtion('To proceed provide all of the above'));
+    }
   };
 
   return (
@@ -138,10 +139,9 @@ const OfferForm1: React.FC<{
           defaultValue={offer.companyName}
           ref={companyNameRef}
           onBlur={onBlurCompanyNameHandler}
+          placeholder={'Example Sp. z o.o.'}
         />
-        <label htmlFor="companySize">
-          Company's size
-        </label>
+        <label htmlFor="companySize">Company's size</label>
         <input
           name="companySize"
           type="number"
@@ -150,9 +150,7 @@ const OfferForm1: React.FC<{
           onBlur={onBlurCompanySizeHandler}
           placeholder={'Number of people employed'}
         />
-        <label htmlFor="location">
-          Office location
-        </label>
+        <label htmlFor="location">Office location</label>
         <input
           name="location"
           type="text"
@@ -165,7 +163,9 @@ const OfferForm1: React.FC<{
           <p>Job can be done remotely?</p>
           <div className={classes.remote_div__labels}>
             <div>
-              <label className={classes.label_option} htmlFor="remote">Fully</label>
+              <label className={classes.label_option} htmlFor="remote">
+                Fully
+              </label>
               <input
                 name="remote"
                 type="radio"
@@ -175,7 +175,9 @@ const OfferForm1: React.FC<{
               />
             </div>
             <div>
-              <label className={classes.label_option} htmlFor="remote">Partly</label>
+              <label className={classes.label_option} htmlFor="remote">
+                Partly
+              </label>
               <input
                 name="remote"
                 type="radio"
@@ -185,7 +187,9 @@ const OfferForm1: React.FC<{
               />
             </div>
             <div>
-              <label className={classes.label_option} htmlFor="remote">Not at all</label>
+              <label className={classes.label_option} htmlFor="remote">
+                Not at all
+              </label>
               <input
                 name="remote"
                 type="radio"
@@ -203,11 +207,19 @@ const OfferForm1: React.FC<{
           defaultValue={offer.logo}
           ref={companyLogoRef}
           onBlur={onBlurLogoUrlHandler}
+          placeholder={'http://localhost:3000/companyLogo.png'}
         />
       </form>
       <div>
-        <Button styles={classes.main_form__button} onClick={previousStepHandler}>Leave</Button>
-        <Button styles={classes.main_form__button} onClick={nextStepHandler}>Next</Button>
+        <Button
+          styles={classes.main_form__button}
+          onClick={previousStepHandler}
+        >
+          Leave
+        </Button>
+        <Button styles={classes.main_form__button} onClick={nextStepHandler}>
+          Next
+        </Button>
       </div>
     </Fragment>
   );

@@ -9,12 +9,10 @@ export type techStackType = {
 export type offerObject = {
   companyName?: string;
   description?: string;
-  aboutUs?: string;
   addedBy?: string;
   companySize?: number;
   expLevel?: string;
   mainField?: string;
-  requirements?: string;
   id?: string;
   jobPosition?: string;
   location?: string;
@@ -60,6 +58,8 @@ export type queryObject = {
   maxSalary?: number;
   employment?: string;
   experience?: string;
+  undisclosed?: string;
+  remote?: string;
 }
 
 interface initialOffersStateType {

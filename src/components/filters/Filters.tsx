@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useAppDispatch } from '../../store/redux-hooks';
+import React, { useState, useRef } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/redux-hooks';
 import { offersActions } from '../../store/offers-slice';
 import Button from '../../UI/Button';
 import { Slider, styled } from '@mui/material';
@@ -8,6 +8,7 @@ import { mainFieldArray } from '../emplProfile/form/OfferForm2';
 
 import classes from './Filters.module.css';
 import SearchFilter from './SearchFilter';
+import { uiActions } from '../../store/ui-slice';
 
 const ControlInput = styled(MuiInput)`
   width: 50px;
@@ -15,14 +16,12 @@ const ControlInput = styled(MuiInput)`
 
 const Filters = () => {
   const dispatch = useAppDispatch();
-  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    dispatch(offersActions.setQueryObject({ experience: 'Senior' }));
-  };
-  const test2Handler = () => {
-    dispatch(offersActions.setQueryObject({}));
-  };
-  const [value, setValue] = useState<number[]>([0, 50000]);
+  const savedQueryObject = useAppSelector((state) => state.offers.queries);
+
+  const [value, setValue] = useState<number[]>([
+    savedQueryObject.minSalary ? savedQueryObject.minSalary : 0,
+    savedQueryObject.maxSalary ? savedQueryObject.maxSalary : 50000
+  ]);
 
   const handleChange = (
     event: Event,
@@ -45,6 +44,7 @@ const Filters = () => {
       value[1]
     ]);
   };
+
   const handleMinBlur = () => {
     if (value[0] < 0) {
       setValue([0, value[1]]);
@@ -52,12 +52,14 @@ const Filters = () => {
       setValue([0, value[1]]);
     }
   };
+
   const handleMaxInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue([
       value[0],
       event.target.value === '' ? 0 : Number(event.target.value)
     ]);
   };
+
   const handleMaxBlur = () => {
     if (value[1] > 50000) {
       setValue([value[0], 50000]);
@@ -65,13 +67,77 @@ const Filters = () => {
       setValue([value[0], 50000]);
     }
   };
+
+  const searchPositionRef = useRef<HTMLInputElement>(null);
+  const searchLocationRef = useRef<HTMLInputElement>(null);
+  const techRef = useRef<HTMLSelectElement>(null);
+  const employmentRef = useRef<HTMLSelectElement>(null);
+  const experienceRef = useRef<HTMLSelectElement>(null);
+  const undisclosedRef = useRef<HTMLSelectElement>(null);
+  const remoteRef = useRef<HTMLSelectElement>(null);
+
+  const clearFiltersHandler = () => {
+    dispatch(offersActions.setQueryObject({}));
+    setValue([0, 50000]);
+  };
+
+  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(
+      offersActions.setQueryObject({
+        search:
+          searchPositionRef.current?.value.trim().length !== 0
+            ? searchPositionRef.current?.value.trim()
+            : undefined,
+        location:
+          searchLocationRef.current?.value.trim().length !== 0
+            ? searchLocationRef.current?.value
+            : undefined,
+        mainField:
+          techRef.current?.value !== 'All' ? techRef.current?.value : undefined,
+        minSalary: value[0] === 0 ? undefined : value[0],
+        maxSalary: value[1] === 50000 ? undefined : value[1],
+        employment:
+          employmentRef.current?.value !== 'All'
+            ? employmentRef.current?.value
+            : undefined,
+        experience:
+          experienceRef.current?.value !== 'All'
+            ? experienceRef.current?.value
+            : undefined,
+        undisclosed:
+          undisclosedRef.current?.value === 'yes' ? 'true' : undefined,
+        remote:
+          remoteRef.current?.value === 'yes'
+            ? remoteRef.current?.value
+            : undefined
+      })
+    );
+    dispatch(uiActions.changeVisFilter());
+  };
+
   return (
     <div className={classes.filter_list}>
       <form className={classes.filter_list__form} onSubmit={formSubmitHandler}>
-        <SearchFilter searchFor="jobPosition" />
-        <SearchFilter searchFor="location" />
+        <SearchFilter
+          refObject={searchPositionRef}
+          defaultProp={
+            savedQueryObject.search ? savedQueryObject.search : undefined
+          }
+          searchFor="jobPosition"
+        />
+        <SearchFilter
+          refObject={searchLocationRef}
+          defaultProp={savedQueryObject.location}
+          searchFor="location"
+        />
         <label htmlFor="techSelect">Tech</label>
-        <select name="techSelect">
+        <select
+          name="techSelect"
+          ref={techRef}
+          defaultValue={savedQueryObject.mainField}
+        >
+          <option value="All">All</option>
           {mainFieldArray.map((mainField) => (
             <option key={mainFieldArray.indexOf(mainField)} value={mainField}>
               {mainField}
@@ -88,6 +154,7 @@ const Filters = () => {
             disableSwap
             min={0}
             max={50000}
+            step={1000}
           />
           <div className={classes.form_input_salary__numbers}>
             <ControlInput
@@ -115,30 +182,46 @@ const Filters = () => {
           </div>
         </div>
         <label htmlFor="employment">Form of employment</label>
-        <select name="employment">
-          <option>B2B</option>
-          <option>UoP</option>
-          <option>All</option>
+        <select
+          name="employment"
+          ref={employmentRef}
+          defaultValue={savedQueryObject.employment}
+        >
+          <option value="All">All</option>
+          <option value="b2b">B2B</option>
+          <option value="uop">UoP</option>
         </select>
         <label htmlFor="experience">Seniority</label>
-        <select name="experience">
-          <option>Junior</option>
-          <option>Mid</option>
-          <option>Senior</option>
+        <select
+          name="experience"
+          ref={experienceRef}
+          defaultValue={savedQueryObject.experience}
+        >
+          <option value="All">All</option>
+          <option value="Junior">Junior</option>
+          <option value="Mid">Mid</option>
+          <option value="Senior">Senior</option>
+          <option value="Expert">Expert</option>
         </select>
         <label htmlFor="undisclosed">Undislosed salary</label>
-        <select name="undisclosed">
-          <option>yes</option>
-          <option>no</option>
+        <select
+          name="undisclosed"
+          ref={undisclosedRef}
+          defaultValue={
+            savedQueryObject.undisclosed !== undefined ? 'yes' : 'no'
+          }
+        >
+          <option value="no">no</option>
+          <option value="yes">yes</option>
         </select>
         <label htmlFor="remote">Remote</label>
-        <select name="remote">
-          <option>yes</option>
-          <option>no</option>
+        <select name="remote" ref={remoteRef} defaultValue={savedQueryObject.remote} >
+          <option value='All' >not valid</option>
+          <option value='yes' >yes</option>
         </select>
         <Button styles={classes.CTA_button}>Filter</Button>
       </form>
-      <Button onClick={test2Handler}>Clear filters</Button>
+      <Button onClick={clearFiltersHandler}>Clear filters</Button>
     </div>
   );
 };

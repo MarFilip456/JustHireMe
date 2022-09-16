@@ -4,6 +4,7 @@
 }
 
 .main_description {
+  width: 100%;
   display: grid;
   grid-template-areas: "1"
   "2"

@@ -2,6 +2,7 @@ import React, { Fragment, useRef } from 'react';
 import Button from '../../../UI/Button';
 import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
 import { offersActions } from '../../../store/offers-slice';
+import { uiActions } from '../../../store/ui-slice';
 
 import classes from './OfferForm2.module.css';
 
@@ -39,11 +40,20 @@ const OfferForm2: React.FC<{
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offers.addingOffer);
 
+  const onBlurPositionHandler = () => {
+    dispatch(
+      offersActions.addOffer(
+        Object.assign({}, offer, {
+          jobPosition: jobPositionRef.current!.value
+        })
+      )
+    );
+  };
+
   const previousStepHandler = (event: React.MouseEvent) => {
     dispatch(
       offersActions.addOffer(
         Object.assign({}, offer, {
-          jobPosition: jobPositionRef.current!.value,
           expLevel: experienceRef.current!.value,
           mainField: mainFieldRef.current!.value
         })
@@ -53,16 +63,23 @@ const OfferForm2: React.FC<{
   };
 
   const nextStephandler = (event: React.MouseEvent) => {
-    dispatch(
-      offersActions.addOffer(
-        Object.assign({}, offer, {
-          jobPosition: jobPositionRef.current!.value,
-          expLevel: experienceRef.current!.value,
-          mainField: mainFieldRef.current!.value
-        })
-      )
-    );
-    props.onIncrement(event);
+    if (offer.jobPosition) {
+      dispatch(
+        offersActions.addOffer(
+          Object.assign({}, offer, {
+            expLevel: experienceRef.current!.value,
+            mainField: mainFieldRef.current!.value
+          })
+        )
+      );
+      props.onIncrement(event);
+    } else {
+      dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
+      dispatch(
+        uiActions.showInforamtion('To proceed provide all of the above')
+      );
+    }
   };
 
   const expLevelArray = ['Junior', 'Mid', 'Senior', 'Expert'];
@@ -74,16 +91,17 @@ const OfferForm2: React.FC<{
   return (
     <Fragment>
       <form className={classes.main_form}>
-        <div className={classes.main_form__container} >
+        <div className={classes.main_form__container}>
           <label htmlFor="jobPosition">Position</label>
           <input
             name="jobPosition"
             type="text"
             defaultValue={offer.jobPosition}
             ref={jobPositionRef}
+            onBlur={onBlurPositionHandler}
           />
         </div>
-        <div className={classes.main_form__container} >
+        <div className={classes.main_form__container}>
           <label htmlFor="mainLang">Main language</label>
           <select
             name="mainLang"
@@ -97,7 +115,7 @@ const OfferForm2: React.FC<{
             ))}
           </select>
         </div>
-        <div className={classes.main_form__container} >
+        <div className={classes.main_form__container}>
           <label htmlFor="experience">Experience</label>
           <select
             name="experience"
@@ -113,8 +131,15 @@ const OfferForm2: React.FC<{
         </div>
       </form>
       <div>
-        <Button styles={classes.main_form__button} onClick={previousStepHandler}>Back</Button>
-        <Button styles={classes.main_form__button} onClick={nextStephandler}>Next</Button>
+        <Button
+          styles={classes.main_form__button}
+          onClick={previousStepHandler}
+        >
+          Back
+        </Button>
+        <Button styles={classes.main_form__button} onClick={nextStephandler}>
+          Next
+        </Button>
       </div>
     </Fragment>
   );

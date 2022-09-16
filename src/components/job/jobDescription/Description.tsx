@@ -1,24 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { offerObject } from '../../../store/offers-slice';
+import parse from 'html-react-parser';
 
 import classes from './Description.module.css';
 
 const Description: React.FC<{job: offerObject}> = (props) => {
   const { job } = props;
   return (
-    <Fragment>
       <div className={classes.offer_description}>
-        <div>{job.aboutUs}AboutUs</div>
-        <div>
-          description
-          {job.description}
-        </div>
-        <div>
-          requirements
-          {job.requirements}
-        </div>
+          { job.description ? parse(job.description!) : 'No description provided'}
       </div>
-    </Fragment>
   );
 };
 

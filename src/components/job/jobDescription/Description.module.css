@@ -1,8 +1,15 @@
 .offer_description {
-    margin: 150px 0;
-    text-align: center;
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px 5% 20px 5%;
+  border-radius: 5px;
+  border: 2px solid #c9c9c933;
+  background-color: rgb(255, 255, 255);
 }
 
-.offer_description div {
-    margin: 150px 0;
+@media only screen and (min-width: 768px) {
+  .offer_description {
+    padding: 20px 30% 20px 5%;
+  }
 }

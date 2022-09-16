@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/redux-hooks';
 import { offersActions } from '../../../store/offers-slice';
+import { uiActions } from '../../../store/ui-slice';
 import Button from '../../../UI/Button';
 
 import classes from './OfferForm3.module.css';
@@ -44,34 +45,42 @@ const OfferForm3: React.FC<{
   };
 
   const nextStephandler = (event: React.MouseEvent) => {
-    dispatch(
-      offersActions.addOffer(
-        Object.assign({}, offer, {
-          employment: {
-            undisclosed,
-            b2b: {
-              allowB2b: b2b,
-              maxSalary: b2bSalaryMaxRef.current?.value
-                ? b2bSalaryMaxRef.current?.value
-                : 0,
-              minSalary: b2bSalaryMinRef.current?.value
-                ? b2bSalaryMinRef.current?.value
-                : 0
-            },
-            uop: {
-              allowUop: uop,
-              maxSalary: uopSalaryMaxRef.current?.value
-                ? uopSalaryMaxRef.current?.value
-                : 0,
-              minSalary: uopSalaryMinRef.current?.value
-                ? uopSalaryMinRef.current?.value
-                : 0
+    if (!undisclosed && !b2b && !uop) {
+      dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
+      dispatch(
+        uiActions.showInforamtion('To proceed provide all information')
+      );
+    } else {
+      dispatch(
+        offersActions.addOffer(
+          Object.assign({}, offer, {
+            employment: {
+              undisclosed,
+              b2b: {
+                allowB2b: b2b,
+                maxSalary: b2bSalaryMaxRef.current?.value
+                  ? b2bSalaryMaxRef.current?.value
+                  : 0,
+                minSalary: b2bSalaryMinRef.current?.value
+                  ? b2bSalaryMinRef.current?.value
+                  : 0
+              },
+              uop: {
+                allowUop: uop,
+                maxSalary: uopSalaryMaxRef.current?.value
+                  ? uopSalaryMaxRef.current?.value
+                  : 0,
+                minSalary: uopSalaryMinRef.current?.value
+                  ? uopSalaryMinRef.current?.value
+                  : 0
+              }
             }
-          }
-        })
-      )
-    );
-    props.onIncrement(event);
+          })
+        )
+      );
+      props.onIncrement(event);
+    }
   };
 
   const defaultAllowedUop = !!offer.employment?.uop?.minSalary;
@@ -198,8 +207,15 @@ const OfferForm3: React.FC<{
         )}
       </form>
       <div>
-        <Button styles={classes.main_form__button} onClick={previousStepHandler}>Back</Button>
-        <Button styles={classes.main_form__button} onClick={nextStephandler}>Next</Button>
+        <Button
+          styles={classes.main_form__button}
+          onClick={previousStepHandler}
+        >
+          Back
+        </Button>
+        <Button styles={classes.main_form__button} onClick={nextStephandler}>
+          Next
+        </Button>
       </div>
     </React.Fragment>
   );

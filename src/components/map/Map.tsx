@@ -30,7 +30,7 @@ const Map: React.FC<{
         options={ { disableDefaultUI: true } }
       >
         {latLngArray.map((location) => {
-          return <Marker key={location.lat.toString().concat(location.lng.toString())} position={{ lat: location.lat, lng: location.lng }} />
+          return <Marker key={location.lat.toString().concat(location.lng.toString()).concat(Math.random().toString())} position={{ lat: location.lat, lng: location.lng }} />
         })}
       </GoogleMap>
     </LoadScript>
