@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { offerObject } from '../../store/offers-slice';
+import useAddOffer from '../../hooks/use-addOffer';
 import JobHeader from './jobDescription/JobHeader';
 import Rectangles from './jobDescription/Rectangles';
 import Map from '../map/Map';
@@ -27,11 +28,16 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   const loggedSomeEmpl = !isDev && isLoggedIn;
   const loggedDev = isDev && isLoggedIn;
 
+  const addOffer = useAddOffer();
+
   // checking if user has already applied for posiion
   const [devAlreadyApplied, setDevAlreadyApplied] = useState(false);
 
   useEffect(() => {
     let i: number;
+    if (job.appliers === undefined) {
+      return;
+    }
     for (i = 0; i < job.appliers!.length; i++) {
       if (job.appliers![i].id === loggedUser) {
         setDevAlreadyApplied(true);
@@ -47,10 +53,15 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
     } else if (loggedSomeEmpl) {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
-      dispatch(uiActions.showInforamtion('As an employer you cannot apply!'));
+      dispatch(uiActions.showInformation('As an employer you cannot apply!'));
     } else {
       navigate('/login');
     }
+  };
+
+  const addOfferHandler = () => {
+    addOffer();
+    navigate('/');
   };
 
   const deleteHandler = () => {
@@ -74,14 +85,23 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
         </div>
         <TechStack job={job} />
         <Description job={job} />
-        {devAlreadyApplied && <p>You applied for this position</p>}
+        {devAlreadyApplied && (
+          <p className={classes.main_description__info}>
+            You applied for this position
+          </p>
+        )}
         {!devAlreadyApplied && (
-          <Button styles={classes.CTA_button} onClick={CTAHandler}>
-            Apply
+          <Button
+            styles={classes.CTA_button}
+            onClick={params.jobId === 'preview' ? addOfferHandler : CTAHandler}
+          >
+            {params.jobId === 'preview' ? 'Add offer' : 'Apply'}
           </Button>
         )}
         {loggedExactEmpl && (
-          <Button styles={classes.delete_button} onClick={deleteHandler}>Delete offer</Button>
+          <Button styles={classes.delete_button} onClick={deleteHandler}>
+            Delete offer
+          </Button>
         )}
         {loggedExactEmpl && <AppliersList job={job} />}
       </div>

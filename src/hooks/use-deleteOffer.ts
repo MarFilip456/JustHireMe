@@ -15,13 +15,13 @@ const useDeleteOffer = (offerId: string) => {
       .then((response) => {
         if (response.status === 200) {
           dispatch(uiActions.changeInformationPopup());
-          dispatch(uiActions.showInforamtion('Offer deleted!'));
+          dispatch(uiActions.showInformation('Offer deleted!'));
         }
         useQuery.invalidateQueries(['offers']);
       })
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
-        dispatch(uiActions.showInforamtion(`Error occured: ${error.message}.`));
+        dispatch(uiActions.showInformation(`Error occured: ${error.message}.`));
       });
   };
   return deletingOffer;

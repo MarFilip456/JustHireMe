@@ -6,7 +6,7 @@ import { useAppDispatch } from '../store/redux-hooks';
 import { uiActions } from '../store/ui-slice';
 import axios from 'axios';
 
-import classes from './EmpPage.module.css';
+import classes from './EmplPage.module.css';
 
 const EmplPage = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,7 @@ const EmplPage = () => {
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
         dispatch(uiActions.setInformationError());
-        dispatch(uiActions.showInforamtion(`Could not fetch data! ${error}`));
+        dispatch(uiActions.showInformation(`Could not fetch data! ${error}`));
       });
   };
   const { data, isLoading, isError } = useQuery('offers', getOffers);
@@ -35,7 +35,7 @@ const EmplPage = () => {
     }
     if (isError) {
       dispatch(uiActions.changeInformationPopup());
-      dispatch(uiActions.showInforamtion('Couldt not fetch data!'))
+      dispatch(uiActions.showInformation('Couldt not fetch data!'))
     }
   }, [data]);
   return (

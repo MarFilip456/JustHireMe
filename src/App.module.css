@@ -6,7 +6,7 @@
 .overallDisp {
     height: 100%;
     display: grid;
-    grid-template-rows: 6vh auto;
+    grid-template-rows: 5% 95%;
 }
 
 .hiddenScroll {

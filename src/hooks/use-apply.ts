@@ -20,7 +20,7 @@ const useApply = (jobId: string) => {
         if (response.status === 200) {
           dispatch(uiActions.changeInformationPopup());
           dispatch(
-            uiActions.showInforamtion(
+            uiActions.showInformation(
               `You applied for position ${response.data.jobPosition} at ${response.data.companyName}`
             )
           );
@@ -29,7 +29,7 @@ const useApply = (jobId: string) => {
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
         dispatch(uiActions.setInformationError());
-        dispatch(uiActions.showInforamtion(`Error occured: ${error.message}.`));
+        dispatch(uiActions.showInformation(`Error occured: ${error.message}.`));
       });
   };
   return actualApply;

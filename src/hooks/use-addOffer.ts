@@ -29,13 +29,13 @@ const useAddOffer = () => {
         useQuery.invalidateQueries(['offers']);
         if (response.status === 201) {
           dispatch(uiActions.changeInformationPopup());
-          dispatch(uiActions.showInforamtion('Offer added!'));
+          dispatch(uiActions.showInformation('Offer added!'));
         }
       })
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
         dispatch(uiActions.setInformationError());
-        dispatch(uiActions.showInforamtion(`Error occured: ${error.message}.`));
+        dispatch(uiActions.showInformation(`Error occured: ${error.message}.`));
       });
   };
   return addOffer;

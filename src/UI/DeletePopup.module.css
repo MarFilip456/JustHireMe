@@ -3,4 +3,17 @@
     position: absolute;
     align-self: center;
     justify-self: center;
+    background-color: rgb(255,255,255);
+    text-align: center;
+}
+
+.delete_card__button {
+    background-color: rgb(255, 64, 129);
+    color: rgb(255,255,255);
+    padding: 5px 10px;
+    border: none;
+}
+
+.delete_card__button:hover {
+    background-color: rgb(196, 27, 83);
 }

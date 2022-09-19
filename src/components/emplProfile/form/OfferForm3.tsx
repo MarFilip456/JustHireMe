@@ -49,7 +49,7 @@ const OfferForm3: React.FC<{
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
       dispatch(
-        uiActions.showInforamtion('To proceed provide all information')
+        uiActions.showInformation('To proceed provide all information')
       );
     } else {
       dispatch(

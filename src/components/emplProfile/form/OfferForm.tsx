@@ -20,7 +20,7 @@ const OfferForm = () => {
   const addOffer = useAddOffer();
 
   const [formNumber, setFormNumber] = useState(0);
-  // i assumed there is 5 steps
+
   const calculateWidth = (value: number) => {
     return ((value - 1) / 5) * 100;
   };
@@ -36,6 +36,10 @@ const OfferForm = () => {
   const decrementHandler = () => {
     setFormNumber((prevState) => prevState - 1);
   };
+
+  const previewHandler = () => {
+    navigate('/jobdescr/preview')
+  }
 
   const addOfferHandler = () => {
     addOffer();
@@ -100,7 +104,6 @@ const OfferForm = () => {
           onDecrement={decrementHandler}
         />
       )}
-      {formNumber === 6 && <p>End</p>}
 
       {formNumber === 0 && (
         <Button styles={classes.CTA_button} onClick={startHandler}>
@@ -108,10 +111,13 @@ const OfferForm = () => {
         </Button>
       )}
       {formNumber === 6 && (
+        <>
+        <p>You finished all steps!</p>
         <div>
           <Button styles={classes.main_card__button} onClick={decrementHandler}>Back</Button>
+          <Button styles={classes.main_card__button} onClick={previewHandler} >Preview</Button>
           <Button styles={classes.main_card__addOffer} id='addOffer' onClick={addOfferHandler}>Add offer!</Button>
-        </div>
+        </div></>
       )}
     </Card>
   );

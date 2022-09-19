@@ -16,7 +16,7 @@ const OfferForm5: React.FC<{
     if (offerDescription === undefined) {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
-      dispatch(uiActions.showInforamtion('Fill in the description for your offer!'))
+      dispatch(uiActions.showInformation('Fill in the description for your offer!'))
     } else {
       props.onIncrement(event);
     }

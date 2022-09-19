@@ -41,10 +41,10 @@ const DevExtended: React.FC<{
         {!props.aboutYou && <p>User did not fill this area.</p>}
         <h3>GitHub Account</h3>
         {props.gitHub && <p>{props.gitHub}</p>}
-        {!props.gitHub && <p>User did not provide his GitHub account</p>}
+        {!props.gitHub && <p>Not provided by applyer</p>}
         <h3>LinkedIn page</h3>
         {props.linkedIn && <p>{props.linkedIn}</p>}
-        {!props.linkedIn && <p>User did not provide his LinkedIn page</p>}
+        {!props.linkedIn && <p>Not provided by applyer</p>}
       </div>
     </div>
   );

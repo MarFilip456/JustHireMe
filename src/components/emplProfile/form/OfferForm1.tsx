@@ -117,15 +117,23 @@ const OfferForm1: React.FC<{
         .catch((error) => {
           dispatch(uiActions.changeInformationPopup());
           dispatch(uiActions.setInformationError());
-          dispatch(uiActions.showInforamtion(error.message));
+          dispatch(
+            uiActions.showInformation(
+              `Could not find entered location!: ${error.message}`
+            )
+          );
         })
         .finally(() => {
-          props.onIncrement(event);
+          if (offer.lat && offer.lng) {
+            props.onIncrement(event);
+          }
         });
     } else {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
-      dispatch(uiActions.showInforamtion('To proceed provide all of the above'));
+      dispatch(
+        uiActions.showInformation('To proceed provide all of the above')
+      );
     }
   };
 
@@ -218,7 +226,7 @@ const OfferForm1: React.FC<{
           Leave
         </Button>
         <Button styles={classes.main_form__button} onClick={nextStepHandler}>
-          Next
+          {offer.lat && offer.lng ? 'Next' : 'Check entered location'}
         </Button>
       </div>
     </Fragment>

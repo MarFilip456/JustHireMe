@@ -4,7 +4,7 @@
 
 .list {
     list-style: none;
-    width: 80%;
+    width: 100%;
     padding: 0;
     margin: auto;
 }
@@ -12,4 +12,14 @@
 .list_item {
     display: block;
     width: 100%;
+}
+
+.information {
+    text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .list {
+        width: 80%
+    }
 }

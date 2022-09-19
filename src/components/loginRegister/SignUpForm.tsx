@@ -52,9 +52,11 @@ const SignUpForm: React.FC<{ role: string }> = (props) => {
       .then((response) => {
         navigate('/login');
         return response.data;
-      }).catch((error) => {
+      })
+      .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
-        dispatch(uiActions.showInforamtion(`${error.message}`));
+        dispatch(uiActions.setInformationError());
+        dispatch(uiActions.showInformation(`${error.message}`));
       });
   };
 
@@ -63,7 +65,7 @@ const SignUpForm: React.FC<{ role: string }> = (props) => {
     if (!emailIsValid || !passwordIsValid) {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
-      dispatch(uiActions.showInforamtion('Invalid email or password!'));
+      dispatch(uiActions.showInformation('Invalid email or password!'));
     } else {
       signUpFunction();
       resetEmailInput();
@@ -73,7 +75,7 @@ const SignUpForm: React.FC<{ role: string }> = (props) => {
 
   return (
     <React.Fragment>
-      <form className={classes.form} onSubmit={formSubmitHandler}>
+      <form className={classes.form} onSubmit={formSubmitHandler} autoComplete='off' >
         <label htmlFor="email" />
         <div className={classes.form_split}>
           <div className={classes.form__image_container}>
@@ -88,8 +90,14 @@ const SignUpForm: React.FC<{ role: string }> = (props) => {
             type="email"
             placeholder="E-mail"
           />
-          {emailHasError && <p>Invalid email!</p>}
         </div>
+        {emailHasError
+          ? (
+          <p className={classes.invalid_input}>Invalid email!</p>
+            )
+          : (
+          <p className={classes.invalid_input_invisible}>lorem</p>
+            )}
         <label htmlFor="password" />
         <div className={classes.form_split}>
           <div className={classes.form__image_container}>
@@ -104,8 +112,14 @@ const SignUpForm: React.FC<{ role: string }> = (props) => {
             type="password"
             placeholder="Password"
           />
-          {passwordHasError && <p>Invalid password!</p>}
         </div>
+        {passwordHasError
+          ? (
+          <p className={classes.invalid_input}>Invalid password!</p>
+            )
+          : (
+          <p className={classes.invalid_input_invisible}>lorem</p>
+            )}
         <Button styles={classes.CTA_button}>Register</Button>
       </form>
     </React.Fragment>

@@ -91,7 +91,7 @@ const uiSlice = createSlice({
     changeInformationPopup: (state) => {
       state.visibleInformation = !state.visibleInformation;
     },
-    showInforamtion: (state, action) => {
+    showInformation: (state, action) => {
       state.informationString = action.payload;
     },
     setInformationError: (state) => {

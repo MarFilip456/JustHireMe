@@ -1,4 +1,4 @@
-form.devLogin_form {
+.devLogin_form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -72,15 +72,25 @@ form.devLogin_form Button:hover {
 }
 
 div.devLogin_form_inputContainer button {
-    padding: 0;
-    margin: 0 4px;
-    background: transparent;
-    border-radius: 0;
-    border: none;
-    color: #ccc;
-  }
+  padding: 0;
+  margin: 0 4px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  color: #ccc;
+}
 
-  div.devLogin_form_inputContainer button:hover {
-      background: none;
-    }
-  
+div.devLogin_form_inputContainer button:hover {
+  background: none;
+}
+
+.invalid_input {
+  margin: 0;
+  color: rgb(255,0,0);
+  font-size: small;
+}
+.invalid_input_invisible {
+  visibility: hidden;
+  margin: 0;
+  font-size: small;
+}

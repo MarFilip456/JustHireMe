@@ -9,7 +9,7 @@ const AppliersList: React.FC<{ job: offerObject }> = (props) => {
 
   return (
     <Fragment>
-      <h3 className={classes.header} >List of devs that applied</h3>
+      <h3 className={classes.header}>List of devs that applied</h3>
       <ul className={classes.list}>
         {appliers &&
           appliers!.map((dev) => (
@@ -30,7 +30,9 @@ const AppliersList: React.FC<{ job: offerObject }> = (props) => {
             </li>
           ))}
       </ul>
-      {appliers!.length === 0 && <p>No one applied.</p>}
+      {appliers!.length === 0 && (
+        <p className={classes.information}>No one applied yet.</p>
+      )}
     </Fragment>
   );
 };

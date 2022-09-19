@@ -34,31 +34,31 @@ const JobsList: React.FC<{
         {offers.length > 0
           ? (
               offers.map((job) => (
-            <Link to={'/jobdescr/' + job.id} key={job.id}>
-              <JobShort
-                key={job.id + 'child'}
-                id={job.id!}
-                logo={job.logo!}
-                jobPosition={job.jobPosition!}
-                undisclosed={job.employment!.undisclosed}
-                minSalary={
-                  job.employment!.b2b.allowB2b
-                    ? job.employment!.b2b.minSalary
-                    : job.employment!.uop!.minSalary
-                }
-                maxSalary={
-                  job.employment!.b2b.allowB2b
-                    ? job.employment!.b2b.maxSalary
-                    : job.employment!.uop!.maxSalary
-                }
-                location={job.location!}
-                date={job.date!}
-              />
-            </Link>
+              <Link to={'/jobdescr/' + job.id} key={job.id}>
+                <JobShort
+                  key={job.id + 'child'}
+                  id={job.id!}
+                  logo={job.logo!}
+                  jobPosition={job.jobPosition!}
+                  undisclosed={job.employment!.undisclosed}
+                  minSalary={
+                    job.employment!.b2b.allowB2b
+                      ? job.employment!.b2b.minSalary
+                      : job.employment!.uop!.minSalary
+                  }
+                  maxSalary={
+                    job.employment!.b2b.allowB2b
+                      ? job.employment!.b2b.maxSalary
+                      : job.employment!.uop!.maxSalary
+                  }
+                  location={job.location!}
+                  date={job.date!}
+                />
+              </Link>
               ))
             )
           : (
-          <p>No offers added.</p>
+          <p className={classes.job_list__info}>No offers found.</p>
             )}
       </ul>
     </Fragment>

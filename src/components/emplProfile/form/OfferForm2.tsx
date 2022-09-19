@@ -77,7 +77,7 @@ const OfferForm2: React.FC<{
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
       dispatch(
-        uiActions.showInforamtion('To proceed provide all of the above')
+        uiActions.showInformation('To proceed provide all of the above')
       );
     }
   };

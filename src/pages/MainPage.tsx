@@ -28,7 +28,7 @@ const MainPage = () => {
       .catch((error) => {
         dispatch(uiActions.changeInformationPopup());
         dispatch(uiActions.setInformationError());
-        dispatch(uiActions.showInforamtion(`Could not fetch data! ${error}`));
+        dispatch(uiActions.showInformation(`Could not fetch data! ${error}`));
       });
   };
   const { data, isLoading, isError, refetch } = useQuery('offers', getOffers);
@@ -42,7 +42,7 @@ const MainPage = () => {
     if (isError) {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
-      dispatch(uiActions.showInforamtion('Could not fetch data!'));
+      dispatch(uiActions.showInformation('Could not fetch data!'));
     }
   }, [data]);
   offers.forEach((offer) => {

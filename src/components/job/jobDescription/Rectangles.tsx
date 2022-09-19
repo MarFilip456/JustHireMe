@@ -45,7 +45,9 @@ const Rectangles: React.FC<{ job: offerObject }> = (props) => {
           <img alt="calendar_icon" src={calendarIcon} />
         </div>
         <div className={classes.info_container}>
-          <p className={classes.info_offer}>{useCountDays(job.date!)}</p>
+          <p className={classes.info_offer}>
+            {job.date !== undefined ? useCountDays(job.date!) : 'preview'}
+          </p>
           <p className={classes.info_description}>Added</p>
         </div>
       </div>

@@ -30,6 +30,17 @@
   width: 100%;
 }
 
+.invalid_input {
+  margin: 0;
+  font-size: small;
+  color: rgb(255,0,0);
+}
+.invalid_input_invisible {
+  visibility: hidden;
+  margin: 0;
+  font-size: small;
+}
+
 .CTA_button {
   width: 100%;
   padding: 10px 55px;

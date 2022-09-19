@@ -23,9 +23,10 @@ const DeletePopup = () => {
 
   return (
     <Card styles={classes.delete_card}>
-      <p>Do you want to delete this offer?</p>
-      <Button onClick={declineHandler}>No</Button>
-      <Button onClick={confirmHandler}>Yes</Button>
+      <h3>Do you really want to delete this offer?</h3>
+      <p>There is no coming back</p>
+      <Button styles={classes.delete_card__button} onClick={declineHandler}>No</Button>
+      <Button styles={classes.delete_card__button} onClick={confirmHandler}>Yes</Button>
     </Card>
   );
 };

@@ -14,7 +14,6 @@ const JobShort: React.FC<{
   id: string;
   date: { year: number; month: number; day: number };
 }> = (props) => {
-  // eslint-disable-next-line no-undef
   let dateConetnt;
   if (useCountDays(props.date) === 'New') {
     dateConetnt = <p className={classes.newOffer} >New</p>

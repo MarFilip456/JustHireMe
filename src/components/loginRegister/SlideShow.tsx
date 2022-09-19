@@ -4,19 +4,19 @@ import classes from './SlideShow.module.css';
 const slideImages = [
   {
     id: 0,
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWIQtvI4R2veBQody_-coonotC4wtVntt5QCH-ACKXtMnfF5zy7vgqKj-84TGT3GoCD_o&usqp=CAU'
+    url: 'https://as1.ftcdn.net/v2/jpg/03/01/70/16/1000_F_301701619_I7tuZjCIeb5erP72AJgY7Up29h8fHLLP.jpg'
   },
   {
     id: 1,
-    url: 'https://lh3.googleusercontent.com/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc=w600'
+    url: 'https://as2.ftcdn.net/v2/jpg/02/50/03/65/1000_F_250036555_n0A78Ay2uxKKwvOGapp6lThP1n5ZWrE9.jpg'
   },
   {
     id: 2,
-    url: 'https://i.kym-cdn.com/photos/images/newsfeed/000/861/427/802.png'
+    url: 'https://as2.ftcdn.net/v2/jpg/01/67/78/13/1000_F_167781326_35nW03G4kUYMHjAylzmCTWaEIVEjOAqH.jpg'
   },
   {
     id: 3,
-    url: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/02e446dc-561f-4630-b580-19cb62fddf93/d6eyce0-ef53d98d-5320-4a32-a124-019317ad9c41.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzAyZTQ0NmRjLTU2MWYtNDYzMC1iNTgwLTE5Y2I2MmZkZGY5M1wvZDZleWNlMC1lZjUzZDk4ZC01MzIwLTRhMzItYTEyNC0wMTkzMTdhZDljNDEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.uHI5eT_Zpy8duEYpHbbTNCioRpNujZZWhiBKOtodHWM'
+    url: 'https://as2.ftcdn.net/v2/jpg/03/05/81/31/1000_F_305813154_jHP8Y0m7y9bAgZ1r4UOcl0t3W1yf3Yac.jpg'
   }
 ];
 

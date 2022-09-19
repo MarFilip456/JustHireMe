@@ -26,7 +26,7 @@ const JobPage = () => {
     if (error) {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
-      dispatch(uiActions.showInforamtion('Could not fetch offer data!'));
+      dispatch(uiActions.showInformation('Could not fetch offer data!'));
     }
   }, [error]);
   return (
@@ -37,7 +37,7 @@ const JobPage = () => {
         </Modal>
       )}
       <div className={classes.test}>
-        {loading && <LoadingSpinner />}
+        {loading && params.jobId !== 'preview' && <LoadingSpinner />}
         {succesfulFetch && <JobDescription job={data!} />}
       </div>
     </React.Fragment>
