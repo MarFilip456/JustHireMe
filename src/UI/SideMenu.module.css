@@ -3,38 +3,75 @@
     position: fixed;
     width: 80%;
     height: 100vh;
-    background-image: linear-gradient(rgb(230, 230, 230), rgb(150, 150, 150));
+    background-color: rgb(255,255,255);
+    border-radius: 15px 0 0 15px;
     right: 0;
     top: 0;
     z-index: 2;
-    transition: right 0.5s ease-in;
+    transition: right 0.3s ease-in;
 }
 .sideMenu h1 {
     text-align: center;
     width: 100%;
     font-weight: 600;
+    padding-left: 5%;
     padding-bottom: 10px;
-    border-bottom: 1px solid black;
+    font-size: 25px;
+    color: rgb(80,80,80);
 }
 .button_container {
-    margin: 40px auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    width: 60%;
-    height: 20%;
+    width: 100%;
+    height: max-content;
     justify-content: space-around;
 }
+
+.button_container__card {
+    /* padding: 15px auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgb(243,246,248);
+    margin: 10px 0;
+    width: 100%;
+    box-shadow: 2px 2px 2px rgba(200,200,200, 0.5);;
+}
+
+.button_container__cardItem {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.button_container__cardItem:hover {
+    transform: translateX(-10px);
+}
+
+.cardItem_imgContainer {
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+}
+
+.cardItem_imgContainer img {
+    width: 100%;
+    height: 100%;
+}
+
 @media only screen and (min-width: 512px) {
     .sideMenu {
-        width: 20%;
-        max-width: 200px;
+        width: 25%;
+        max-width: 300px;
     }
     .button_container {
-        margin: 40px auto;
+        margin: 0;
         display: flex;
         flex-direction: column;
-        width: 80%;
-        height: 20%;
+        width: 100%;
+        height: max-content;
         justify-content: space-around;
     }
 }

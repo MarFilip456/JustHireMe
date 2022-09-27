@@ -73,45 +73,50 @@ const Filters = () => {
   const techRef = useRef<HTMLSelectElement>(null);
   const employmentRef = useRef<HTMLSelectElement>(null);
   const experienceRef = useRef<HTMLSelectElement>(null);
-  const undisclosedRef = useRef<HTMLSelectElement>(null);
   const remoteRef = useRef<HTMLSelectElement>(null);
 
   const clearFiltersHandler = () => {
-    dispatch(offersActions.setQueryObject({}));
+    dispatch(
+      offersActions.setQueryObject({
+        undisclosed: savedQueryObject.undisclosed
+      })
+    );
     setValue([0, 50000]);
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(
-      offersActions.setQueryObject({
-        search:
-          searchPositionRef.current?.value.trim().length !== 0
-            ? searchPositionRef.current?.value.trim()
-            : undefined,
-        location:
-          searchLocationRef.current?.value.trim().length !== 0
-            ? searchLocationRef.current?.value
-            : undefined,
-        mainField:
-          techRef.current?.value !== 'All' ? techRef.current?.value : undefined,
-        minSalary: value[0] === 0 ? undefined : value[0],
-        maxSalary: value[1] === 50000 ? undefined : value[1],
-        employment:
-          employmentRef.current?.value !== 'All'
-            ? employmentRef.current?.value
-            : undefined,
-        experience:
-          experienceRef.current?.value !== 'All'
-            ? experienceRef.current?.value
-            : undefined,
-        undisclosed:
-          undisclosedRef.current?.value === 'yes' ? 'true' : undefined,
-        remote:
-          remoteRef.current?.value === 'yes'
-            ? remoteRef.current?.value
-            : undefined
-      })
+      offersActions.setQueryObject(
+        Object.assign({}, savedQueryObject, {
+          search:
+            searchPositionRef.current?.value.trim().length !== 0
+              ? searchPositionRef.current?.value.trim()
+              : undefined,
+          location:
+            searchLocationRef.current?.value.trim().length !== 0
+              ? searchLocationRef.current?.value
+              : undefined,
+          mainField:
+            techRef.current?.value !== 'All'
+              ? techRef.current?.value
+              : undefined,
+          minSalary: value[0] === 0 ? undefined : value[0],
+          maxSalary: value[1] === 50000 ? undefined : value[1],
+          employment:
+            employmentRef.current?.value !== 'All'
+              ? employmentRef.current?.value
+              : undefined,
+          experience:
+            experienceRef.current?.value !== 'All'
+              ? experienceRef.current?.value
+              : undefined,
+          remote:
+            remoteRef.current?.value === 'yes'
+              ? remoteRef.current?.value
+              : undefined
+        })
+      )
     );
     dispatch(uiActions.changeVisFilter());
   };
@@ -131,19 +136,21 @@ const Filters = () => {
           defaultProp={savedQueryObject.location}
           searchFor="location"
         />
-        <label htmlFor="techSelect">Tech</label>
-        <select
-          name="techSelect"
-          ref={techRef}
-          defaultValue={savedQueryObject.mainField}
-        >
-          <option value="All">All</option>
-          {mainFieldArray.map((mainField) => (
-            <option key={mainFieldArray.indexOf(mainField)} value={mainField}>
-              {mainField}
-            </option>
-          ))}
-        </select>
+        <div className={classes.filter_list__mainField}>
+          <label htmlFor="techSelect">Tech</label>
+          <select
+            name="techSelect"
+            ref={techRef}
+            defaultValue={savedQueryObject.mainField}
+          >
+            <option value="All">All</option>
+            {mainFieldArray.map((mainField) => (
+              <option key={mainFieldArray.indexOf(mainField)} value={mainField}>
+                {mainField}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className={classes.form_input_salary}>
           <p>Salary range</p>
           <Slider
@@ -203,21 +210,25 @@ const Filters = () => {
           <option value="Senior">Senior</option>
           <option value="Expert">Expert</option>
         </select>
-        <label htmlFor="undisclosed">Undislosed salary</label>
+        {/* <label htmlFor="undisclosed">With salary</label>
         <select
           name="undisclosed"
           ref={undisclosedRef}
           defaultValue={
-            savedQueryObject.undisclosed !== undefined ? 'yes' : 'no'
+            savedQueryObject.undisclosed !== undefined ? 'yes' : 'all'
           }
         >
-          <option value="no">no</option>
+          <option value="all">all</option>
           <option value="yes">yes</option>
-        </select>
+        </select> */}
         <label htmlFor="remote">Remote</label>
-        <select name="remote" ref={remoteRef} defaultValue={savedQueryObject.remote} >
-          <option value='All' >not valid</option>
-          <option value='yes' >yes</option>
+        <select
+          name="remote"
+          ref={remoteRef}
+          defaultValue={savedQueryObject.remote}
+        >
+          <option value="All">not valid</option>
+          <option value="yes">yes</option>
         </select>
         <Button styles={classes.CTA_button}>Filter</Button>
       </form>

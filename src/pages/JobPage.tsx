@@ -36,7 +36,7 @@ const JobPage = () => {
           <DeletePopup />
         </Modal>
       )}
-      <div className={classes.test}>
+      <div className={classes.main}>
         {loading && params.jobId !== 'preview' && <LoadingSpinner />}
         {succesfulFetch && <JobDescription job={data!} />}
       </div>

@@ -12,6 +12,7 @@ const InformationPopup = () => {
   const isError = useAppSelector((state) => state.ui.informationError);
   const closeHandler = () => {
     dispatch(uiActions.changeInformationPopup());
+    dispatch(uiActions.showInformation(null));
     if (isError) {
       dispatch(uiActions.setInformationError());
     }

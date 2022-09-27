@@ -13,12 +13,12 @@ import classes from './DevPage.module.css';
 
 const DevPage = () => {
   const dispatch = useAppDispatch();
-  const devId = localStorage.getItem('justHireMeId');
-  const { data, isLoading, isError } = useSingleUser(devId!);
+  const { data, isLoading, isError } = useSingleUser();
 
   useEffect(() => {
     if (isError) {
       dispatch(uiActions.changeInformationPopup());
+      dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInformation('Could not fetch user data!'));
     }
   }, [isError]);
@@ -98,12 +98,11 @@ const DevPage = () => {
       {isLoading && <LoadingSpinner />}
       {finishedLoading && (
         <div className={classes.devPage_main}>
-          <h2>My profile</h2>
-          <form onSubmit={profileUpdateHandler}>
+          <form onSubmit={profileUpdateHandler} className={classes.devPage_main__form} >
             <Card styles={classes.devPage_card}>
               <div>
                 <h1>USER DETAILS</h1>
-                <div >
+                <div className={classes.devPage_imageContainer} >
                   <img
                     width="80px"
                     height="80px"

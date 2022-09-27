@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Fragment } from 'react';
 import LoginForm from '../components/loginRegister/LoginForm';
 import DevFastLoginReg from '../components/loginRegister/DevFastLoginReg';
 import SlideShow from '../components/loginRegister/SlideShow';
@@ -8,7 +7,6 @@ import classes from './LoginPage.module.css';
 
 const LoginPage = () => {
   return (
-    <Fragment>
       <div className={classes.devLogin_main}>
         <div className={classes.devLogin_main_split}>
           <h1 className={classes.devLogin_form}>Get started for free!</h1>
@@ -26,7 +24,6 @@ const LoginPage = () => {
         </div>
         <SlideShow />
       </div>
-    </Fragment>
   );
 };
 

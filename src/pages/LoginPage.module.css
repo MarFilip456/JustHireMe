@@ -1,18 +1,18 @@
 .devLogin_main {
   display: grid;
-  width: 80%;
+  width: 100%;
   margin: auto;
   grid-template-columns: 100%;
   align-items: center;
   justify-items: center;
   height: 100%;
+  overflow-y: auto;
 }
 
 .devLogin_main_split {
   box-sizing: border-box;
-  width: 100%;
+  width: 80%;
   height: 100%;
-  /* padding: 15%; */
   display: flex;
   flex-direction: column;
   justify-content: center;

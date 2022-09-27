@@ -3,7 +3,13 @@ import classes from './SideMenu.module.css';
 import { useAppSelector, useAppDispatch } from '../store/redux-hooks';
 import { useNavigate } from 'react-router-dom';
 import { uiActions } from '../store/ui-slice';
-import React, { Fragment } from 'react';
+import React from 'react';
+import Card from './Card';
+import faceIcon from '../images/faceIcon.png';
+import briefcaseIcon from '../images/briefcaseIcon.png';
+import listIcon from '../images/listIcon.png';
+import addOfferIcon from '../images/addOfferIcon.png';
+import logoutIcon from '../images/logoutIcon.png';
 
 const SideMenu: React.FC<{ styles: React.CSSProperties }> = (props) => {
   const isLogged = useAppSelector((state) => state.ui.isLoggedIn);
@@ -38,11 +44,10 @@ const SideMenu: React.FC<{ styles: React.CSSProperties }> = (props) => {
   };
 
   const logoutHandler = () => {
+    navigate('/');
     dispatch(uiActions.loggingInOut());
-    localStorage.removeItem('justHireMeLogin');
     localStorage.removeItem('justHireMeDate');
     localStorage.removeItem('justHireMeToken');
-    localStorage.removeItem('justHireMeId');
     if (isDev) {
       localStorage.removeItem('justHireMeDev');
       dispatch(uiActions.setIsDev());
@@ -56,31 +61,76 @@ const SideMenu: React.FC<{ styles: React.CSSProperties }> = (props) => {
     <div className={`${classes.sideMenu} && ${props.styles}`}>
       <h1>MENU</h1>
       <div className={classes.button_container}>
-        <Button id="offers" onClick={navigateHandler}>
-          Offers
-        </Button>
+        <Card styles={classes.button_container__card}>
+          <Button
+            id="offers"
+            onClick={navigateHandler}
+            styles={classes.button_container__cardItem}
+          >
+            <div className={classes.cardItem_imgContainer} >
+                <img alt='list_icon' src={listIcon}/>
+              </div>
+            Offers
+          </Button>
+        </Card>
         {!isLogged && (
-          <Fragment>
-            <Button id="signIn" onClick={navigateHandler}>
+          <Card styles={classes.button_container__card}>
+            <Button
+              id="signIn"
+              onClick={navigateHandler}
+              styles={classes.button_container__cardItem}
+            >
+              <div className={classes.cardItem_imgContainer} >
+                <img alt='face_icon' src={faceIcon}/>
+              </div>
               Sign in
             </Button>
-            <Button id="signUp" onClick={navigateHandler}>
+            <Button
+              id="signUp"
+              onClick={navigateHandler}
+              styles={classes.button_container__cardItem}
+            >
+              <div className={classes.cardItem_imgContainer} >
+                <img alt="briefcase_icon" src={briefcaseIcon}/>
+              </div>
               Sign up
             </Button>
-          </Fragment>
+          </Card>
         )}
-        {isLogged &&
-         (
-          <Fragment>
-            <Button id="userProfile" onClick={navigateHandler}>
+        {isLogged && (
+          <Card styles={classes.button_container__card}>
+            <Button
+              id="userProfile"
+              onClick={navigateHandler}
+              styles={classes.button_container__cardItem}
+            >
+              <div className={classes.cardItem_imgContainer} >
+                <img alt='face_icon' src={faceIcon}/>
+              </div>
               {isDev ? 'User Profile' : 'Employer panel'}
             </Button>
             {!isDev && (
-              <Button onClick={navigateToFormHandler}>Add Offer</Button>
+              <Button
+                onClick={navigateToFormHandler}
+                styles={classes.button_container__cardItem}
+              >
+                <div className={classes.cardItem_imgContainer} >
+                <img alt='addOfer_icon' src={addOfferIcon}/>
+              </div>
+                Add Offer
+              </Button>
             )}
-            <Button onClick={logoutHandler} >Sign out</Button>
-          </Fragment>
-         )}
+            <Button
+              onClick={logoutHandler}
+              styles={classes.button_container__cardItem}
+            >
+              <div className={classes.cardItem_imgContainer} >
+                <img alt='logout_icon' src={logoutIcon}/>
+              </div>
+              Sign out
+            </Button>
+          </Card>
+        )}
       </div>
     </div>
   );

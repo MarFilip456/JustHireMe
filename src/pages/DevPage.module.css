@@ -1,69 +1,83 @@
 .devPage_main {
-    height: 100%;
-    width: 100%;
-    max-width: 768px;
+  height: 100%;
+  width: 100%;
+  max-width: 768px;
+  overflow-y: scroll;
 }
 
-.devPage_main input, .devPage_main select {
-    background-color: white;
+.devPage_main input,
+.devPage_main select {
+  background-color: white;
 }
 
 .devPage_card {
-    color: rgb(50,50,50);
-    padding-left: 5%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(240, 240, 240);
+  color: rgb(50, 50, 50);
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(240, 240, 240);
 }
- .devPage_card h1 {
-    margin: 0;
-    font-size: larger;
- }
+.devPage_card h1 {
+  margin: 0;
+  font-size: larger;
+}
 
- .card_inputContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 2px;
- }
+.devPage_imageContainer {
+  display: none;
+}
 
- .card_inputContainer__textarea {
-    border: 1px solid rgb(120,120,120);
-    border-radius: 15px;
-    resize: none;
- }
+.card_inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 2px;
+}
 
- .card_inputContainer__textarea:focus-visible {
-    outline: none;
- }
+.card_inputContainer__textarea {
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 15px;
+  resize: none;
+}
 
- .devPage_button {
-    color: rgb(255,255,255);
-    background-color: rgb(255, 64, 129);
-    border: none;
-    padding: 5px 10px;
+.card_inputContainer__textarea:focus-visible {
+  outline: none;
+}
+
+.devPage_button {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 64, 129);
+  border: none;
+  padding: 5px 10px;
+  display: block;
+  margin: 2px auto;
+}
+
+.devPage_button:hover {
+  background-color: rgb(196, 27, 83);
+}
+
+@media only screen and (min-width: 512px) {
+  .card_inputContainer {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .devPage_main {
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .card_inputContainer {
+    width: 50%;
+  }
+}
+@media screen and (min-height: 801px) {
+  .devPage_main {
+    overflow-y: hidden;
+  }
+  .devPage_imageContainer {
     display: block;
-    margin: 2px auto;
- }
-
- .devPage_button:hover {
-    background-color: rgb(196, 27, 83);;
- }
-
- @media only screen and (min-width: 512px) {
-    .card_inputContainer {
-        width: 70%;
-    }
- }
-
- @media only screen and (min-width: 768px) {
-    .devPage_main {
-        margin: 0 auto;
-    }
- }
-
- @media only screen and (min-width: 1024px) {
-    .card_inputContainer {
-        width: 50%;
-    }
- }
+  }
+}

@@ -53,7 +53,6 @@ const LoginForm: React.FC<{
         );
       });
     localStorage.setItem('justHireMeToken', data.accessToken);
-    localStorage.setItem('justHireMeId', data.userId);
     const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
     localStorage.setItem('justHireMeDate', expirationDate.toISOString());
     dispatch(uiActions.loggingInOut());

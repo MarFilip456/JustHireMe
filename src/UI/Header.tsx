@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../store/redux-hooks';
 import { uiActions } from '../store/ui-slice';
 import Button from './Button';
@@ -8,14 +8,14 @@ import { Fragment } from 'react';
 
 const Header = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isLogged = useAppSelector((state) => state.ui.isLoggedIn);
   const isDev = useAppSelector((state) => state.ui.isDev);
   const logoutHandler = () => {
+    navigate('/');
     dispatch(uiActions.loggingInOut());
-    localStorage.removeItem('justHireMeLogin');
     localStorage.removeItem('justHireMeDate');
     localStorage.removeItem('justHireMeToken');
-    localStorage.removeItem('justHireMeId');
     if (isDev) {
       localStorage.removeItem('justHireMeDev');
       dispatch(uiActions.setIsDev());
@@ -31,6 +31,11 @@ const Header = () => {
           </Link>
         </div>
         <div className={classes.main_nav}>
+          {isLogged && !isDev && (
+            <Button onClick={() => navigate('/empl/addOffer')}>
+              Add offer
+            </Button>
+          )}
           {isLogged
             ? (
             <Button onClick={logoutHandler}>Sign out</Button>

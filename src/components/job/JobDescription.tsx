@@ -12,6 +12,7 @@ import Button from '../../UI/Button';
 import { useAppSelector, useAppDispatch } from '../../store/redux-hooks';
 import useApply from '../../hooks/use-apply';
 import { uiActions } from '../../store/ui-slice';
+import useSingleUser from '../../hooks/use-singleUser';
 
 import classes from './JobDescription.module.css';
 
@@ -23,8 +24,15 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   const params = useParams<{ jobId: string }>();
   const dispatch = useAppDispatch();
   const actualApply = useApply(params.jobId!);
-  const loggedUser = localStorage.getItem('justHireMeId');
-  const loggedExactEmpl = job.addedBy === loggedUser;
+  const token = localStorage.getItem('justHireMeToken');
+  let loggedUser: string;
+  if (token !== null) {
+    const { data, isLoading } = useSingleUser();
+    if (data && !isLoading) {
+      loggedUser = data!.id!;
+    }
+  }
+  const loggedExactEmpl = job.addedBy === loggedUser!;
   const loggedSomeEmpl = !isDev && isLoggedIn;
   const loggedDev = isDev && isLoggedIn;
 
@@ -43,7 +51,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
         setDevAlreadyApplied(true);
       }
     }
-  }, [job.appliers, loggedUser]);
+  }, [job.appliers, loggedUser!]);
 
   // aply handler
   const CTAHandler = (event: React.MouseEvent) => {
@@ -67,19 +75,24 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   const deleteHandler = () => {
     dispatch(uiActions.changeDeletePopup());
   };
-
+  const [loadMap, setLoadMap] = useState(false);
+  useEffect(() => {
+    if (job) {
+      setLoadMap(true);
+    }
+  }, []);
   return (
     <div className={classes.main}>
       <div className={classes.main_description}>
         <JobHeader job={job} />
         <Rectangles job={job} />
         <div className={classes.description_map}>
-          {job && (
+          {loadMap && (
             <Map
               single={true}
               width="100%"
               height="100%"
-              latLngArray={[{ lat: job.lat!, lng: job.lng! }]}
+              latLngArray={[{ lat: job.lat!, lng: job.lng!, tech: job.mainField! }]}
             />
           )}
         </div>
@@ -106,12 +119,12 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
         {loggedExactEmpl && <AppliersList job={job} />}
       </div>
       <div className={classes.main_map}>
-        {job && (
+        {loadMap && (
           <Map
             single={true}
             width="100%"
             height="100%"
-            latLngArray={[{ lat: job.lat!, lng: job.lng! }]}
+            latLngArray={[{ lat: job.lat!, lng: job.lng!, tech: job.mainField! }]}
           />
         )}
       </div>

@@ -6,14 +6,13 @@
 .overallDisp {
     height: 100%;
     display: grid;
-    grid-template-rows: 5% 95%;
+    grid-template-rows: 5vh 95vh;
 }
 
 .hiddenScroll {
     height: 100%;
     display: grid;
     grid-template-rows:min-content auto;
-    overflow: hidden;
 }
 
 .hideSideMenu {
@@ -22,6 +21,6 @@
 }
 @media only screen and (min-width: 512px) {
     .hideSideMenu {
-        right: max(-20%, -200px);
+        right: max(-25%, -300px);
     }
 }

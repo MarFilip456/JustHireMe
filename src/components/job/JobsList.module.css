@@ -1,12 +1,18 @@
-.job_list {
+.main {
    height: 100%;
+   overflow-y: auto;
+   background-color: rgb(243,246,248);
+   padding: 0;
+}
+.job_list {
    padding: 0;
    margin: 0;
-   overflow-y: scroll;
+   height: max-content;
 }
 
 .job_list__info {
    text-align: center;
+   height: 100%;
 }
 
 .job_list a {

@@ -32,12 +32,12 @@ const JobShort: React.FC<{
         <h1 className={classes.job_short_company}>{props.jobPosition}</h1>
         <h2 className={classes.job_short__salary}>
           {!props.undisclosed
-            ? `${props.minSalary} - ${props.maxSalary}`
+            ? `${props.minSalary} - ${props.maxSalary}  PLN`
             : 'Undisclosed Salary'}
         </h2>
       </div>
       <div className={classes.job_short_cont2}>
-        <div>{dateConetnt}</div>
+        <div className={classes.job_short__date} >{dateConetnt}</div>
         <h2 className={classes.job_short__location}>{props.location}</h2>
       </div>
       </div>

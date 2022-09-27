@@ -1,11 +1,60 @@
-.filter_button {
-    align-self: center;
-    font-weight: 500;
-    height: 80%;
+.filter {
+    display: flex;
+    flex-direction: row;
 }
 
-@media only screen and (min-width: 768px) {
+.filter_button {
+    align-self: center;
+    width: 50%;
+    font-weight: 500;
+    height: 80%;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 16px;
+}
+
+.techContainer {
+    display: none;
+}
+
+.active {
+    transform: translateY(-5px);
+    transition: all 0.5s ease;
+}
+.grayscale {
+    filter: grayscale(1);
+}
+
+@media only screen and (min-width: 1024px) {
     .filter_button {
-        width: 30%;
+        width: 20%;
+    }
+    .techContainer {
+        height: 90%;
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .techContainer p {
+        margin: 0;
+        font-size: 12px;
+    }
+    .techContainer_item {
+        margin: 0 5px;
+        text-align: center;
+        height: 100%;
+    }
+    .techContainer_item:hover {
+        cursor: pointer;
+    }
+    .techContainer_item_img {
+        margin: 0 auto;
+        aspect-ratio: 1 / 1;
+        height: 60%;
+    }
+    .techContainer_item_img img {
+        height: 100%;
+        width: 100%;
     }
 }
