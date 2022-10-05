@@ -5,12 +5,13 @@ import { offersActions } from '../../../store/offers-slice';
 import Button from '../../../UI/Button';
 import axios from 'axios';
 
-import classes from './OfferForm1.module.css';
+import classes from './FormCompanyInfo.module.css';
 import { uiActions } from '../../../store/ui-slice';
+import { Steps } from '../../../enums/enums';
 
-const OfferForm1: React.FC<{
-  onIncrement: (event: React.MouseEvent) => void;
-  onDecrement: (event: React.MouseEvent) => void;
+const FormCompanyInfo: React.FC<{
+  onIncrement: (desiredStep: Steps, action: string) => void;
+  onDecrement: (desiredStep: Steps, action: string) => void;
 }> = (props) => {
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offers.addingOffer);
@@ -91,7 +92,7 @@ const OfferForm1: React.FC<{
   };
   const previousStepHandler = (event: React.MouseEvent) => {
     dispatch(offersActions.addOffer(Object.assign({}, offer, {})));
-    props.onDecrement(event);
+    props.onDecrement(Steps.InitialCard, 'decrement');
   };
 
   const nextStepHandler = (event: React.MouseEvent) => {
@@ -125,7 +126,7 @@ const OfferForm1: React.FC<{
         })
         .finally(() => {
           if (offer.lat && offer.lng) {
-            props.onIncrement(event);
+            props.onIncrement(Steps.PositionInfo, 'increment');
           }
         });
     } else {
@@ -233,4 +234,4 @@ const OfferForm1: React.FC<{
   );
 };
 
-export default OfferForm1;
+export default FormCompanyInfo;

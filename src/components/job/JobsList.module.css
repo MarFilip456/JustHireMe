@@ -1,20 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
 .main {
-   height: 100%;
-   overflow-y: auto;
-   background-color: rgb(243,246,248);
-   padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgb(243, 246, 248);
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(55, 71, 79);
 }
 .job_list {
-   padding: 0;
-   margin: 0;
-   height: max-content;
+  padding: 0;
+  margin: 0;
+  height: max-content;
 }
 
 .job_list__info {
-   text-align: center;
-   height: 100%;
+  text-align: center;
+  height: 100%;
 }
 
 .job_list a {
-   text-decoration: none;
+  text-decoration: none;
 }

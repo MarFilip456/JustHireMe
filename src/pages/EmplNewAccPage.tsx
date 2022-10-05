@@ -8,7 +8,7 @@ const EmplNewAccPage = () => {
     <div className={classes.main_page}>
       <Card styles={classes.main_card}>
         <h1>justhire.me</h1>
-        <h2>Register as an employer</h2>
+        <h5>Register as an employer</h5>
         <SignUpForm role='admin' />
         <p>
           Want to be a developer?

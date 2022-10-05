@@ -4,7 +4,7 @@ import { offersActions } from '../../store/offers-slice';
 import Button from '../../UI/Button';
 import { Slider, styled } from '@mui/material';
 import MuiInput from '@mui/material/Input';
-import { mainFieldArray } from '../emplProfile/form/OfferForm2';
+import { mainFieldArray } from '../emplProfile/form/FormPositionInfo';
 
 import classes from './Filters.module.css';
 import SearchFilter from './SearchFilter';
@@ -82,6 +82,7 @@ const Filters = () => {
       })
     );
     setValue([0, 50000]);
+    dispatch(uiActions.changeVisFilter());
   };
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -136,7 +137,7 @@ const Filters = () => {
           defaultProp={savedQueryObject.location}
           searchFor="location"
         />
-        <div className={classes.filter_list__mainField}>
+        <div className={classes.filter_list__selectContainer}>
           <label htmlFor="techSelect">Tech</label>
           <select
             name="techSelect"
@@ -188,51 +189,46 @@ const Filters = () => {
             />
           </div>
         </div>
-        <label htmlFor="employment">Form of employment</label>
-        <select
-          name="employment"
-          ref={employmentRef}
-          defaultValue={savedQueryObject.employment}
-        >
-          <option value="All">All</option>
-          <option value="b2b">B2B</option>
-          <option value="uop">UoP</option>
-        </select>
-        <label htmlFor="experience">Seniority</label>
-        <select
-          name="experience"
-          ref={experienceRef}
-          defaultValue={savedQueryObject.experience}
-        >
-          <option value="All">All</option>
-          <option value="Junior">Junior</option>
-          <option value="Mid">Mid</option>
-          <option value="Senior">Senior</option>
-          <option value="Expert">Expert</option>
-        </select>
-        {/* <label htmlFor="undisclosed">With salary</label>
-        <select
-          name="undisclosed"
-          ref={undisclosedRef}
-          defaultValue={
-            savedQueryObject.undisclosed !== undefined ? 'yes' : 'all'
-          }
-        >
-          <option value="all">all</option>
-          <option value="yes">yes</option>
-        </select> */}
-        <label htmlFor="remote">Remote</label>
-        <select
-          name="remote"
-          ref={remoteRef}
-          defaultValue={savedQueryObject.remote}
-        >
-          <option value="All">not valid</option>
-          <option value="yes">yes</option>
-        </select>
+        <div className={classes.filter_list__selectContainer}>
+          <label htmlFor="employment">Form of employment</label>
+          <select
+            name="employment"
+            ref={employmentRef}
+            defaultValue={savedQueryObject.employment}
+          >
+            <option value="All">All</option>
+            <option value="b2b">B2B</option>
+            <option value="uop">UoP</option>
+          </select>
+        </div>
+        <div className={classes.filter_list__selectContainer}>
+          <label htmlFor="experience">Seniority</label>
+          <select
+            name="experience"
+            ref={experienceRef}
+            defaultValue={savedQueryObject.experience}
+          >
+            <option value="All">All</option>
+            <option value="Junior">Junior</option>
+            <option value="Mid">Mid</option>
+            <option value="Senior">Senior</option>
+            <option value="Expert">Expert</option>
+          </select>
+        </div>
+        <div className={classes.filter_list__selectContainer}>
+          <label htmlFor="remote">Remote</label>
+          <select
+            name="remote"
+            ref={remoteRef}
+            defaultValue={savedQueryObject.remote}
+          >
+            <option value="All">not valid</option>
+            <option value="yes">yes</option>
+          </select>
+        </div>
         <Button styles={classes.CTA_button}>Filter</Button>
       </form>
-      <Button onClick={clearFiltersHandler}>Clear filters</Button>
+      <Button styles={classes.clear_button} onClick={clearFiltersHandler}>Clear filters</Button>
     </div>
   );
 };

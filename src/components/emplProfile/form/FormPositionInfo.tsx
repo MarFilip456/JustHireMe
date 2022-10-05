@@ -3,8 +3,9 @@ import Button from '../../../UI/Button';
 import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
 import { offersActions } from '../../../store/offers-slice';
 import { uiActions } from '../../../store/ui-slice';
+import { Steps } from '../../../enums/enums';
 
-import classes from './OfferForm2.module.css';
+import classes from './FormPositionInfo.module.css';
 
 export const mainFieldArray = [
   'JS',
@@ -33,9 +34,9 @@ export const mainFieldArray = [
   'Other'
 ];
 
-const OfferForm2: React.FC<{
-  onIncrement: (event: React.MouseEvent) => void;
-  onDecrement: (event: React.MouseEvent) => void;
+const FormPositionInfo: React.FC<{
+  onIncrement: (desiredStep: Steps, action: string) => void;
+  onDecrement: (desiredStep: Steps, action: string) => void;
 }> = (props) => {
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offers.addingOffer);
@@ -59,7 +60,7 @@ const OfferForm2: React.FC<{
         })
       )
     );
-    props.onDecrement(event);
+    props.onDecrement(Steps.CompanyInfo, 'decrement');
   };
 
   const nextStephandler = (event: React.MouseEvent) => {
@@ -72,7 +73,7 @@ const OfferForm2: React.FC<{
           })
         )
       );
-      props.onIncrement(event);
+      props.onIncrement(Steps.OfferSalary, 'increment');
     } else {
       dispatch(uiActions.changeInformationPopup());
       dispatch(uiActions.setInformationError());
@@ -145,4 +146,4 @@ const OfferForm2: React.FC<{
   );
 };
 
-export default OfferForm2;
+export default FormPositionInfo;

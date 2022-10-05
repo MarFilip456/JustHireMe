@@ -1,5 +1,5 @@
 .devLogin {
-  width: 80%;
+  width: 100%;
 }
 
 .devLogin_form_login {
@@ -7,9 +7,15 @@
     flex-direction: row;
     align-items: center;
     margin: 5px 0;
-    border-radius: 20px;
+    border-radius: 24px;
     width: 100%;
     justify-content: center;
+    border: 1px solid rgb(228, 232, 240);
+    color: rgb(117, 117, 117);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1.75;
+    font-size: 12px;
 }
 
 img.devLogin_form {
@@ -17,6 +23,6 @@ img.devLogin_form {
   margin: 0 10px;
 }
 
-p.devLogin_form {
-  color: #4e4e4e;
-}
+/* p.devLogin_form {
+  color: rgb(55, 71, 79);
+} */

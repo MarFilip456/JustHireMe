@@ -7,6 +7,21 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+.main_form label {
+    color: rgb(55, 71, 79);
+}
+
+.main_form input {
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background: rgb(255, 255, 255);
+  transition: background-color 2s ease;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .main_form p {
     font-weight: 600;

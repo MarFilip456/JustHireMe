@@ -4,7 +4,7 @@
   display: grid;
   grid-auto-flow: column;
   height: 100%;
-  grid-template-rows: 5% 95%;
+  grid-template-rows: 9% 91%;
 }
 
 .letListVisible {
@@ -36,9 +36,9 @@
   grid-auto-flow: row;
   grid-template-columns: max-content max-content auto;
   grid-template-rows: 20px autox;
-  font-size: 15px;
+  font-size: 12px;
   color: rgb(120,120,120);
-  font-weight: 500;
+  font-weight: 400;
 }
 .list_transition span {
   font-size: 11px;
@@ -50,7 +50,7 @@
   background-color: rgb(255,255,255);
   border-radius: 0 0 10px 10px;
   width: 100%;
-  padding: 0 15px;
+  padding: 5px 15px 0 15px;
 }
 .transitionDark {
   text-align: center;
@@ -58,7 +58,7 @@
   background-color: rgb(243,246,248);
   border-radius: 10px 10px 0 0 ;
   width: 100%;
-  padding: 0 15px;
+  padding: 5px 15px 0 15px;
 }
 .whiteFiller {
   background-color: rgb(255,255,255);
@@ -71,12 +71,9 @@
 }
 
 .bottomMap {
-  position: fixed;
+  position: absolute;
   bottom: 30px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
+  justify-self: center;
 }
 
 .bottomMap__button {

@@ -2,9 +2,11 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import store from '../store/index';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import Header from './Header';
 import { uiActions } from '../store/ui-slice';
+
+afterEach(cleanup);
 
 describe('Header component', () => {
   const queryClient = new QueryClient();
@@ -58,5 +60,22 @@ describe('Header component', () => {
     const logoutButton = screen.getByText('Sign out');
     fireEvent.click(logoutButton);
     expect(localStorage.getItem('justHireMeDev')).toBeNull();
+  });
+  test('renders addOffer button for logged in employers', () => {
+    localStorage.setItem('justHireMeDate', 'date');
+    localStorage.setItem('justHireMeToken', 'token');
+    localStorage.setItem('justHireMeDev', 'dev');
+    store.dispatch(uiActions.loggingInOut());
+    render(
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <MemoryRouter>
+            <Header />
+          </MemoryRouter>
+        </QueryClientProvider>
+      </Provider>
+    );
+    const addOfferButton = screen.getByText('Add offer');
+    expect(addOfferButton).toBeDefined();
   });
 });

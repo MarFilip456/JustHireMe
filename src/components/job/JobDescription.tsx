@@ -54,7 +54,7 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
   }, [job.appliers, loggedUser!]);
 
   // aply handler
-  const CTAHandler = (event: React.MouseEvent) => {
+  const CTAHandler = () => {
     if (loggedDev) {
       actualApply();
       setDevAlreadyApplied(true);
@@ -92,7 +92,9 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
               single={true}
               width="100%"
               height="100%"
-              latLngArray={[{ lat: job.lat!, lng: job.lng!, tech: job.mainField! }]}
+              latLngArray={[
+                { lat: job.lat!, lng: job.lng!, tech: job.mainField! }
+              ]}
             />
           )}
         </div>
@@ -124,7 +126,9 @@ const JobDescription: React.FC<{ job: offerObject }> = (props) => {
             single={true}
             width="100%"
             height="100%"
-            latLngArray={[{ lat: job.lat!, lng: job.lng!, tech: job.mainField! }]}
+            latLngArray={[
+              { lat: job.lat!, lng: job.lng!, tech: job.mainField! }
+            ]}
           />
         )}
       </div>

@@ -1,29 +1,35 @@
 import React, { useCallback, useState } from 'react';
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
-import admin from '../../imagesTech/admin.png';
-import analytics from '../../imagesTech/analytics.png';
-import architecture from '../../imagesTech/architecture.png';
-import C from '../../imagesTech/C.png';
-import data from '../../imagesTech/data.png';
-import devops from '../../imagesTech/devops.png';
-import dotNet from '../../imagesTech/dotNet.png';
-import erp from '../../imagesTech/erp.png';
-import game from '../../imagesTech/game.png';
-import go from '../../imagesTech/go.png';
-import html from '../../imagesTech/html.png';
-import java from '../../imagesTech/java.png';
-import js from '../../imagesTech/js.png';
-import mobile from '../../imagesTech/mobile.png';
-import other from '../../imagesTech/other.png';
-import php from '../../imagesTech/php.png';
-import pm from '../../imagesTech/pm.png';
-import python from '../../imagesTech/python.png';
-import ruby from '../../imagesTech/ruby.png';
-import scala from '../../imagesTech/scala.png';
-import security from '../../imagesTech/security.png';
-import support from '../../imagesTech/support.png';
-import testing from '../../imagesTech/testing.png';
-import uxui from '../../imagesTech/uxui.png';
+import {
+  GoogleMap,
+  OverlayView,
+  useJsApiLoader
+} from '@react-google-maps/api';
+import {
+  JSTech,
+  HTMLTech,
+  PHPTech,
+  RubyTech,
+  PythonTech,
+  JavaTech,
+  DotNetTech,
+  ScalaTech,
+  CTech,
+  MobileTech,
+  TestingTech,
+  DevOpsTech,
+  AdminTech,
+  UXUITech,
+  PMTech,
+  GameTech,
+  AnalyticsTech,
+  SecurityTech,
+  DataTech,
+  GoTech,
+  SupportTech,
+  ERPTech,
+  ArchitectureTech,
+  OtherTech
+} from '../filters/techField/TechField';
 
 const Map: React.FC<{
   width: string;
@@ -75,90 +81,92 @@ const Map: React.FC<{
         let iconMap;
         switch (location.tech) {
           case 'JS':
-            iconMap = js;
+            iconMap = <JSTech />;
             break;
           case 'HTML':
-            iconMap = html;
+            iconMap = HTMLTech();
             break;
           case 'PHP':
-            iconMap = php;
+            iconMap = PHPTech();
             break;
           case 'Ruby':
-            iconMap = ruby;
+            iconMap = RubyTech();
             break;
           case 'Python':
-            iconMap = python;
+            iconMap = PythonTech();
             break;
           case 'Java':
-            iconMap = java;
+            iconMap = JavaTech();
             break;
           case '.Net':
-            iconMap = dotNet;
+            iconMap = DotNetTech();
             break;
           case 'Scala':
-            iconMap = scala;
+            iconMap = ScalaTech();
             break;
           case 'C':
-            iconMap = C;
+            iconMap = CTech();
             break;
           case 'Mobile':
-            iconMap = mobile;
+            iconMap = MobileTech();
             break;
           case 'Testing':
-            iconMap = testing;
+            iconMap = TestingTech();
             break;
           case 'DevOps':
-            iconMap = devops;
+            iconMap = DevOpsTech();
             break;
           case 'Admin':
-            iconMap = admin;
+            iconMap = AdminTech();
             break;
           case 'UX/UI':
-            iconMap = uxui;
+            iconMap = UXUITech();
             break;
           case 'PM':
-            iconMap = pm;
+            iconMap = PMTech();
             break;
           case 'Game':
-            iconMap = game;
+            iconMap = GameTech();
             break;
           case 'Analytics':
-            iconMap = analytics;
+            iconMap = AnalyticsTech();
             break;
           case 'Security':
-            iconMap = security;
+            iconMap = SecurityTech();
             break;
           case 'Data':
-            iconMap = data;
+            iconMap = DataTech();
             break;
           case 'Go':
-            iconMap = go;
+            iconMap = GoTech();
             break;
           case 'Support':
-            iconMap = support;
+            iconMap = SupportTech();
             break;
           case 'ERP':
-            iconMap = erp;
+            iconMap = ERPTech();
             break;
           case 'Architecture':
-            iconMap = architecture;
+            iconMap = ArchitectureTech();
             break;
           case 'Other':
-            iconMap = other;
+            iconMap = OtherTech();
             break;
           case undefined:
-            iconMap = other;
+            iconMap = OtherTech();
             break;
         }
         return (
-          <Marker
-            icon={iconMap}
+          <OverlayView
             key={location.lat
               .toString()
               .concat(location.lng.toString())
               .concat(Math.random().toString())}
             position={{ lat: location.lat, lng: location.lng }}
-          />
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            {iconMap}
+          </OverlayView>
         );
       })}
     </GoogleMap>

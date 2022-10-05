@@ -33,7 +33,7 @@ const DevExtended: React.FC<{
 
   return (
     <div className={addContClasses}>
-      <div>
+      <div className={classes.add_content__overflow} >
         <h3>Email address</h3>
         <p>{props.email}</p>
         <h3>About me</h3>

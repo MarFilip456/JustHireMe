@@ -1,29 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
 .devPage_main {
   height: 100%;
   width: 100%;
-  max-width: 768px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  background: rgb(243, 246, 248);
 }
 
-.devPage_main input,
-.devPage_main select {
-  background-color: white;
+.devPage_main__form {
+  max-width: 768px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(55, 71, 79);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+}
+
+.mainPage_main__form_container {
+  
 }
 
 .devPage_card {
-  color: rgb(50, 50, 50);
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 22px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  color: rgb(153, 161, 171);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
   padding-left: 5%;
   display: flex;
   flex-direction: column;
-  background-color: rgb(240, 240, 240);
 }
-.devPage_card h1 {
+.devPage_card h3 {
+  color: rgb(153, 161, 171);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.167;
   margin: 0;
+  margin-bottom: 20px;
+
   font-size: larger;
 }
 
 .devPage_imageContainer {
-  display: none;
+  margin: 40px auto;
+  width: max-content;
 }
 
 .card_inputContainer {
@@ -33,9 +59,51 @@
   margin: 2px;
 }
 
+.card_inputContainer__label {
+  color: rgb(153, 161, 171);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.43;
+  margin-bottom: 8px;
+}
+
+.card_inputContainer__label label {
+font-size: 0.75rem;
+padding: 0;
+line-height: 1;
+color: rgb(55, 71, 79);
+}
+
+.card_inputContainer__input {
+  padding: 0;
+  padding-left: 8px;
+  border: 1px solid rgb(228, 232, 240);
+  color: rgb(50, 53, 56);
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.1876em;
+}
+.card_inputContainer__input input {
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 15px 14px;
+  width: 100%;
+  border: none;
+}
+.card_inputContainer__input input::placeholder {
+  opacity: 0.5;
+}
+
 .card_inputContainer__textarea {
-  border: 1px solid rgb(120, 120, 120);
-  border-radius: 15px;
+  border: 1px solid rgb(228, 232, 240);
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: rgb(55, 71, 79);
+  padding: 15px 14px;
+  width: 100%;
   resize: none;
 }
 
@@ -43,41 +111,43 @@
   outline: none;
 }
 
+.card_inputContainer__select {
+  border: 1px solid rgb(228, 232, 240);
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: rgb(55, 71, 79);
+  padding: 0 14px;
+  width: 100%;
+}
+
+.card_inputContainer__select select {
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 15px 14px;
+  width: 100%;
+  border: none;
+}
+
+.card_inputContainer__select option {
+  border: none;
+}
+
 .devPage_button {
   color: rgb(255, 255, 255);
   background-color: rgb(255, 64, 129);
   border: none;
-  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0px 16px;
   display: block;
+  min-width: 40px;
+  height: 40px;
   margin: 2px auto;
+  box-sizing: border-box;
 }
 
 .devPage_button:hover {
   background-color: rgb(196, 27, 83);
-}
-
-@media only screen and (min-width: 512px) {
-  .card_inputContainer {
-    width: 70%;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .devPage_main {
-    margin: auto;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .card_inputContainer {
-    width: 50%;
-  }
-}
-@media screen and (min-height: 801px) {
-  .devPage_main {
-    overflow-y: hidden;
-  }
-  .devPage_imageContainer {
-    display: block;
-  }
 }

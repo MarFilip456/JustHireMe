@@ -12,15 +12,17 @@ const LoginPage = () => {
           <h1 className={classes.devLogin_form}>Get started for free!</h1>
           <DevFastLoginReg act="Sign in" />
           <div className={classes.devLogin_form_line}>
-            <h3 className={classes.devLogin_form}>Or</h3>
+            <span className={classes.devLogin_form_line}>Or</span>
           </div>
           <LoginForm act="Sign in" />
           <p className={classes.devLogin_form}>
-            Got no account?
+            New account?
             <Link to="/devregister" className={classes.devLogin_form}>
               <span className={classes.devLogin_form}>Register</span>
             </Link>
           </p>
+          <div className={classes.devLogin_form_line} />
+          <span className={classes.devLogin_form} >Forgot password?</span>
         </div>
         <SlideShow />
       </div>

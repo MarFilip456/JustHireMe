@@ -1,15 +1,17 @@
 .filter {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .filter_button {
     align-self: center;
     width: 50%;
     font-weight: 500;
-    height: 80%;
-    border: 1px solid rgb(200,200,200);
-    border-radius: 16px;
+    color: rgb(95, 101, 107);
+    border: 1px solid rgb(228, 232, 240);
+    padding: 6px 16px;
+    border-radius: 32px;
 }
 
 .techContainer {
@@ -17,44 +19,51 @@
 }
 
 .active {
-    transform: translateY(-5px);
     transition: all 0.5s ease;
 }
 .grayscale {
     filter: grayscale(1);
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1280px) {
     .filter_button {
-        width: 20%;
+        width: auto;
+        margin: 0 40px;
     }
     .techContainer {
-        height: 90%;
+        height: 75%;
+        width: 100%;
         align-self: center;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        overflow-x: hidden;
     }
-    .techContainer p {
+    .techContainer_item_text {
         margin: 0;
-        font-size: 12px;
+        font-size: 10px;
     }
     .techContainer_item {
         margin: 0 5px;
         text-align: center;
         height: 100%;
+        width: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .techContainer_item:hover {
         cursor: pointer;
     }
     .techContainer_item_img {
-        margin: 0 auto;
-        aspect-ratio: 1 / 1;
         height: 60%;
     }
-    .techContainer_item_img img {
-        height: 100%;
-        width: 100%;
+}
+
+@media only screen and (min-width: 1400px) {
+    .filter_button {
+        width: 20%;
+        margin: 0 40px;
     }
 }

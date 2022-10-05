@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import useAddOffer from '../../../hooks/use-addOffer';
 import Button from '../../../UI/Button';
 import Card from '../../../UI/Card';
-import OfferForm1 from './OfferForm1';
-import OfferForm2 from './OfferForm2';
-import OfferForm3 from './OfferForm3';
-import OfferForm4 from './OfferForm4';
-import OfferForm5 from './OfferForm5';
+import FormCompanyInfo from './FormCompanyInfo';
+import FormPositionInfo from './FormPositionInfo';
+import FormOfferSalary from './FormOfferSalary';
+import FormTechStack from './FormTechStack';
+import FormDescription from './FormDescription';
+import { Steps } from '../../../enums/enums';
 
 import classes from './OfferForm.module.css';
 
@@ -20,34 +21,46 @@ const OfferForm = () => {
   const addOffer = useAddOffer();
 
   const [formNumber, setFormNumber] = useState(0);
-
   const calculateWidth = (value: number) => {
     return ((value - 1) / 5) * 100;
   };
-
+  const [step, setStep] = useState(Steps.InitialCard);
+  const formStephandler = (desiredStep: Steps, action: string) => {
+    if (action === 'increment') {
+      setFormNumber((prevState) => prevState + 1);
+    } else if (action === 'decrement') {
+      setFormNumber((prevState) => prevState - 1);
+    }
+    setStep(desiredStep);
+  };
   const startHandler = () => {
+    formStephandler(Steps.CompanyInfo, 'increment');
     dispatch(offersActions.addOffer({}));
-    setFormNumber((prevState) => prevState + 1);
-  };
-
-  const incrementHandler = () => {
-    setFormNumber((prevState) => prevState + 1);
-  };
-  const decrementHandler = () => {
-    setFormNumber((prevState) => prevState - 1);
   };
 
   const previewHandler = () => {
-    navigate('/jobdescr/preview')
-  }
+    navigate('/jobdescr/preview');
+  };
 
   const addOfferHandler = () => {
     addOffer();
     navigate('/');
   };
-  return (
-    <Card styles={classes.main_card}>
-      {formNumber === 0 && (
+  const progressBar = (
+    <div className={classes.progress_bar__container}>
+      <p>Completed: {Math.round(calculateWidth(formNumber))}%</p>
+      <div className={classes.progress_bar__background}>
+        <div
+          className={classes.progress_bar__fill}
+          style={{ width: calculateWidth(formNumber).toString() + '%' }}
+        />
+      </div>
+    </div>
+  );
+  let content;
+  switch (step) {
+    case 'initialCard':
+      content = (
         <React.Fragment>
           <div className={classes.introduction_title}>
             <h1>Here you can add new offers.</h1>
@@ -61,66 +74,94 @@ const OfferForm = () => {
             </p>
             <p>Start when ready!</p>
           </div>
+          <Button styles={classes.CTA_button} onClick={startHandler}>
+            Start
+          </Button>
         </React.Fragment>
-      )}
-      {formNumber !== 0 && (
-        <div className={classes.progress_bar__container}>
-          <p>Completed: {Math.round(calculateWidth(formNumber))}%</p>
-          <div className={classes.progress_bar__background}>
-            <div
-              className={classes.progress_bar__fill}
-              style={{ width: calculateWidth(formNumber).toString() + '%' }}
-            />
-          </div>
-        </div>
-      )}
-      {formNumber === 1 && (
-        <OfferForm1
-          onIncrement={incrementHandler}
-          onDecrement={decrementHandler}
-        />
-      )}
-      {formNumber === 2 && (
-        <OfferForm2
-          onIncrement={incrementHandler}
-          onDecrement={decrementHandler}
-        />
-      )}
-      {formNumber === 3 && (
-        <OfferForm3
-          onIncrement={incrementHandler}
-          onDecrement={decrementHandler}
-        />
-      )}
-      {formNumber === 4 && (
-        <OfferForm4
-          onIncrement={incrementHandler}
-          onDecrement={decrementHandler}
-        />
-      )}
-      {formNumber === 5 && (
-        <OfferForm5
-          onIncrement={incrementHandler}
-          onDecrement={decrementHandler}
-        />
-      )}
-
-      {formNumber === 0 && (
-        <Button styles={classes.CTA_button} onClick={startHandler}>
-          Start
-        </Button>
-      )}
-      {formNumber === 6 && (
+      );
+      break;
+    case 'companyInfo':
+      content = (
         <>
-        <p>You finished all steps!</p>
-        <div>
-          <Button styles={classes.main_card__button} onClick={decrementHandler}>Back</Button>
-          <Button styles={classes.main_card__button} onClick={previewHandler} >Preview</Button>
-          <Button styles={classes.main_card__addOffer} id='addOffer' onClick={addOfferHandler}>Add offer!</Button>
-        </div></>
-      )}
-    </Card>
-  );
+          {progressBar}
+          <FormCompanyInfo
+            onIncrement={formStephandler}
+            onDecrement={formStephandler}
+          />
+        </>
+      );
+      break;
+    case 'positionInfo':
+      content = (
+        <>
+          {progressBar}
+          <FormPositionInfo
+            onIncrement={formStephandler}
+            onDecrement={formStephandler}
+          />
+        </>
+      );
+      break;
+    case 'offerSalary':
+      content = (
+        <>
+          {progressBar}
+          <FormOfferSalary
+            onIncrement={formStephandler}
+            onDecrement={formStephandler}
+          />
+        </>
+      );
+      break;
+    case 'techStack':
+      content = (
+        <>
+          {progressBar}
+          <FormTechStack
+            onIncrement={formStephandler}
+            onDecrement={formStephandler}
+          />
+        </>
+      );
+      break;
+    case 'description':
+      content = (
+        <>
+          {progressBar}
+          <FormDescription
+            onIncrement={formStephandler}
+            onDecrement={formStephandler}
+          />
+        </>
+      );
+      break;
+    case 'finished':
+      content = (
+        <>
+          {progressBar}
+          <p>You finished all steps!</p>
+          <div>
+            <Button
+              styles={classes.main_card__button}
+              onClick={() => formStephandler(Steps.Description, 'decrement')}
+            >
+              Back
+            </Button>
+            <Button styles={classes.main_card__button} onClick={previewHandler}>
+              Preview
+            </Button>
+            <Button
+              styles={classes.main_card__addOffer}
+              id="addOffer"
+              onClick={addOfferHandler}
+            >
+              Add offer!
+            </Button>
+          </div>
+        </>
+      );
+  }
+  return <Card styles={classes.main_card}>{content}</Card>;
 };
 
 export default OfferForm;

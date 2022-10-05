@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
 .devLogin_form {
   display: flex;
   flex-direction: column;
@@ -5,22 +7,32 @@
 }
 
 .devLogin_form_labelContainer {
-  margin: 16px 0;
-  color: #4e4e4e;
+  margin: 0 0 8px 0;
+  color: rgb(55, 71, 79);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .devLogin_form_inputContainer {
   height: min-content;
-  border: 1.5px #4e4e4e solid;
-  border-radius: 0.5rem;
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
   transition: 0.3s all;
   display: flex;
   align-items: center;
   padding: 2px;
+  margin-bottom: 8px;
 }
 
 .devLogin_form_inputContainer:hover {
-  background-color: rgb(201, 201, 201, 0.2);
+  background-color: rgba(220, 220, 220, 0.5);
 }
 
 .devLogin_form_inputContainer_imgContainer {
@@ -30,6 +42,7 @@
   margin: 0 8px;
   padding: 2px;
   border: none;
+  color: rgb(153, 161, 171);
 }
 
 .devLogin_form_inputContainer img {
@@ -38,37 +51,40 @@
 }
 
 .devLogin_form_input {
-  height: 30px;
+  padding: 15px 14px;
+  height: 1.1876em;
   border: none;
   width: 100%;
   background-color: transparent;
+  font-size: 14px;
+  color: rgb(55, 71, 79);
 }
 
 .devLogin_form_input:focus-visible {
   outline: none;
 }
 
-#devLoginFormLabel {
-  margin: 1rem 0;
-  color: #4e4e4e;
-}
-
-#devLoginFormLabel:hover {
-  background-color: none;
-}
-
-form.devLogin_form Button {
+.CTA_button {
+  width: 70%;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 55px;
-  margin: 5px auto;
-  background: #ff4081;
+  margin: 0px auto 24px auto;
+  background: rgb(255, 64, 129);
   border-radius: 20px;
   border: none;
   color: #fff;
   transition: 0.3s;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 form.devLogin_form Button:hover {
-  background: #c41b53;
+  background: rgb(196, 27, 83);
 }
 
 div.devLogin_form_inputContainer button {
@@ -85,12 +101,15 @@ div.devLogin_form_inputContainer button:hover {
 }
 
 .invalid_input {
+  height: 17px;
   margin: 0;
-  color: rgb(255,0,0);
+  margin-bottom: 10px;
   font-size: small;
 }
-.invalid_input_invisible {
-  visibility: hidden;
+.invalid_input p {
   margin: 0;
-  font-size: small;
+  color: rgb(255,0,0);
+}
+.invalid_input:empty::after {
+  content: '\A0';
 }

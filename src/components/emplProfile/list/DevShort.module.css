@@ -3,6 +3,7 @@
   grid-template-columns: 48px max-content auto;
   grid-template-rows: max-content;
   z-index: 1;
+  width: 100%;
 }
 
 .job_short_cont1 {

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
 import { offersActions, techStackType } from '../../../store/offers-slice';
 import Button from '../../../UI/Button';
+import { Steps } from '../../../enums/enums';
 
-import classes from './OfferForm4.module.css';
+import classes from './FormTechStack.module.css';
 
-const OfferForm4: React.FC<{
-  onIncrement: (event: React.MouseEvent) => void;
-  onDecrement: (event: React.MouseEvent) => void;
+const FormTechStack: React.FC<{
+  onIncrement: (desiredStep: Steps, action: string) => void;
+  onDecrement: (desiredStep: Steps, action: string) => void;
 }> = (props) => {
   const dispatch = useAppDispatch();
 
@@ -21,7 +22,7 @@ const OfferForm4: React.FC<{
         })
       )
     );
-    props.onDecrement(event);
+    props.onDecrement(Steps.OfferSalary, 'decrement');
   };
 
   const nextStephandler = (event: React.MouseEvent) => {
@@ -32,7 +33,7 @@ const OfferForm4: React.FC<{
         })
       )
     );
-    props.onIncrement(event);
+    props.onIncrement(Steps.Description, 'increment');
   };
 
   const [techLang, setTechLang] = useState('');
@@ -125,7 +126,7 @@ const OfferForm4: React.FC<{
                   <p className={classes.description_name}>{tech.lang}</p>
                   <p className={classes.description_value}>{tech.value}</p>
                 </div>
-                <Button onClick={() => deleteTechStackHandler(tech.id)}>
+                <Button styles={classes.tech_stack__single_delete} onClick={() => deleteTechStackHandler(tech.id)}>
                   X
                 </Button>
               </div>
@@ -140,4 +141,4 @@ const OfferForm4: React.FC<{
   );
 };
 
-export default OfferForm4;
+export default FormTechStack;

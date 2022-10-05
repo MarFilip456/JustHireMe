@@ -2,13 +2,14 @@ import React from 'react';
 import Button from '../../../UI/Button';
 import { useAppSelector, useAppDispatch } from '../../../store/redux-hooks';
 import { uiActions } from '../../../store/ui-slice';
+import { Steps } from '../../../enums/enums';
 
-import classes from './OfferForm5.module.css'
+import classes from './FormDescription.module.css'
 import RichTextEditor from './RichTextEditor';
 
-const OfferForm5: React.FC<{
-  onIncrement: (event: React.MouseEvent) => void;
-  onDecrement: (event: React.MouseEvent) => void;
+const FormDescription: React.FC<{
+  onIncrement: (desiredStep: Steps, action: string) => void;
+  onDecrement: (desiredStep: Steps, action: string) => void;
 }> = (props) => {
   const dispatch = useAppDispatch();
   const offerDescription = useAppSelector((state) => state.offers.addingOffer.description);
@@ -18,11 +19,11 @@ const OfferForm5: React.FC<{
       dispatch(uiActions.setInformationError());
       dispatch(uiActions.showInformation('Fill in the description for your offer!'))
     } else {
-      props.onIncrement(event);
+      props.onIncrement(Steps.Finished, 'increment');
     }
   };
   const previousStepHandler = (event: React.MouseEvent) => {
-    props.onDecrement(event);
+    props.onDecrement(Steps.TechStack, 'decrement');
   };
   return (
     <React.Fragment>
@@ -35,4 +36,4 @@ const OfferForm5: React.FC<{
   );
 };
 
-export default OfferForm5;
+export default FormDescription;

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
 .devLogin_main {
   display: grid;
   width: 100%;
@@ -11,13 +13,15 @@
 
 .devLogin_main_split {
   box-sizing: border-box;
-  width: 80%;
+  width: 100%;
+  max-width: 568px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-top: none;
+  padding: 32px 15px;
 }
 
 .devLogin_form {
@@ -25,31 +29,57 @@
 }
 
 h1.devLogin_form {
-  font-size: 1.8rem;
-  font-weight: normal;
-  color: rgb(78, 78, 78);
+  font-size: 34px;
+  font-weight: 300;
+  font-family: 'Open sans', sans-serif;
+  color: rgb(46, 56, 77);
+  outline-color: rgb(46, 56, 77);
+  outline-style: none;
+  outline-width: 0;
+}
+
+span.devLogin_form {
+  color: #ff4081;
+  margin: 0 3px;
+}
+span.devLogin_form:hover {
+  text-decoration: underline;
+}
+
+p.devLogin_form {
+  margin-bottom: 0.35em;
+  color: #2E384D;
+  font-size: 0.875rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1.57;
 }
 
 .devLogin_form_line {
     width: 100%;
+    background-color: rgb(228, 232, 240);
+    height: 2px;
     text-align: center;
-    margin: 12px 0px 5px 0;
-    border-bottom: 1px #ebdede solid;
-    border-top: 1px #ebdede solid;
+    margin: 20px 0px 16px;
+    outline: none;
+    box-sizing: border-box;
+    line-height: 20px;
 }
 
-.devLogin_form_line h3 {
-    margin: 5px;
-    color: rgb(78, 78, 78);
+span.devLogin_form_line {
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Open sans', sans-serif;
+    color: rgb(119, 119, 119);
+    line-height: 20px;
+    position: relative;
+    top: -12px;
+    background-color: rgb(255,255,255);
 }
 
-span.devLogin_form {
-    color: #ff4081;
-    margin: 0 3px;
-}
-
-span.devLogin_form:hover {
-    text-decoration: underline;
+.devLogin_form_line:last-child {
+  width: 55%;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -65,7 +95,6 @@ span.devLogin_form:hover {
     box-sizing: border-box;
     width: 80%;
     height: 100%;
-    /* padding: 15%; */
     display: flex;
     flex-direction: column;
     justify-content: center;

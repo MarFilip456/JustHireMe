@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
 .main_page {
   display: flex;
   align-items: center;
@@ -13,9 +15,15 @@
   width: 100%;
   background-color: rgb(255, 255, 255);
   margin: 0;
+  padding: 30px;
 }
-.main_card h1 {
-  color: rgb(50, 50, 50);
+.main_card h1, h5, p {
+  color: rgb(55, 71, 79);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+.main_card h1, h5 {
+  margin: 0;
 }
 
 .main_card__link {

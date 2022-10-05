@@ -47,7 +47,7 @@ const EmplPage = () => {
   }, [data, userData]);
   return (
     <div className={classes.main}>
-      <h1>Offers added by you:</h1>
+      <h1 className={classes.main_header} >Offers added by you:</h1>
       {userData && (
         <JobsList empId={empId!} data={offers} isLoading={isLoading} />
       )}

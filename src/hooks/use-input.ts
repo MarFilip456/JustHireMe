@@ -35,7 +35,7 @@ const useInput = (inputType: string) => {
             inputValue.length > 6
         );
       }
-    }, 500);
+    }, 400);
     return () => {
       clearTimeout(validity);
     };

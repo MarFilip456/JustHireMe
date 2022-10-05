@@ -1,80 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
 .header {
-  background: white;
+  background: rgb(255, 255, 255);
   display: flex;
   justify-content: space-between;
   padding: 0;
   border-bottom: 1px #ebdede solid;
 }
 
-.logo_section, 
+.logo_section,
 .main_nav {
-    margin: 0;
-    align-self: center;
-    display: flex;
+  margin: 0;
+  align-self: center;
+  display: flex;
+}
+
+.main_nav__addButtons {
+  color: rgb(95, 101, 107);
+  border: 1px solid rgb(228, 232, 240);
+  padding: 6px 16px;
+  border-radius: 32px;
 }
 
 .noDecor {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .logo {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
-    padding: 0.5rem;
-    color: rgb(50, 50, 50);
+  font-size: 1.4rem;
+  font-family: 'Open sans', Helvetica;
+  font-weight: 700;
+  margin: 0;
+  margin-left: 8px;
+  padding: 0.5rem;
+  color: rgb(55, 71, 79);
 }
 
 .CTA_button {
-    background: rgb(255, 64, 129);
-    border: none;
-    color: #fff;
+  background: rgb(255, 64, 129);
+  border: none;
+  border-radius: 32px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
 }
 
 .CTA_button:hover {
-    background: rgb(196, 27, 83);
+  background: rgb(196, 27, 83);
 }
 
 .hamburger_menu {
-    width: 0.6rem;
-    margin: 0;
-    padding: 1rem;
-    border: 0;
-    position: relative;
-    display: inline-block;
+  width: 0.6rem;
+  margin: 0 10px;
+  padding: 1rem;
+  border: 0;
+  position: relative;
+  display: inline-block;
+  color: #99a1ab;
 }
 
 .hamburger_menu:hover {
-    border-color: none;
-    background-color: #dfd7d7;
-    border-radius: 50%;
+  border-color: none;
+  background-color: rgb(243, 246, 248);
+  border-radius: 50%;
 }
 
 .hamburger_line {
-    height: 0.125rem;
-    width: 60%;
-    position: absolute;
-    background-color: #000000;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%);
-    transform: translateX(-50%);
+  height: 0.125rem;
+  width: 60%;
+  position: absolute;
+  background-color: rgb(153, 161, 171);
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 
 .hamburger_line::after,
 .hamburger_line::before {
-    content: '';
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    background-color: #000000;
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: rgb(153, 161, 171);
 }
 
 .hamburger_line::after {
-    top: 0.4rem;
+  top: 0.4rem;
 }
 
 .hamburger_line::before {
-    top: -0.4rem;
+  top: -0.4rem;
+}
+
+@media only screen and (max-width: 300px) {
+  .CTA_button {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .main_nav__addButtons {
+    display: none;
+  }
 }

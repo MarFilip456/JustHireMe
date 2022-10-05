@@ -14,9 +14,22 @@
   justify-content: space-around;
 }
 
-.filter_list__mainField {
+.filter_list__selectContainer {
   display: flex;
   flex-direction: column;
+}
+.filter_list__selectContainer select {
+  height: min-content;
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  margin-bottom: 8px;
 }
 
 .form_input_salary p {
@@ -31,7 +44,7 @@
 
 .CTA_button {
   color: rgb(255, 255, 255);
-  font-size: large;
+  font-size: 20px;
   font-weight: 400;
   background: rgb(255, 64, 129);
   border: none;
@@ -45,7 +58,14 @@
   background: rgb(196, 27, 83);
 }
 
-@media only screen and (min-width: 1024px) {
+.clear_button {
+  color: rgb(95, 101, 107);
+  border: 1px solid rgb(228, 232, 240);
+  padding: 6px 16px;
+  border-radius: 32px;
+}
+
+@media only screen and (min-width: 1280px) {
   .filter_list__mainField {
     display: none;
   }

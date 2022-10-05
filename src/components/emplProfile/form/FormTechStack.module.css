@@ -1,0 +1,134 @@
+.tech_stack__container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 15% 85%;
+  grid-template-areas:
+    'form button'
+    'techStack techStack';
+}
+
+.tech_stack__form {
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  column-gap: 5px;
+  align-items: center;
+  grid-area: form;
+  grid-template-areas:
+    'required required'
+    'skill knowledge';
+  font-size: 14px;
+}
+.tech_stack__form p {
+  font-weight: 600;
+  margin: 0;
+  justify-self: center;
+  grid-area: required;
+}
+
+.tech_stack__form_input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech_stack__form input, select {
+  width: 100%;
+  max-width: 110px;
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+  padding-left: 1px;
+  padding-right: 1px;
+  background: rgb(255, 255, 255);
+  transition: background-color 2s ease;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tech_stack__button {
+  grid-area: button;
+  margin-right: 10px;
+  height: max-content;
+  align-self: center;
+  padding: 5px;
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+}
+
+.tech_stack__stack {
+  margin-left: 20px;
+  margin-right: 20px;
+  grid-area: techStack;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-columns: 50% 50%;
+}
+
+.tech_stack__single {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  padding: 0 5px;
+  box-sizing: border-box;
+  border: 1.5px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: white;
+}
+
+.tech_stack__single_delete {
+  align-self: flex-start;
+  margin-top: 10px;
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+}
+
+.tech_stack__description {
+  justify-self: flex-start;
+}
+
+.tech_stack__description p {
+  margin: 0;
+}
+
+.description_name {
+  font-weight: 600;
+}
+
+.description_value {
+  color: rgba(150, 150, 150);
+}
+
+.tech_stack__single button {
+  justify-self: flex-end;
+}
+
+.main_form__button {
+  color: white;
+  background-color: rgb(255, 64, 129);
+  border: none;
+  padding: 5px 10px;
+}
+
+.main_form__button:hover {
+  background-color: rgb(196, 27, 83);
+}
+@media only screen and (min-width: 512px) {
+  .tech_stack__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    margin-left: 25px;
+  }
+  .tech_stack__button {
+    margin-right: 25px;
+  }
+}

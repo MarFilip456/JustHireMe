@@ -32,13 +32,21 @@ const Header = () => {
         </div>
         <div className={classes.main_nav}>
           {isLogged && !isDev && (
-            <Button onClick={() => navigate('/empl/addOffer')}>
+            <Button
+              onClick={() => navigate('/empl/addOffer')}
+              styles={classes.main_nav__addButtons}
+            >
               Add offer
             </Button>
           )}
           {isLogged
             ? (
-            <Button onClick={logoutHandler}>Sign out</Button>
+            <Button
+              onClick={logoutHandler}
+              styles={classes.main_nav__addButtons}
+            >
+              Sign out
+            </Button>
               )
             : (
             <Button

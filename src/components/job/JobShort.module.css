@@ -1,42 +1,43 @@
-.job_short__container {
+.job_short {
   display: grid;
   grid-template-columns: 5rem auto;
-  height: 4.5rem;
-  padding: 0.5rem;
-  background-color: rgb(255,255,255);
-  box-shadow: 2px 2px 2px rgba(200,200,200, 0.5);
+  height: 68px;
+  font-weight: 400;
+  padding: 0;
+  padding-right: 8px;
+  margin: 4px 8px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 2px rgba(200, 200, 200, 0.5);
   transition: background-color 0.5s ease-out;
 }
-.job_short__container:hover {
-  background-color: rgb(243,246,248);;
+.job_short:hover {
+  background-color: rgb(243, 246, 248);
   transition: background-color 0.5s ease-in;
 }
-.job_short__containerTwo {
+.job_short_information {
+  font-size: 14px;
+  font-weight: inherit;
   display: grid;
   grid-template-columns: max-content auto;
+  padding: 12px 16px 10px 0;
 }
 .job_short_cont1 {
+  font-size: inherit;
   display: flex;
   flex-direction: column;
-  font-size: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0;
+  font-weight: inherit;
 }
 
 .job_short_cont2 {
- display: none;
- overflow: hidden;
+  display: none;
+  overflow: hidden;
 }
 
 .newOffer {
-  font-weight: 700;
-  text-align: center;
-  width: 50px;
-  background-color: white;
-  border-radius: 5px;
-  margin: 0;
-  border: 0.5px solid rgba(0,0,0,0.5);
-  background-color: rgb(243,246,248);
+  margin: auto;
+  font-size: 12px;
 }
 
 .job_short_cont2 div {
@@ -50,7 +51,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
- }
+}
 
 .job_short_img {
   height: 4rem;
@@ -60,34 +61,47 @@
 }
 
 .job_short_company {
-  font-size: 0.8rem;
+  font-size: inherit;
   margin: 0;
-  color: rgb(50,50,50);
+  color: rgb(55, 71, 79);
 }
 .job_short__salary {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: inherit;
   margin: 0;
-  color: rgb(69, 223, 69);
+  color: rgb(30, 198, 108);
 }
 
 .job_short__date {
-  font-size: 14px;
+  border: 1px solid rgb(228, 232, 240);
+  border-radius: 11px;
+  background-color: rgb(228, 232, 240);
+  color: rgb(153, 161, 171);
+  height: 16px;
+  padding: 0px 5px;
+  font-size: 8px;
+  line-height: 13px;
 }
 
 .job_short__location {
-    font-size: 12px;
-    color: rgb(180, 180, 180);
-    margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: rgb(180, 180, 180);
+}
+.job_short__location h2 {
+  margin: 0;
+  margin-right: 2px;
+  font-size: 12px;
 }
 
 @media only screen and (min-width: 360px) {
   .job_short_cont2 {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0;
     justify-self: end;
-    color: rgb(50,50,50);
   }
 }

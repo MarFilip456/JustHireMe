@@ -3,12 +3,13 @@ import { useAppDispatch, useAppSelector } from '../../../store/redux-hooks';
 import { offersActions } from '../../../store/offers-slice';
 import { uiActions } from '../../../store/ui-slice';
 import Button from '../../../UI/Button';
+import { Steps } from '../../../enums/enums';
 
-import classes from './OfferForm3.module.css';
+import classes from './FormOfferSalary.module.css';
 
-const OfferForm3: React.FC<{
-  onIncrement: (event: React.MouseEvent) => void;
-  onDecrement: (event: React.MouseEvent) => void;
+const FormOfferSalary: React.FC<{
+  onIncrement: (desiredStep: Steps, action: string) => void;
+  onDecrement: (desiredStep: Steps, action: string) => void;
 }> = (props) => {
   const dispatch = useAppDispatch();
   const offer = useAppSelector((state) => state.offers.addingOffer);
@@ -41,7 +42,7 @@ const OfferForm3: React.FC<{
         })
       )
     );
-    props.onDecrement(event);
+    props.onDecrement(Steps.PositionInfo, 'decrement');
   };
 
   const nextStephandler = (event: React.MouseEvent) => {
@@ -79,7 +80,7 @@ const OfferForm3: React.FC<{
           })
         )
       );
-      props.onIncrement(event);
+      props.onIncrement(Steps.TechStack, 'increment');
     }
   };
 
@@ -221,4 +222,4 @@ const OfferForm3: React.FC<{
   );
 };
 
-export default OfferForm3;
+export default FormOfferSalary;

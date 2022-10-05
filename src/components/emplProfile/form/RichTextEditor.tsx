@@ -15,7 +15,8 @@ const RichTextEditor = () => {
       dispatch(
         offersActions.addOffer(
           Object.assign({}, offer, {
-            description: editorRef.current.getContent()
+            description: editorRef.current.getContent(),
+            appliers: []
           })
         )
       );

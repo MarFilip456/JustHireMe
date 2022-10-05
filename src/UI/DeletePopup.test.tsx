@@ -1,9 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import DeletePopup from './DeletePopup';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import store from '../store/index';
+
+afterEach(cleanup);
 
 describe('DeletePopup component', () => {
   const queryClient = new QueryClient();

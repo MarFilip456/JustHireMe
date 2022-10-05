@@ -5,6 +5,19 @@
     justify-content: space-around;
 }
 
+.main_form input,
+.main_form select {
+  border: 1px rgb(228, 232, 240) solid;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background: rgb(255, 255, 255);
+  transition: background-color 2s ease;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .main_form__container {
     display: flex;
     flex-direction: column;
