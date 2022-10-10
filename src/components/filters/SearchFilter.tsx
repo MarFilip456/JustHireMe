@@ -3,7 +3,7 @@ import classes from './SearchFilter.module.css';
 
 const SearchFilter: React.FC<{
   searchFor: string;
-  refObject: React.RefObject<HTMLInputElement>;
+  refObject?: React.RefObject<HTMLInputElement>;
   defaultProp: string | undefined;
 }> = (props) => {
   const { searchFor, refObject, defaultProp } = props;
@@ -23,6 +23,7 @@ const SearchFilter: React.FC<{
       </div>
       <input
         type="search"
+        name='search'
         placeholder={`Search by ${searchString!}...`}
         ref={refObject}
         defaultValue={defaultProp}

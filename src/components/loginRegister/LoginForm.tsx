@@ -84,7 +84,6 @@ const LoginForm: React.FC<{
       setPassHidden(true);
     }
   };
-
   return (
     <form
       className={classes.devLogin_form}
@@ -118,7 +117,7 @@ const LoginForm: React.FC<{
         />
       </div>
       <div className={classes.invalid_input}>
-      {emailHasError && <p>Not valid password!</p>}
+        {emailHasError && <p>Not valid email!</p>}
       </div>
       <div className={classes.devLogin_form_labelContainer}>
         <label htmlFor="password">Password</label>
@@ -168,7 +167,7 @@ const LoginForm: React.FC<{
         </button>
       </div>
       <div className={classes.invalid_input}>
-      {passwordHasError && <p>Not valid password!</p>}
+        {passwordHasError && <p>Not valid password!</p>}
       </div>
       <Button styles={classes.CTA_button} act={props.act}>
         {props.act}

@@ -73,7 +73,7 @@ const SlideShow = () => {
           </button>
           <div className={classes.slideShow_img}>
             <img
-              alt="figure something smart"
+              alt="office_work"
               src={slideImages[slideIndex].url}
             />
           </div>

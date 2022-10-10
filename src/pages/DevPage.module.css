@@ -17,10 +17,6 @@
   line-height: 1.43;
 }
 
-.mainPage_main__form_container {
-  
-}
-
 .devPage_card {
   padding: 20px;
   background-color: rgb(255, 255, 255);
@@ -121,12 +117,13 @@ color: rgb(55, 71, 79);
   width: 100%;
 }
 
-.card_inputContainer__select select {
+select.card_inputContainer__select {
   box-sizing: border-box;
   font-size: 14px;
   padding: 15px 14px;
   width: 100%;
   border: none;
+  max-width: 100%;
 }
 
 .card_inputContainer__select option {

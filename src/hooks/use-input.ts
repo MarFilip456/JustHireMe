@@ -20,25 +20,20 @@ const useInput = (inputType: string) => {
   };
 
   useEffect(() => {
-    const validity = setTimeout(() => {
-      if (inputType === 'email') {
-        setIsValid(inputValue.includes('@'));
-      } else if (inputType === 'password') {
-        const regex1 = /[A-Z]/;
-        const regex2 = /[a-z]/;
-        const regex3 = /[0-9]/;
+    if (inputType === 'email') {
+      setIsValid(inputValue.includes('@'));
+    } else if (inputType === 'password') {
+      const regex1 = /[A-Z]/;
+      const regex2 = /[a-z]/;
+      const regex3 = /[0-9]/;
 
-        setIsValid(
-          regex1.test(inputValue) &&
-            regex2.test(inputValue) &&
-            regex3.test(inputValue) &&
-            inputValue.length > 6
-        );
-      }
-    }, 400);
-    return () => {
-      clearTimeout(validity);
-    };
+      setIsValid(
+        regex1.test(inputValue) &&
+          regex2.test(inputValue) &&
+          regex3.test(inputValue) &&
+          inputValue.length > 8
+      );
+    }
   }, [inputType, inputValue]);
 
   return {

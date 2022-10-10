@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import OfferForm from './OfferForm';
 import { offersActions } from '../../../store/offers-slice';
+import { act } from 'react-dom/test-utils';
 
 afterEach(cleanup);
 
@@ -107,13 +108,17 @@ describe('OfferForm component', () => {
     fireEvent.blur(inputLogoUrl!);
     // Before clicking Check entered location Next shouldn't be visible
     expect(await screen.queryByText('Next')).toBeNull();
-    fireEvent.click(checkButton);
+    await act(async () => {
+      fireEvent.click(checkButton);
+    })
     // Next shoult take place after Check entered location is gone
     expect(await screen.findByText('Next')).toBeDefined();
     expect(await screen.queryByText('Position')).toBeNull();
     // selecting and clicking Next button
     const nextButton = screen.getByText('Next');
-    fireEvent.click(nextButton);
+    await act(async () => {
+      fireEvent.click(nextButton);
+    })
     // OfferForm2 content should appear
     expect(await screen.findByText('Position')).toBeDefined();
   });

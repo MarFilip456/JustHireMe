@@ -17,6 +17,7 @@
 .filter_list__selectContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .filter_list__selectContainer select {
   height: min-content;

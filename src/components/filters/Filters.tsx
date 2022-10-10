@@ -144,7 +144,7 @@ const Filters = () => {
             ref={techRef}
             defaultValue={savedQueryObject.mainField}
           >
-            <option value="All">All</option>
+            <option value="All">Any</option>
             {mainFieldArray.map((mainField) => (
               <option key={mainFieldArray.indexOf(mainField)} value={mainField}>
                 {mainField}
@@ -196,9 +196,9 @@ const Filters = () => {
             ref={employmentRef}
             defaultValue={savedQueryObject.employment}
           >
-            <option value="All">All</option>
-            <option value="b2b">B2B</option>
-            <option value="uop">UoP</option>
+            <option id='employmentAll' value="All">All forms</option>
+            <option id='employmentB2b' value="b2b">B2B</option>
+            <option id='employmentUop' value="uop">UoP</option>
           </select>
         </div>
         <div className={classes.filter_list__selectContainer}>
