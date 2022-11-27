@@ -1,3 +1,34 @@
+# Job Board for tech industry
+
+Browse through all the offers added by other users.\
+Looking for something in particular?\
+I got you covered, filter by main technology, seniority, salary range and many more to send queries to my API and see what you can get and how the markers on map change.\
+Found what you like? Don't waste your time and apply, employer will see your user info in his panel below exact offer.\
+Looking for people to your start-up?\
+Register as an employer and add offer using my form, adding the description just the way you like it. After all, What You See Is What You Get :)\
+\
+Below is a list of languages, libraries and frameworks i used to deliver this project.\
+\
+Typescript\
+React\
+React Redux\
+React Testing Library\
+React Query\
+Axios\
+HTML\
+CSS\
+MUI\
+Google Maps\
+WYSIWYG - TinyMCE\
+NestJS\
+JWT\
+Mongoose\
+MongoDB\
+Docker\
+GIT\
+Heroku\
+Vercel
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
