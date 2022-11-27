@@ -7,6 +7,7 @@ Found what you like? Don't waste your time and apply, employer will see your use
 Looking for people to your start-up?\
 Register as an employer and add offer using my form, adding the description just the way you like it. After all, What You See Is What You Get :)\
 \
+Give it a go by clicking this [link](https://just-hire-me-frontend-vercel.vercel.app/)\
 Below is a list of languages, libraries and frameworks i used to deliver this project.\
 \
 Typescript\
